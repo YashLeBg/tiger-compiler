@@ -1,0 +1,21 @@
+1st fix me:
+    That fix me is a macro using for updates the current column position in the location tracker. to do so, we add the lengtht of the matched token beore executing the corresponding rule.
+    using that RE/flex Actions sources:
+            https://www.genivia.com/doc/reflex/html/index.html
+2nd fix me:
+    That fix me is a regular expression that defines a standard id startinf with a letter,followed by any alphanumeric/underscore.
+    using that Flex Manual Pattern sources:
+        https://westes.github.io/flex/manual/Patterns.html
+3rd fix me:
+    That fix me is a completion of the class. It's members are used to store the accumulated string and to track the nesting depth of comments blocks in mulstiple lexer calls.
+    using that Lexer classes / state sources:
+        https://www.genivia.com/doc/reflex/html/class_reflex.html
+4th fix me:
+    That fix me is for converting the matched string to an integer. if a overfow exception occurs, we catch it and report a compilation error.
+    using that Boostc++ lib sources:
+        https://www.boost.org/doc/libs/1_75_0/doc/html/boost_lexical_cast.html
+5th fix me:
+    That last lexer fix me is a ruled map tiger keywords to parser tokens. we use exclusive start conditions to accuratly parse multiline strings and nested comments. we also track errors.
+    using flex manual Start condition sources:
+        https://westes.github.io/flex/manual/Start-Conditions.html
+
