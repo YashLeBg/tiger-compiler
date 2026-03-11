@@ -34,6 +34,8 @@ namespace ast
     : ostr_(ostr)
   {}
 
+  // Each link to create graphic (dot) tree
+
   void DumperDot::operator()(const ArrayExp& e)
   {
     unsigned long old_parent_id = node_html_header(e, "ArrayExp");
