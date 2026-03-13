@@ -29,11 +29,11 @@ namespace ast
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<SimpleVar>&)
   {}
-
+  //visite la variable du record
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<FieldVar>& e)
   {
-    // FIXME: Some code was deleted here.
+    e.var_get().accept(*this);
   }
 
   template <template <typename> class Const>
@@ -54,11 +54,12 @@ namespace ast
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<StringExp>&)
   {}
-
+  //visite chaque argument de lappel
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<CallExp>& e)
   {
-    // FIXME: Some code was deleted here.
+    for (auto* arg : e.args_get())
+      arg->accept(*this);
   }
 
   template <template <typename> class Const>
@@ -67,29 +68,35 @@ namespace ast
     e.left_get().accept(*this);
     e.right_get().accept(*this);
   }
-
+  //visite le type et chaque champ du record
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<RecordExp>& e)
   {
-    // FIXME: Some code was deleted here.
+    e.type_name_get().accept(*this);
+    for (auto* field : e.fields_get())
+      field->accept(*this);
   }
-
+  //visite chaque expression de la sequence
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<SeqExp>& e)
   {
-    // FIXME: Some code was deleted here.
+    for (auto* exp : e.exps_get())
+      exp->accept(*this);
   }
-
+  //visite la variable et l'expression assignee
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<AssignExp>& e)
   {
-    // FIXME: Some code was deleted here.
+    e.var_get().accept(*this);
+    e.exp_get().accept(*this);
   }
-
+  //visite le if le then et le else si present
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<IfExp>& e)
   {
-    // FIXME: Some code was deleted here.
+    e.test_get().accept(*this);
+    e.thenclause_get().accept(*this);
+    this->accept(e.elseclause_get());
   }
 
   template <template <typename> class Const>
@@ -110,17 +117,20 @@ namespace ast
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<BreakExp>&)
   {}
-
+  //visite les declarations et le corps du let
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<LetExp>& e)
   {
-    // FIXME: Some code was deleted here.
+    e.chunklist_get().accept(*this);
+    e.body_get().accept(*this);
   }
-
+  //visite le type la taille et le init
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<ArrayExp>& e)
   {
-    // FIXME: Some code was deleted here.
+    e.type_name_get().accept(*this);
+    e.size_get().accept(*this);
+    e.init_get().accept(*this);
   }
 
   template <template <typename> class Const>
@@ -135,11 +145,12 @@ namespace ast
   {
     e.init_get().accept(*this);
   }
-
+  //visite chaque chunk de la liste
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<ChunkList>& e)
   {
-    // FIXME: Some code was deleted here.
+    for (auto* chunk : e)
+      chunk->accept(*this);
   }
 
   template <template <typename> class Const>
@@ -176,11 +187,13 @@ namespace ast
   {
     chunk_visit<FunctionChunk>(e);
   }
-
+  //visite les parametres le type de retour et le body de la fonction
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<FunctionDec>& e)
   {
-    // FIXME: Some code was deleted here.
+    e.formals_get().accept(*this);
+    this->accept(e.result_get());
+    this->accept(e.body_get());
   }
 
   template <template <typename> class Const>
@@ -198,11 +211,12 @@ namespace ast
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<NameTy>&)
   {}
-
+  //visite chaque champ du type record
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<RecordTy>& e)
   {
-    // FIXME: Some code was deleted here.
+    for (auto* field : e.fields_get())
+      field->accept(*this);
   }
 
   template <template <typename> class Const>

@@ -31,12 +31,12 @@
 // version 2.2 of Bison.
 
 /**
- ** \file ./src/parse/location.hh
+ ** \file location.hh
  ** Define the parse::location class.
  */
 
-#ifndef YY_PARSE_SRC_PARSE_LOCATION_HH_INCLUDED
-# define YY_PARSE_SRC_PARSE_LOCATION_HH_INCLUDED
+#ifndef YY_PARSE_LOCATION_HH_INCLUDED
+# define YY_PARSE_LOCATION_HH_INCLUDED
 
 # include <iostream>
 # include <string>
@@ -53,9 +53,9 @@
 #  endif
 # endif
 
-#line 6 "parse/parsetiger.yy"
+#line 6 "parsetiger.yy"
 namespace parse {
-#line 59 "parse/location.hh"
+#line 59 "location.hh"
 
   /// A point in a source file.
   class position
@@ -299,8 +299,8 @@ namespace parse {
     return ostr;
   }
 
-#line 6 "parse/parsetiger.yy"
+#line 6 "parsetiger.yy"
 } // parse
-#line 305 "parse/location.hh"
+#line 305 "location.hh"
 
-#endif // !YY_PARSE_SRC_PARSE_LOCATION_HH_INCLUDED
+#endif // !YY_PARSE_LOCATION_HH_INCLUDED
