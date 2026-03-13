@@ -17,7 +17,8 @@
 // In TC, we expect the GLR to resolve one Shift-Reduce and zero Reduce-Reduce
 // conflict at runtime. Use %expect and %expect-rr to tell Bison about it.
   // FIXME: Some code was deleted here (Other directives).
-
+%expect 1 //accept only 1 shift/reduce conflit
+%expect-rr 0 //do not accept any reduce/reduce conflict
 %define parse.error verbose
 %defines
 %debug
@@ -93,7 +94,7 @@
 }
 
   // FIXME: Some code was deleted here (Printers and destructors).
-
+%printer {yyo<<$$;} <int>   <std::string><misc::symbol>;      //yyo = bison output,$$ token value, followed by the 3 types that will be applied to
 /*-----------------------------------------.
 | Code output in the implementation file.  |
 `-----------------------------------------*/
@@ -190,9 +191,28 @@
 %type <ast::Field*>           tyfield
 %type <ast::fields_type*>     tyfields tyfields.1
   // FIXME: Some code was deleted here (More %types).
-
+//This part is declarations of all cpp ast type for building the AST
+%type <ast::Var*>             lvalue
+%type <ast::exps_type*>       exps exps.1 args args.1
+%type <ast::fieldinits_type*> recfields recfields.1
+%type <ast::FieldInit*>       recfield
+%type <ast::VarChunk*>        varchunk formals formals.1
+%type <ast::VarDec*>          vardec
+%type <ast::FunctionChunk*>   funchunk methodchunk
+%type <ast::FunctionDec*>     fundec
+%type <ast::MethodDec*>       methoddec
+%type <ast::ChunkList*>       classfields
   // FIXME: Some code was deleted here (Priorities/associativities).
+%precedence THEN    //those 2 lines ll tie the closet else to the then to solve shift/reduce ambiguity
+%precedence ELSE
 
+%right ASSIGN       //right assign in bidding arrithmetic
+%left OR            //or priority<and priority
+%left AND
+%nonassoc EQ NE GT GE LT LE //comparisons cannot be chained
+%left PLUS MINUS    //comparison priority<plusminus priority<div/mult priority
+%left TIMES DIVIDE
+%precedence UMINUS  //highest mathematic prio
 // Solving conflicts on:
 // let type foo = bar
 //     type baz = bat
@@ -202,7 +222,12 @@
 %precedence CHUNKS
 %precedence TYPE
   // FIXME: Some code was deleted here (Other declarations).
-
+//context-dependent precedence rules dor diff type of chuncks
+%precedence FUNCTION
+%precedence PRIMITIVE
+%precedence CLASS
+%precedence METHOD
+%precedence VAR
 %start program
 
 %%
@@ -219,7 +244,75 @@ exp:
   INT
    { $$ = make_IntExp(@$, $1); }
   // FIXME: Some code was deleted here (More rules).
-
+//all that block defines all the ways on how an expression can be wrote in tiger  and how to tuurn it on cpp object
+// "is it that symbole?" ->     {cpp code that will be executed } $$=rule res,function, @$=localisation, X element
+| STRING                            { $$ = make_StringExp(@$, $1); }
+| NIL                               { $$ = make_NilExp(@$); }
+| lvalue                            { $$ = $1; }
+| LPAREN exps RPAREN                { $$ = make_SeqExp(@$, $2); }
+| ID LPAREN args RPAREN             { $$ = make_CallExp(@$, $1, $3); }
+| lvalue DOT ID LPAREN args RPAREN  { $$ = make_MethodCallExp(@$, $3, $5, $1); }
+| typeid LBRACE recfields RBRACE    { $$ = make_RecordExp(@$, $1, $3); }
+| typeid LBRACK exp RBRACK OF exp   { $$ = make_ArrayExp(@$, $1, $3, $6); }
+| lvalue ASSIGN exp                 { $$ = make_AssignExp(@$, $1, $3); }
+| IF exp THEN exp                   { $$ = make_IfExp(@$, $2, $4); }
+| IF exp THEN exp ELSE exp          { $$ = make_IfExp(@$, $2, $4, $6); }
+| WHILE exp DO exp                  { $$ = make_WhileExp(@$, $2, $4); }
+| FOR ID ASSIGN exp TO exp DO exp   { $$ = make_ForExp(@$, make_VarDec(@2, $2, nullptr, $4), $6, $8); }
+| BREAK                             { $$ = make_BreakExp(@$); }
+| LET chunks IN exps END            { $$ = make_LetExp(@$, $2, make_SeqExp(@4, $4)); }
+| exp PLUS exp                      { $$ = make_OpExp(@$, ast::OpExp::add, $1, $3); }
+| exp MINUS exp                     { $$ = make_OpExp(@$, ast::OpExp::sub, $1, $3); }
+| exp TIMES exp                     { $$ = make_OpExp(@$, ast::OpExp::mul, $1, $3); }
+| exp DIVIDE exp                    { $$ = make_OpExp(@$, ast::OpExp::div, $1, $3); }
+| exp EQ exp                        { $$ = make_OpExp(@$, ast::OpExp::eq, $1, $3); }
+| exp NE exp                        { $$ = make_OpExp(@$, ast::OpExp::ne, $1, $3); }
+| exp LT exp                        { $$ = make_OpExp(@$, ast::OpExp::lt, $1, $3); }
+| exp LE exp                        { $$ = make_OpExp(@$, ast::OpExp::le, $1, $3); }
+| exp GT exp                        { $$ = make_OpExp(@$, ast::OpExp::gt, $1, $3); }
+| exp GE exp                        { $$ = make_OpExp(@$, ast::OpExp::ge, $1, $3); }
+| MINUS exp %prec UMINUS            { $$ = make_OpExp(@$, ast::OpExp::sub, make_IntExp(@1, 0), $2); }
+| exp AND exp                       { $$ = make_IfExp(@$, $1, $3, make_IntExp(@3, 0)); }
+| exp OR exp                        { $$ = make_IfExp(@$, $1, make_IntExp(@1, 1), $3); }
+| NEW typeid                        { $$ = make_ObjectExp(@$, $2); }
+| CAST LPAREN exp COMMA ty RPAREN   { $$ = make_CastExp(@$, $3, $5); }
+;
+//that block is for everything that can be on the left of ":=" 
+//works on the same way as before
+lvalue:
+  ID                                { $$ = make_SimpleVar(@$, $1); }
+| lvalue DOT ID                     { $$ = make_FieldVar(@$, $1, $3); }
+| lvalue LBRACK exp RBRACK          { $$ = make_SubscriptVar(@$, $1, $3); }
+;
+//manages expression list. separator ";"
+exps:
+  %empty                            { $$ = make_exps_type(); }
+| exps.1                            { $$ = $1; }
+;
+exps.1:
+  exp                               { $$ = make_exps_type($1); }
+| exps.1 SEMI exp                   { $$ = $1; $$->emplace_back($3); }
+;
+//manages arguments list.separator ","
+args:
+  %empty                            { $$ = make_exps_type(); }
+| args.1                            { $$ = $1; }
+;
+args.1:
+  exp                               { $$ = make_exps_type($1); }
+| args.1 COMMA exp                  { $$ = $1; $$->emplace_back($3); }
+;
+//manages record list. separator ","
+recfields:
+  %empty                            { $$ = make_fieldinits_type(); }
+| recfields.1                       { $$ = $1; }
+;
+recfields.1:
+  recfield                          { $$ = make_fieldinits_type($1); }
+| recfields.1 COMMA recfield        { $$ = $1; $$->emplace_back($3); }
+;
+recfield:
+  ID EQ exp                         { $$ = make_FieldInit(@$, $1, $3); }
 /*---------------.
 | Declarations.  |
 `---------------*/

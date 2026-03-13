@@ -1,0 +1,40 @@
+1st fix me:
+	this fix me is for telling bison to accept exactly 1 shift/reduce conflict and 0 reduce/reduce conflicts.
+	sources: https://www.gnu.org/software/bison/manual/html_node/Expect-Decl.html
+		
+
+2nd fix me:
+	That fix me prints the string representation ok tokens during arsing error messages.
+	sources:
+		https://www.gnu.org/software/bison/manual/html_node/Printer-Decl.html
+		
+3rd fix me:
+	That fix me includes c++ headers that we need to build the AST.
+	
+4th fix me:
+	That fix me binds each grammar rule to it corresponding ast node type
+	sources:
+	https://www.gnu.org/software/bison/manual/html_node/Type-Decl.html
+	
+5th fix me:
+	That fix me define operator precedence and associativity to avoid mathematical/logical ambiguitis
+	sources:
+	https://www.gnu.org/software/bison/manual/html_node/Precedence-Decl.html
+	
+6th fix me:
+	That fix me sets a specific prededence for declaration blocks to help bison group contigous declarations together.
+	sources:
+https://www.gnu.org/software/bison/manual/html_node/Contextual-Precedence.html
+
+7th fix me:
+	That fix me Triggers the parsing of another tiger file when the "import" keyword is matched
+	
+8th fix me:
+	That fix me Translates all tiger expression into ast nodes
+	sources:https://www.gnu.org/software/bison/manual/html_node/Actions.html
+
+9th fix me:
+	that fix me handles the recursive grouping of contigous declaration inside "let /in" blocks.
+	sources:
+	https://www.gnu.org/software/bison/manual/html_node/Recursion.html
+	
