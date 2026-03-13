@@ -1,0 +1,6 @@
+src/version.lo: src/version.cc \
+ /nix/store/1v9ggwkpb0xy708s11s1g9fhinn3b06r-glibc-2.40-66-dev/include/stdc-predef.h \
+ config.h authors.h
+/nix/store/1v9ggwkpb0xy708s11s1g9fhinn3b06r-glibc-2.40-66-dev/include/stdc-predef.h:
+config.h:
+authors.h:

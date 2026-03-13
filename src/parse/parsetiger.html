@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:bison="https://www.gnu.org/software/bison/">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>src/parse/parsetiger.yy - GNU Bison XML Automaton Report</title>
+    <style type="text/css">
+      body {
+        font-family: "Nimbus Sans L", Arial, sans-serif;
+        font-size: 9pt;
+      }
+      a:link {
+        color: #1f00ff;
+        text-decoration: none;
+      }
+      a:visited {
+        color: #1f00ff;
+        text-decoration: none;
+      }
+      a:hover {
+        color: red;
+      }
+      #menu a {
+        text-decoration: underline;
+      }
+      .i {
+        font-style: italic;
+      }
+      .pre {
+        font-family: monospace;
+        white-space: pre;
+      }
+      ol.decimal {
+        list-style-type: decimal;
+      }
+      ol.lower-alpha {
+        list-style-type: lower-alpha;
+      }
+      .dot {
+        color: #cc0000;
+      }
+      #footer {
+        margin-top: 3.5em;
+        font-size: 7pt;
+      }
+      </style>
+  </head>
+  <body><h1>GNU Bison XML Automaton Report</h1><p>
+    input grammar: <span class="i">src/parse/parsetiger.yy</span></p>
+
+<h3>Table of Contents</h3><ul id="menu"><li><a href="#reductions">Reductions</a><ul class="lower-alpha"><li><a href="#nonterminals_useless_in_grammar">Nonterminals useless in grammar</a></li><li><a href="#terminals_unused_in_grammar">Terminals unused in grammar</a></li><li><a href="#rules_useless_in_grammar">Rules useless in grammar</a></li></ul></li><li><a href="#conflicts">Conflicts</a></li><li><a href="#grammar">Grammar</a><ul class="lower-alpha"><li><a href="#grammar">Itemset</a></li><li><a href="#terminals">Terminal symbols</a></li><li><a href="#nonterminals">Nonterminal symbols</a></li></ul></li><li><a href="#automaton">Automaton</a></li></ul><h2><a name="reductions" id="reductions"></a> Reductions</h2><h3><a name="nonterminals_useless_in_grammar" id="nonterminals_useless_in_grammar"></a> Nonterminals useless in grammar</h3>
+
+<h3><a name="terminals_unused_in_grammar" id="terminals_unused_in_grammar"></a> Terminals unused in grammar</h3>
+
+<p class="pre">   "string"
+   "&amp;"
+   ":="
+   "break"
+   "_cast"
+   "class"
+   "/"
+   "do"
+   "."
+   "else"
+   "end"
+   "extends"
+   "for"
+   "function"
+   "&gt;="
+   "&gt;"
+   "if"
+   "import"
+   "in"
+   "["
+   "&lt;="
+   "let"
+   "&lt;"
+   "-"
+   "method"
+   "&lt;&gt;"
+   "new"
+   "nil"
+   "|"
+   "+"
+   "primitive"
+   "]"
+   ";"
+   "then"
+   "*"
+   "to"
+   "var"
+   "while"
+
+
+</p><h3><a name="rules_useless_in_grammar" id="rules_useless_in_grammar"></a> Rules useless in grammar</h3>
+<h2><a name="conflicts" id="conflicts"></a> Conflicts</h2>
+
+<h2><a name="grammar" id="grammar"></a> Grammar</h2>
+<p class="pre">
+  <a name="rule_0" id="rule_0">  0</a> <span class="i">$accept</span> → <span class="i">program</span> <b>"end of file"</b>
+
+  <a name="rule_1" id="rule_1">  1</a> <span class="i">program</span> → <span class="i">exp</span>
+  <a name="rule_2" id="rule_2">  2</a>         | <span class="i">chunks</span>
+
+  <a name="rule_3" id="rule_3">  3</a> <span class="i">exp</span> → <b>"integer"</b>
+
+  <a name="rule_4" id="rule_4">  4</a> <span class="i">chunks</span> → %empty
+  <a name="rule_5" id="rule_5">  5</a>        | <span class="i">tychunk</span> <span class="i">chunks</span>
+
+  <a name="rule_6" id="rule_6">  6</a> <span class="i">tychunk</span> → <span class="i">tydec</span>
+  <a name="rule_7" id="rule_7">  7</a>         | <span class="i">tydec</span> <span class="i">tychunk</span>
+
+  <a name="rule_8" id="rule_8">  8</a> <span class="i">tydec</span> → <b>"type"</b> <b>"identifier"</b> <b>"="</b> <span class="i">ty</span>
+
+  <a name="rule_9" id="rule_9">  9</a> <span class="i">ty</span> → <span class="i">typeid</span>
+  <a name="rule_10" id="rule_10"> 10</a>    | <b>"{"</b> <span class="i">tyfields</span> <b>"}"</b>
+  <a name="rule_11" id="rule_11"> 11</a>    | <b>"array"</b> <b>"of"</b> <span class="i">typeid</span>
+
+  <a name="rule_12" id="rule_12"> 12</a> <span class="i">tyfields</span> → %empty
+  <a name="rule_13" id="rule_13"> 13</a>          | <span class="i">tyfields.1</span>
+
+  <a name="rule_14" id="rule_14"> 14</a> <span class="i">tyfields.1</span> → <span class="i">tyfields.1</span> <b>","</b> <span class="i">tyfield</span>
+  <a name="rule_15" id="rule_15"> 15</a>            | <span class="i">tyfield</span>
+
+  <a name="rule_16" id="rule_16"> 16</a> <span class="i">tyfield</span> → <b>"identifier"</b> <b>":"</b> <span class="i">typeid</span>
+
+  <a name="rule_17" id="rule_17"> 17</a> <span class="i">typeid</span> → <b>"identifier"</b>
+  <a name="rule_18" id="rule_18"> 18</a>        | <b>"_namety"</b> <b>"("</b> <b>"integer"</b> <b>")"</b>
+</p>
+
+<h3><a name="terminals" id="terminals"></a> Terminals, with rules where they appear</h3>
+
+<ul>
+  <li><b>"end of file"</b> (0) <a href="#rule_0">0</a></li>
+  <li><b>error</b> (256)</li>
+  <li><b>"string"</b> &lt;std::string&gt; (258)</li>
+  <li><b>"identifier"</b> &lt;misc::symbol&gt; (259) <a href="#rule_8">8</a> <a href="#rule_16">16</a> <a href="#rule_17">17</a></li>
+  <li><b>"integer"</b> &lt;int&gt; (260) <a href="#rule_3">3</a> <a href="#rule_18">18</a></li>
+  <li><b>"&amp;"</b> (261)</li>
+  <li><b>"array"</b> (262) <a href="#rule_11">11</a></li>
+  <li><b>":="</b> (263)</li>
+  <li><b>"break"</b> (264)</li>
+  <li><b>"_cast"</b> (265)</li>
+  <li><b>"class"</b> (266)</li>
+  <li><b>":"</b> (267) <a href="#rule_16">16</a></li>
+  <li><b>","</b> (268) <a href="#rule_14">14</a></li>
+  <li><b>"/"</b> (269)</li>
+  <li><b>"do"</b> (270)</li>
+  <li><b>"."</b> (271)</li>
+  <li><b>"else"</b> (272)</li>
+  <li><b>"end"</b> (273)</li>
+  <li><b>"="</b> (274) <a href="#rule_8">8</a></li>
+  <li><b>"extends"</b> (275)</li>
+  <li><b>"for"</b> (276)</li>
+  <li><b>"function"</b> (277)</li>
+  <li><b>"&gt;="</b> (278)</li>
+  <li><b>"&gt;"</b> (279)</li>
+  <li><b>"if"</b> (280)</li>
+  <li><b>"import"</b> (281)</li>
+  <li><b>"in"</b> (282)</li>
+  <li><b>"{"</b> (283) <a href="#rule_10">10</a></li>
+  <li><b>"["</b> (284)</li>
+  <li><b>"&lt;="</b> (285)</li>
+  <li><b>"let"</b> (286)</li>
+  <li><b>"("</b> (287) <a href="#rule_18">18</a></li>
+  <li><b>"&lt;"</b> (288)</li>
+  <li><b>"-"</b> (289)</li>
+  <li><b>"method"</b> (290)</li>
+  <li><b>"&lt;&gt;"</b> (291)</li>
+  <li><b>"new"</b> (292)</li>
+  <li><b>"nil"</b> (293)</li>
+  <li><b>"of"</b> (294) <a href="#rule_11">11</a></li>
+  <li><b>"|"</b> (295)</li>
+  <li><b>"+"</b> (296)</li>
+  <li><b>"primitive"</b> (297)</li>
+  <li><b>"}"</b> (298) <a href="#rule_10">10</a></li>
+  <li><b>"]"</b> (299)</li>
+  <li><b>")"</b> (300) <a href="#rule_18">18</a></li>
+  <li><b>";"</b> (301)</li>
+  <li><b>"then"</b> (302)</li>
+  <li><b>"*"</b> (303)</li>
+  <li><b>"to"</b> (304)</li>
+  <li><b>"type"</b> (305) <a href="#rule_8">8</a></li>
+  <li><b>"var"</b> (306)</li>
+  <li><b>"while"</b> (307)</li>
+  <li><b>"_chunks"</b> (308)</li>
+  <li><b>"_namety"</b> (309) <a href="#rule_18">18</a></li>
+</ul>
+
+<h3><a name="nonterminals" id="nonterminals"></a> Nonterminals, with rules where they appear</h3>
+
+<ul>
+  <li><b>$accept</b> (55)
+    <ul>
+      <li>on left: <a href="#rule_0">0</a></li>
+    </ul>
+  </li>
+  <li><b>program</b> (56)
+    <ul>
+      <li>on left: <a href="#rule_1">1</a> <a href="#rule_2">2</a></li>
+      <li>on right: <a href="#rule_0">0</a></li>
+    </ul>
+  </li>
+  <li><b>exp</b> &lt;ast::Exp*&gt; (57)
+    <ul>
+      <li>on left: <a href="#rule_3">3</a></li>
+      <li>on right: <a href="#rule_1">1</a></li>
+    </ul>
+  </li>
+  <li><b>chunks</b> &lt;ast::ChunkList*&gt; (58)
+    <ul>
+      <li>on left: <a href="#rule_4">4</a> <a href="#rule_5">5</a></li>
+      <li>on right: <a href="#rule_2">2</a> <a href="#rule_5">5</a></li>
+    </ul>
+  </li>
+  <li><b>tychunk</b> &lt;ast::TypeChunk*&gt; (59)
+    <ul>
+      <li>on left: <a href="#rule_6">6</a> <a href="#rule_7">7</a></li>
+      <li>on right: <a href="#rule_5">5</a> <a href="#rule_7">7</a></li>
+    </ul>
+  </li>
+  <li><b>tydec</b> &lt;ast::TypeDec*&gt; (60)
+    <ul>
+      <li>on left: <a href="#rule_8">8</a></li>
+      <li>on right: <a href="#rule_6">6</a> <a href="#rule_7">7</a></li>
+    </ul>
+  </li>
+  <li><b>ty</b> &lt;ast::Ty*&gt; (61)
+    <ul>
+      <li>on left: <a href="#rule_9">9</a> <a href="#rule_10">10</a> <a href="#rule_11">11</a></li>
+      <li>on right: <a href="#rule_8">8</a></li>
+    </ul>
+  </li>
+  <li><b>tyfields</b> &lt;ast::fields_type*&gt; (62)
+    <ul>
+      <li>on left: <a href="#rule_12">12</a> <a href="#rule_13">13</a></li>
+      <li>on right: <a href="#rule_10">10</a></li>
+    </ul>
+  </li>
+  <li><b>tyfields.1</b> &lt;ast::fields_type*&gt; (63)
+    <ul>
+      <li>on left: <a href="#rule_14">14</a> <a href="#rule_15">15</a></li>
+      <li>on right: <a href="#rule_13">13</a> <a href="#rule_14">14</a></li>
+    </ul>
+  </li>
+  <li><b>tyfield</b> &lt;ast::Field*&gt; (64)
+    <ul>
+      <li>on left: <a href="#rule_16">16</a></li>
+      <li>on right: <a href="#rule_14">14</a> <a href="#rule_15">15</a></li>
+    </ul>
+  </li>
+  <li><b>typeid</b> &lt;ast::NameTy*&gt; (65)
+    <ul>
+      <li>on left: <a href="#rule_17">17</a> <a href="#rule_18">18</a></li>
+      <li>on right: <a href="#rule_9">9</a> <a href="#rule_11">11</a> <a href="#rule_16">16</a></li>
+    </ul>
+  </li>
+</ul><h2><a name="automaton" id="automaton"></a> Automaton</h2>
+
+<h3><a name="state_0" id="state_0"></a>State 0</h3>
+
+<p class="pre">  <a href="#rule_0">  0</a> <span class="i">$accept</span> → <span class="dot">•</span> <span class="i">program</span> <b>"end of file"</b>
+  <a href="#rule_1">  1</a> <span class="i">program</span> → <span class="dot">•</span> <span class="i">exp</span>
+  <a href="#rule_2">  2</a>         | <span class="dot">•</span> <span class="i">chunks</span>
+  <a href="#rule_3">  3</a> <span class="i">exp</span> → <span class="dot">•</span> <b>"integer"</b>
+  <a href="#rule_4">  4</a> <span class="i">chunks</span> → <span class="dot">•</span> %empty  ["end of file"]
+  <a href="#rule_5">  5</a>        | <span class="dot">•</span> <span class="i">tychunk</span> <span class="i">chunks</span>
+  <a href="#rule_6">  6</a> <span class="i">tychunk</span> → <span class="dot">•</span> <span class="i">tydec</span>
+  <a href="#rule_7">  7</a>         | <span class="dot">•</span> <span class="i">tydec</span> <span class="i">tychunk</span>
+  <a href="#rule_8">  8</a> <span class="i">tydec</span> → <span class="dot">•</span> <b>"type"</b> <b>"identifier"</b> <b>"="</b> <span class="i">ty</span>
+
+    "integer"  <a href="#state_1">shift, and go to state 1</a>
+    "type"     <a href="#state_2">shift, and go to state 2</a>
+
+    $default  <a href="#rule_4">reduce using rule 4</a> (chunks)
+
+    program  <a href="#state_3">go to state 3</a>
+    exp      <a href="#state_4">go to state 4</a>
+    chunks   <a href="#state_5">go to state 5</a>
+    tychunk  <a href="#state_6">go to state 6</a>
+    tydec    <a href="#state_7">go to state 7</a>
+</p>
+
+<h3><a name="state_1" id="state_1"></a>State 1</h3>
+
+<p class="pre">  <a href="#rule_3">  3</a> <span class="i">exp</span> → <b>"integer"</b> <span class="dot">•</span>
+
+    $default  <a href="#rule_3">reduce using rule 3</a> (exp)
+</p>
+
+<h3><a name="state_2" id="state_2"></a>State 2</h3>
+
+<p class="pre">  <a href="#rule_8">  8</a> <span class="i">tydec</span> → <b>"type"</b> <span class="dot">•</span> <b>"identifier"</b> <b>"="</b> <span class="i">ty</span>
+
+    "identifier"  <a href="#state_8">shift, and go to state 8</a>
+</p>
+
+<h3><a name="state_3" id="state_3"></a>State 3</h3>
+
+<p class="pre">  <a href="#rule_0">  0</a> <span class="i">$accept</span> → <span class="i">program</span> <span class="dot">•</span> <b>"end of file"</b>
+
+    "end of file"  <a href="#state_9">shift, and go to state 9</a>
+</p>
+
+<h3><a name="state_4" id="state_4"></a>State 4</h3>
+
+<p class="pre">  <a href="#rule_1">  1</a> <span class="i">program</span> → <span class="i">exp</span> <span class="dot">•</span>
+
+    $default  <a href="#rule_1">reduce using rule 1</a> (program)
+</p>
+
+<h3><a name="state_5" id="state_5"></a>State 5</h3>
+
+<p class="pre">  <a href="#rule_2">  2</a> <span class="i">program</span> → <span class="i">chunks</span> <span class="dot">•</span>
+
+    $default  <a href="#rule_2">reduce using rule 2</a> (program)
+</p>
+
+<h3><a name="state_6" id="state_6"></a>State 6</h3>
+
+<p class="pre">  <a href="#rule_4">  4</a> <span class="i">chunks</span> → <span class="dot">•</span> %empty  ["end of file"]
+  <a href="#rule_5">  5</a>        | <span class="dot">•</span> <span class="i">tychunk</span> <span class="i">chunks</span>
+  <a href="#rule_5">  5</a>        | <span class="i">tychunk</span> <span class="dot">•</span> <span class="i">chunks</span>
+  <a href="#rule_6">  6</a> <span class="i">tychunk</span> → <span class="dot">•</span> <span class="i">tydec</span>
+  <a href="#rule_7">  7</a>         | <span class="dot">•</span> <span class="i">tydec</span> <span class="i">tychunk</span>
+  <a href="#rule_8">  8</a> <span class="i">tydec</span> → <span class="dot">•</span> <b>"type"</b> <b>"identifier"</b> <b>"="</b> <span class="i">ty</span>
+
+    "type"  <a href="#state_2">shift, and go to state 2</a>
+
+    $default  <a href="#rule_4">reduce using rule 4</a> (chunks)
+
+    chunks   <a href="#state_10">go to state 10</a>
+    tychunk  <a href="#state_6">go to state 6</a>
+    tydec    <a href="#state_7">go to state 7</a>
+</p>
+
+<h3><a name="state_7" id="state_7"></a>State 7</h3>
+
+<p class="pre">  <a href="#rule_6">  6</a> <span class="i">tychunk</span> → <span class="dot">•</span> <span class="i">tydec</span>
+  <a href="#rule_6">  6</a>         | <span class="i">tydec</span> <span class="dot">•</span>  ["end of file"]
+  <a href="#rule_7">  7</a>         | <span class="dot">•</span> <span class="i">tydec</span> <span class="i">tychunk</span>
+  <a href="#rule_7">  7</a>         | <span class="i">tydec</span> <span class="dot">•</span> <span class="i">tychunk</span>
+  <a href="#rule_8">  8</a> <span class="i">tydec</span> → <span class="dot">•</span> <b>"type"</b> <b>"identifier"</b> <b>"="</b> <span class="i">ty</span>
+
+    "type"  <a href="#state_2">shift, and go to state 2</a>
+
+    $default  <a href="#rule_6">reduce using rule 6</a> (tychunk)
+
+    tychunk  <a href="#state_11">go to state 11</a>
+    tydec    <a href="#state_7">go to state 7</a>
+
+    Conflict between <a href="#rule_6">rule 6</a> and token "type" resolved as shift ("_chunks" &lt; "type").
+</p>
+
+<h3><a name="state_8" id="state_8"></a>State 8</h3>
+
+<p class="pre">  <a href="#rule_8">  8</a> <span class="i">tydec</span> → <b>"type"</b> <b>"identifier"</b> <span class="dot">•</span> <b>"="</b> <span class="i">ty</span>
+
+    "="  <a href="#state_12">shift, and go to state 12</a>
+</p>
+
+<h3><a name="state_9" id="state_9"></a>State 9</h3>
+
+<p class="pre">  <a href="#rule_0">  0</a> <span class="i">$accept</span> → <span class="i">program</span> <b>"end of file"</b> <span class="dot">•</span>
+
+    $default  accept
+</p>
+
+<h3><a name="state_10" id="state_10"></a>State 10</h3>
+
+<p class="pre">  <a href="#rule_5">  5</a> <span class="i">chunks</span> → <span class="i">tychunk</span> <span class="i">chunks</span> <span class="dot">•</span>
+
+    $default  <a href="#rule_5">reduce using rule 5</a> (chunks)
+</p>
+
+<h3><a name="state_11" id="state_11"></a>State 11</h3>
+
+<p class="pre">  <a href="#rule_7">  7</a> <span class="i">tychunk</span> → <span class="i">tydec</span> <span class="i">tychunk</span> <span class="dot">•</span>
+
+    $default  <a href="#rule_7">reduce using rule 7</a> (tychunk)
+</p>
+
+<h3><a name="state_12" id="state_12"></a>State 12</h3>
+
+<p class="pre">  <a href="#rule_8">  8</a> <span class="i">tydec</span> → <b>"type"</b> <b>"identifier"</b> <b>"="</b> <span class="dot">•</span> <span class="i">ty</span>
+  <a href="#rule_9">  9</a> <span class="i">ty</span> → <span class="dot">•</span> <span class="i">typeid</span>
+  <a href="#rule_10"> 10</a>    | <span class="dot">•</span> <b>"{"</b> <span class="i">tyfields</span> <b>"}"</b>
+  <a href="#rule_11"> 11</a>    | <span class="dot">•</span> <b>"array"</b> <b>"of"</b> <span class="i">typeid</span>
+  <a href="#rule_17"> 17</a> <span class="i">typeid</span> → <span class="dot">•</span> <b>"identifier"</b>
+  <a href="#rule_18"> 18</a>        | <span class="dot">•</span> <b>"_namety"</b> <b>"("</b> <b>"integer"</b> <b>")"</b>
+
+    "identifier"  <a href="#state_13">shift, and go to state 13</a>
+    "array"       <a href="#state_14">shift, and go to state 14</a>
+    "{"           <a href="#state_15">shift, and go to state 15</a>
+    "_namety"     <a href="#state_16">shift, and go to state 16</a>
+
+    ty      <a href="#state_17">go to state 17</a>
+    typeid  <a href="#state_18">go to state 18</a>
+</p>
+
+<h3><a name="state_13" id="state_13"></a>State 13</h3>
+
+<p class="pre">  <a href="#rule_17"> 17</a> <span class="i">typeid</span> → <b>"identifier"</b> <span class="dot">•</span>
+
+    $default  <a href="#rule_17">reduce using rule 17</a> (typeid)
+</p>
+
+<h3><a name="state_14" id="state_14"></a>State 14</h3>
+
+<p class="pre">  <a href="#rule_11"> 11</a> <span class="i">ty</span> → <b>"array"</b> <span class="dot">•</span> <b>"of"</b> <span class="i">typeid</span>
+
+    "of"  <a href="#state_19">shift, and go to state 19</a>
+</p>
+
+<h3><a name="state_15" id="state_15"></a>State 15</h3>
+
+<p class="pre">  <a href="#rule_10"> 10</a> <span class="i">ty</span> → <b>"{"</b> <span class="dot">•</span> <span class="i">tyfields</span> <b>"}"</b>
+  <a href="#rule_12"> 12</a> <span class="i">tyfields</span> → <span class="dot">•</span> %empty  ["}"]
+  <a href="#rule_13"> 13</a>          | <span class="dot">•</span> <span class="i">tyfields.1</span>
+  <a href="#rule_14"> 14</a> <span class="i">tyfields.1</span> → <span class="dot">•</span> <span class="i">tyfields.1</span> <b>","</b> <span class="i">tyfield</span>
+  <a href="#rule_15"> 15</a>            | <span class="dot">•</span> <span class="i">tyfield</span>
+  <a href="#rule_16"> 16</a> <span class="i">tyfield</span> → <span class="dot">•</span> <b>"identifier"</b> <b>":"</b> <span class="i">typeid</span>
+
+    "identifier"  <a href="#state_20">shift, and go to state 20</a>
+
+    $default  <a href="#rule_12">reduce using rule 12</a> (tyfields)
+
+    tyfields    <a href="#state_21">go to state 21</a>
+    tyfields.1  <a href="#state_22">go to state 22</a>
+    tyfield     <a href="#state_23">go to state 23</a>
+</p>
+
+<h3><a name="state_16" id="state_16"></a>State 16</h3>
+
+<p class="pre">  <a href="#rule_18"> 18</a> <span class="i">typeid</span> → <b>"_namety"</b> <span class="dot">•</span> <b>"("</b> <b>"integer"</b> <b>")"</b>
+
+    "("  <a href="#state_24">shift, and go to state 24</a>
+</p>
+
+<h3><a name="state_17" id="state_17"></a>State 17</h3>
+
+<p class="pre">  <a href="#rule_8">  8</a> <span class="i">tydec</span> → <b>"type"</b> <b>"identifier"</b> <b>"="</b> <span class="i">ty</span> <span class="dot">•</span>
+
+    $default  <a href="#rule_8">reduce using rule 8</a> (tydec)
+</p>
+
+<h3><a name="state_18" id="state_18"></a>State 18</h3>
+
+<p class="pre">  <a href="#rule_9">  9</a> <span class="i">ty</span> → <span class="i">typeid</span> <span class="dot">•</span>
+
+    $default  <a href="#rule_9">reduce using rule 9</a> (ty)
+</p>
+
+<h3><a name="state_19" id="state_19"></a>State 19</h3>
+
+<p class="pre">  <a href="#rule_11"> 11</a> <span class="i">ty</span> → <b>"array"</b> <b>"of"</b> <span class="dot">•</span> <span class="i">typeid</span>
+  <a href="#rule_17"> 17</a> <span class="i">typeid</span> → <span class="dot">•</span> <b>"identifier"</b>
+  <a href="#rule_18"> 18</a>        | <span class="dot">•</span> <b>"_namety"</b> <b>"("</b> <b>"integer"</b> <b>")"</b>
+
+    "identifier"  <a href="#state_13">shift, and go to state 13</a>
+    "_namety"     <a href="#state_16">shift, and go to state 16</a>
+
+    typeid  <a href="#state_25">go to state 25</a>
+</p>
+
+<h3><a name="state_20" id="state_20"></a>State 20</h3>
+
+<p class="pre">  <a href="#rule_16"> 16</a> <span class="i">tyfield</span> → <b>"identifier"</b> <span class="dot">•</span> <b>":"</b> <span class="i">typeid</span>
+
+    ":"  <a href="#state_26">shift, and go to state 26</a>
+</p>
+
+<h3><a name="state_21" id="state_21"></a>State 21</h3>
+
+<p class="pre">  <a href="#rule_10"> 10</a> <span class="i">ty</span> → <b>"{"</b> <span class="i">tyfields</span> <span class="dot">•</span> <b>"}"</b>
+
+    "}"  <a href="#state_27">shift, and go to state 27</a>
+</p>
+
+<h3><a name="state_22" id="state_22"></a>State 22</h3>
+
+<p class="pre">  <a href="#rule_13"> 13</a> <span class="i">tyfields</span> → <span class="i">tyfields.1</span> <span class="dot">•</span>  ["}"]
+  <a href="#rule_14"> 14</a> <span class="i">tyfields.1</span> → <span class="i">tyfields.1</span> <span class="dot">•</span> <b>","</b> <span class="i">tyfield</span>
+
+    ","  <a href="#state_28">shift, and go to state 28</a>
+
+    $default  <a href="#rule_13">reduce using rule 13</a> (tyfields)
+</p>
+
+<h3><a name="state_23" id="state_23"></a>State 23</h3>
+
+<p class="pre">  <a href="#rule_15"> 15</a> <span class="i">tyfields.1</span> → <span class="i">tyfield</span> <span class="dot">•</span>
+
+    $default  <a href="#rule_15">reduce using rule 15</a> (tyfields.1)
+</p>
+
+<h3><a name="state_24" id="state_24"></a>State 24</h3>
+
+<p class="pre">  <a href="#rule_18"> 18</a> <span class="i">typeid</span> → <b>"_namety"</b> <b>"("</b> <span class="dot">•</span> <b>"integer"</b> <b>")"</b>
+
+    "integer"  <a href="#state_29">shift, and go to state 29</a>
+</p>
+
+<h3><a name="state_25" id="state_25"></a>State 25</h3>
+
+<p class="pre">  <a href="#rule_11"> 11</a> <span class="i">ty</span> → <b>"array"</b> <b>"of"</b> <span class="i">typeid</span> <span class="dot">•</span>
+
+    $default  <a href="#rule_11">reduce using rule 11</a> (ty)
+</p>
+
+<h3><a name="state_26" id="state_26"></a>State 26</h3>
+
+<p class="pre">  <a href="#rule_16"> 16</a> <span class="i">tyfield</span> → <b>"identifier"</b> <b>":"</b> <span class="dot">•</span> <span class="i">typeid</span>
+  <a href="#rule_17"> 17</a> <span class="i">typeid</span> → <span class="dot">•</span> <b>"identifier"</b>
+  <a href="#rule_18"> 18</a>        | <span class="dot">•</span> <b>"_namety"</b> <b>"("</b> <b>"integer"</b> <b>")"</b>
+
+    "identifier"  <a href="#state_13">shift, and go to state 13</a>
+    "_namety"     <a href="#state_16">shift, and go to state 16</a>
+
+    typeid  <a href="#state_30">go to state 30</a>
+</p>
+
+<h3><a name="state_27" id="state_27"></a>State 27</h3>
+
+<p class="pre">  <a href="#rule_10"> 10</a> <span class="i">ty</span> → <b>"{"</b> <span class="i">tyfields</span> <b>"}"</b> <span class="dot">•</span>
+
+    $default  <a href="#rule_10">reduce using rule 10</a> (ty)
+</p>
+
+<h3><a name="state_28" id="state_28"></a>State 28</h3>
+
+<p class="pre">  <a href="#rule_14"> 14</a> <span class="i">tyfields.1</span> → <span class="i">tyfields.1</span> <b>","</b> <span class="dot">•</span> <span class="i">tyfield</span>
+  <a href="#rule_16"> 16</a> <span class="i">tyfield</span> → <span class="dot">•</span> <b>"identifier"</b> <b>":"</b> <span class="i">typeid</span>
+
+    "identifier"  <a href="#state_20">shift, and go to state 20</a>
+
+    tyfield  <a href="#state_31">go to state 31</a>
+</p>
+
+<h3><a name="state_29" id="state_29"></a>State 29</h3>
+
+<p class="pre">  <a href="#rule_18"> 18</a> <span class="i">typeid</span> → <b>"_namety"</b> <b>"("</b> <b>"integer"</b> <span class="dot">•</span> <b>")"</b>
+
+    ")"  <a href="#state_32">shift, and go to state 32</a>
+</p>
+
+<h3><a name="state_30" id="state_30"></a>State 30</h3>
+
+<p class="pre">  <a href="#rule_16"> 16</a> <span class="i">tyfield</span> → <b>"identifier"</b> <b>":"</b> <span class="i">typeid</span> <span class="dot">•</span>
+
+    $default  <a href="#rule_16">reduce using rule 16</a> (tyfield)
+</p>
+
+<h3><a name="state_31" id="state_31"></a>State 31</h3>
+
+<p class="pre">  <a href="#rule_14"> 14</a> <span class="i">tyfields.1</span> → <span class="i">tyfields.1</span> <b>","</b> <span class="i">tyfield</span> <span class="dot">•</span>
+
+    $default  <a href="#rule_14">reduce using rule 14</a> (tyfields.1)
+</p>
+
+<h3><a name="state_32" id="state_32"></a>State 32</h3>
+
+<p class="pre">  <a href="#rule_18"> 18</a> <span class="i">typeid</span> → <b>"_namety"</b> <b>"("</b> <b>"integer"</b> <b>")"</b> <span class="dot">•</span>
+
+    $default  <a href="#rule_18">reduce using rule 18</a> (typeid)
+</p>
+
+<div id="footer"><hr />This document was generated using
+      <a href="https://www.gnu.org/software/bison/" title="GNU Bison">
+      GNU Bison 3.8.2</a>
+      XML Automaton Report.<br />
+      Verbatim copying and distribution of this entire page is
+      permitted in any medium, provided this notice is preserved.</div></body>
+</html>
