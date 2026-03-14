@@ -317,6 +317,7 @@ recfields.1:
 ;
 recfield:
   ID EQ exp                         { $$ = make_FieldInit(@$, $1, $3); }
+;
 /*---------------.
 | Declarations.  |
 `---------------*/
@@ -334,18 +335,15 @@ chunks:
      which is why we end the recursion with a %empty. */
 %empty                  { $$ = make_ChunkList(@$); }
 | tychunk   chunks        { $$ = $2; $$->push_front($1); }
-  /* Ajout des règles manquantes pour compléter le FIXME */
 | varchunk  chunks        { $$ = $2; $$->push_front($1); }
 | funchunk  chunks        { $$ = $2; $$->push_front($1); }
 ;
 
-/* Regroupement récursif pour les variables */
 varchunk:
   vardec %prec CHUNKS     { $$ = make_VarChunk(@1); $$->push_front(*$1); }
 | vardec varchunk         { $$ = $2; $$->push_front(*$1); }
 ;
 
-/* Regroupement récursif pour les fonctions */
 funchunk:
   fundec %prec CHUNKS     { $$ = make_FunctionChunk(@1); $$->push_front(*$1); }
 | fundec funchunk         { $$ = $2; $$->push_front(*$1); }

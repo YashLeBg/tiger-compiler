@@ -28,14 +28,14 @@ test -n "$srcdir" && test -z "$VERBOSE" && exec >/dev/null 2>&1
 # Darwin needs some help in figuring out where non-installed libtool
 # libraries are (on this platform libtool encodes the expected final
 # path of dependent libraries in each library).
-modpath='.libs:/home/jessim/dev/Tiger/src/.libs'
+modpath='.libs:/home/joachim/Bureau/proj/Tiger/src/.libs'
 
-# `/home/jessim/dev/Tiger/tcsh/python' and `/home/jessim/dev/Tiger/tcsh/python' are for the *.py
-# files, and `/home/jessim/dev/Tiger/tcsh/python/.libs' for the *.so files.  We
+# `/home/joachim/Bureau/proj/Tiger/tcsh/python' and `/home/joachim/Bureau/proj/Tiger/tcsh/python' are for the *.py
+# files, and `/home/joachim/Bureau/proj/Tiger/tcsh/python/.libs' for the *.so files.  We
 # used to rely on a module called `ltihooks' to teach the `import'
 # statement how to load a Libtool library, but it started to cause
 # issues with Python 2.6.
-pypath='/home/jessim/dev/Tiger/tcsh/python:/home/jessim/dev/Tiger/tcsh/python/.libs:/home/jessim/dev/Tiger/tcsh/python':"$PYTHONPATH"
+pypath='/home/joachim/Bureau/proj/Tiger/tcsh/python:/home/joachim/Bureau/proj/Tiger/tcsh/python/.libs:/home/joachim/Bureau/proj/Tiger/tcsh/python':"$PYTHONPATH"
 
 case $1 in
   export)
@@ -46,7 +46,7 @@ case $1 in
   *.test)
     exec sh -x "$@";;
   *.ipynb)
-    PYTHONPATH=$pypath DYLD_LIBRARY_PATH=$modpath exec /home/jessim/dev/Tiger/tcsh/python/tests/ipynbtest.py "$@";;
+    PYTHONPATH=$pypath DYLD_LIBRARY_PATH=$modpath exec /home/joachim/Bureau/proj/Tiger/tcsh/python/tests/ipynbtest.py "$@";;
   *)
     echo "Unknown extension" >&2
     exit 2;;

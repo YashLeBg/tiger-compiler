@@ -418,13 +418,13 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/swig.mk \
 	$(top_srcdir)/build-aux/py-compile \
 	$(top_srcdir)/build-aux/test-driver $(top_srcdir)/tcsh/run.mk
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} '/home/jessim/dev/Tiger/build-aux/missing' aclocal-1.16
+ACLOCAL = ${SHELL} '/home/joachim/Bureau/proj/Tiger/build-aux/missing' aclocal-1.16
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
-AUTOCONF = ${SHELL} '/home/jessim/dev/Tiger/build-aux/missing' autoconf
-AUTOHEADER = ${SHELL} '/home/jessim/dev/Tiger/build-aux/missing' autoheader
-AUTOMAKE = ${SHELL} '/home/jessim/dev/Tiger/build-aux/missing' automake-1.16
+AUTOCONF = ${SHELL} '/home/joachim/Bureau/proj/Tiger/build-aux/missing' autoconf
+AUTOHEADER = ${SHELL} '/home/joachim/Bureau/proj/Tiger/build-aux/missing' autoheader
+AUTOMAKE = ${SHELL} '/home/joachim/Bureau/proj/Tiger/build-aux/missing' automake-1.16
 AWK = gawk
 BISON = bison
 BOOST_CPPFLAGS = 
@@ -466,13 +466,14 @@ EMACSLOADPATH =
 ETAGS = etags
 EXEEXT = 
 FGREP = /nix/store/90r466lzg0jw11v60cki60s0qfhs93vp-gnugrep-3.11/bin/grep -F
+FILECMD = file
 GREP = /nix/store/90r466lzg0jw11v60cki60s0qfhs93vp-gnugrep-3.11/bin/grep
 INSTALL = /nix/store/zwplch93wbpj82bp7riwaixmdx2xi0ah-coreutils-9.7/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = ld -m elf_x86_64 -m elf_x86_64 -m elf_x86_64 -m elf_x86_64 -m elf_x86_64
+LD = ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
 LIBS = 
@@ -481,7 +482,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAKEINFO = ${SHELL} '/home/jessim/dev/Tiger/build-aux/missing' makeinfo
+MAKEINFO = ${SHELL} '/home/joachim/Bureau/proj/Tiger/build-aux/missing' makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /nix/store/zwplch93wbpj82bp7riwaixmdx2xi0ah-coreutils-9.7/bin/mkdir -p
 NM = nm
@@ -515,10 +516,10 @@ SWIG =
 SWIG_LIB = 
 VERSION = 1.95.a
 WARNING_CXXFLAGS =  -Wall -W -Wcast-align -Wcast-qual -Wformat -Wwrite-strings -Wmissing-declarations -Wunused-parameter -Wunused-function -Woverloaded-virtual  -Wno-shadow -Wno-subobject-linkage
-abs_builddir = /home/jessim/dev/Tiger/tcsh/python
-abs_srcdir = /home/jessim/dev/Tiger/tcsh/python
-abs_top_builddir = /home/jessim/dev/Tiger
-abs_top_srcdir = /home/jessim/dev/Tiger
+abs_builddir = /home/joachim/Bureau/proj/Tiger/tcsh/python
+abs_srcdir = /home/joachim/Bureau/proj/Tiger/tcsh/python
+abs_top_builddir = /home/joachim/Bureau/proj/Tiger
+abs_top_srcdir = /home/joachim/Bureau/proj/Tiger
 ac_ct_AR = 
 ac_ct_CC = gcc
 ac_ct_CXX = 
@@ -548,7 +549,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/jessim/dev/Tiger/build-aux/install-sh
+install_sh = ${SHELL} /home/joachim/Bureau/proj/Tiger/build-aux/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 lispdir = ${datadir}/emacs/site-lisp
@@ -576,31 +577,31 @@ top_builddir = ../..
 top_srcdir = ../..
 RUN = $(top_builddir)/tcsh/run
 RUN_IN = $(top_srcdir)/tcsh/run.in
-pyexec_LTLIBRARIES = _tiger_object.la _tiger_common.la _tiger_misc.la \
-	_tiger_ast.la _tiger_parse.la
+pyexec_LTLIBRARIES = _tiger_ast.la _tiger_object.la _tiger_parse.la \
+	_tiger_misc.la _tiger_common.la
 AM_LDFLAGS = -avoid-version -module -shared
 AM_LIBADD = $(top_builddir)/src/libtc.la
 tcdir = $(top_srcdir)
-CLEANFILES = tiger_object-wrap.cc tiger_object.py tiger_object.pyc \
-	tiger_common-wrap.cc tiger_common.py tiger_common.pyc \
+CLEANFILES = tiger_ast-wrap.cc tiger_ast.py tiger_ast.pyc \
+	tiger_object-wrap.cc tiger_object.py tiger_object.pyc \
+	tiger_parse-wrap.cc tiger_parse.py tiger_parse.pyc \
 	tiger_misc-wrap.cc tiger_misc.py tiger_misc.pyc \
-	tiger_ast-wrap.cc tiger_ast.py tiger_ast.pyc \
-	tiger_parse-wrap.cc tiger_parse.py tiger_parse.pyc
+	tiger_common-wrap.cc tiger_common.py tiger_common.pyc
 
 # The list of dependencies generated as a side-effect of running swig.
 SWIG_GENERATED_DEPS = 
-nodist_python_PYTHON = tiger_object.py tiger_common.py tiger_misc.py \
-	tiger_ast.py tiger_parse.py
-nodist__tiger_object_la_SOURCES = tiger_object-wrap.cc
-_tiger_object_la_LIBADD = $(AM_LIBADD)
-nodist__tiger_common_la_SOURCES = tiger_common-wrap.cc
-_tiger_common_la_LIBADD = $(AM_LIBADD)
-nodist__tiger_misc_la_SOURCES = tiger_misc-wrap.cc
-_tiger_misc_la_LIBADD = $(AM_LIBADD)
+nodist_python_PYTHON = tiger_ast.py tiger_object.py tiger_parse.py \
+	tiger_misc.py tiger_common.py
 nodist__tiger_ast_la_SOURCES = tiger_ast-wrap.cc
 _tiger_ast_la_LIBADD = $(AM_LIBADD)
+nodist__tiger_object_la_SOURCES = tiger_object-wrap.cc
+_tiger_object_la_LIBADD = $(AM_LIBADD)
 nodist__tiger_parse_la_SOURCES = tiger_parse-wrap.cc
 _tiger_parse_la_LIBADD = $(AM_LIBADD)
+nodist__tiger_misc_la_SOURCES = tiger_misc-wrap.cc
+_tiger_misc_la_LIBADD = $(AM_LIBADD)
+nodist__tiger_common_la_SOURCES = tiger_common-wrap.cc
+_tiger_common_la_LIBADD = $(AM_LIBADD)
 AM_CPPFLAGS = \
   -I$(top_srcdir)/lib -I$(top_srcdir)/src -I$(top_builddir)/src	\
 	-I$(top_srcdir)/tcsh/src \
@@ -1280,45 +1281,6 @@ $(srcdir)/swig.mk: $(top_srcdir)/tcsh/generate-swig-mk
 	$(AM_V_GEN)top_srcdir="$(top_srcdir)" $< python $@.tmp
 	$(AM_V_at)mv -f $@.tmp $@
 	$(AM_V_at)chmod -w $@
-tiger_object-wrap.cc: $(tcdir)/tcsh/src/tiger_object.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_object-wrap.Tcc" -o tiger_object-wrap.cc $(tcdir)/tcsh/src/tiger_object.i; \
-	then \
-	  mv -f "$(DEPDIR)/tiger_object-wrap.Tcc" "$(DEPDIR)/tiger_object-wrap.Pcc"; \
-	else \
-	  rm -f "$(DEPDIR)/tiger_object-wrap.Tcc"; exit 1; \
-	fi
-
--include ./$(DEPDIR)/tiger_object-wrap.Pcc
-
- SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_object-wrap.Pcc
-tiger_object.py: $(tcdir)/tcsh/src/tiger_object.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_object-wrap.cc
-tiger_common-wrap.cc: $(tcdir)/tcsh/src/tiger_common.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_common-wrap.Tcc" -o tiger_common-wrap.cc $(tcdir)/tcsh/src/tiger_common.i; \
-	then \
-	  mv -f "$(DEPDIR)/tiger_common-wrap.Tcc" "$(DEPDIR)/tiger_common-wrap.Pcc"; \
-	else \
-	  rm -f "$(DEPDIR)/tiger_common-wrap.Tcc"; exit 1; \
-	fi
-
--include ./$(DEPDIR)/tiger_common-wrap.Pcc
-
- SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_common-wrap.Pcc
-tiger_common.py: $(tcdir)/tcsh/src/tiger_common.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_common-wrap.cc
-tiger_misc-wrap.cc: $(tcdir)/tcsh/src/tiger_misc.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_misc-wrap.Tcc" -o tiger_misc-wrap.cc $(tcdir)/tcsh/src/tiger_misc.i; \
-	then \
-	  mv -f "$(DEPDIR)/tiger_misc-wrap.Tcc" "$(DEPDIR)/tiger_misc-wrap.Pcc"; \
-	else \
-	  rm -f "$(DEPDIR)/tiger_misc-wrap.Tcc"; exit 1; \
-	fi
-
--include ./$(DEPDIR)/tiger_misc-wrap.Pcc
-
- SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_misc-wrap.Pcc
-tiger_misc.py: $(tcdir)/tcsh/src/tiger_misc.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_misc-wrap.cc
 tiger_ast-wrap.cc: $(tcdir)/tcsh/src/tiger_ast.i
 	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_ast-wrap.Tcc" -o tiger_ast-wrap.cc $(tcdir)/tcsh/src/tiger_ast.i; \
 	then \
@@ -1332,6 +1294,19 @@ tiger_ast-wrap.cc: $(tcdir)/tcsh/src/tiger_ast.i
  SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_ast-wrap.Pcc
 tiger_ast.py: $(tcdir)/tcsh/src/tiger_ast.i
 	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_ast-wrap.cc
+tiger_object-wrap.cc: $(tcdir)/tcsh/src/tiger_object.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_object-wrap.Tcc" -o tiger_object-wrap.cc $(tcdir)/tcsh/src/tiger_object.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_object-wrap.Tcc" "$(DEPDIR)/tiger_object-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_object-wrap.Tcc"; exit 1; \
+	fi
+
+-include ./$(DEPDIR)/tiger_object-wrap.Pcc
+
+ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_object-wrap.Pcc
+tiger_object.py: $(tcdir)/tcsh/src/tiger_object.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_object-wrap.cc
 tiger_parse-wrap.cc: $(tcdir)/tcsh/src/tiger_parse.i
 	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_parse-wrap.Tcc" -o tiger_parse-wrap.cc $(tcdir)/tcsh/src/tiger_parse.i; \
 	then \
@@ -1345,6 +1320,32 @@ tiger_parse-wrap.cc: $(tcdir)/tcsh/src/tiger_parse.i
  SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_parse-wrap.Pcc
 tiger_parse.py: $(tcdir)/tcsh/src/tiger_parse.i
 	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_parse-wrap.cc
+tiger_misc-wrap.cc: $(tcdir)/tcsh/src/tiger_misc.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_misc-wrap.Tcc" -o tiger_misc-wrap.cc $(tcdir)/tcsh/src/tiger_misc.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_misc-wrap.Tcc" "$(DEPDIR)/tiger_misc-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_misc-wrap.Tcc"; exit 1; \
+	fi
+
+-include ./$(DEPDIR)/tiger_misc-wrap.Pcc
+
+ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_misc-wrap.Pcc
+tiger_misc.py: $(tcdir)/tcsh/src/tiger_misc.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_misc-wrap.cc
+tiger_common-wrap.cc: $(tcdir)/tcsh/src/tiger_common.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_common-wrap.Tcc" -o tiger_common-wrap.cc $(tcdir)/tcsh/src/tiger_common.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_common-wrap.Tcc" "$(DEPDIR)/tiger_common-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_common-wrap.Tcc"; exit 1; \
+	fi
+
+-include ./$(DEPDIR)/tiger_common-wrap.Pcc
+
+ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_common-wrap.Pcc
+tiger_common.py: $(tcdir)/tcsh/src/tiger_common.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_common-wrap.cc
 
 # Target `deps-reset' re-initializes the dependencies generated as a
 # side-effect of running swig.
