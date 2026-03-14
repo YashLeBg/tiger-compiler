@@ -96,7 +96,7 @@ namespace ast
   {
     e.test_get().accept(*this);
     e.thenclause_get().accept(*this);
-    this->accept(e.elseclause_get());
+    this->accept(&e.elseclause_get());
   }
 
   template <template <typename> class Const>
@@ -121,7 +121,7 @@ namespace ast
   template <template <typename> class Const>
   void GenDefaultVisitor<Const>::operator()(const_t<LetExp>& e)
   {
-    e.chunklist_get().accept(*this);
+    e.chunks_get().accept(*this);
     e.body_get().accept(*this);
   }
   //visite le type la taille et le init

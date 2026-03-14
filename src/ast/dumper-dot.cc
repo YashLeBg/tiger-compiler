@@ -287,7 +287,7 @@ namespace ast
   void DumperDot::operator()(const StringExp& e)
   {
     unsigned long old_parent_id = node_html_header(e, "StringExp");
-    node_html_field("value", misc::escape(e.value()));
+    node_html_field("value", misc::escape(e.value_get()));
     footer_and_link(old_parent_id);
     parent_id = old_parent_id;
   }

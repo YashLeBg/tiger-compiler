@@ -94,7 +94,7 @@
 }
 
   // FIXME: Some code was deleted here (Printers and destructors).
-%printer {yyo<<$$;} <int>   <std::string><misc::symbol>;      //yyo = bison output,$$ token value, followed by the 3 types that will be applied to
+//%printer {yyo<<$$;} <int>   <std::string><misc::symbol>;      //yyo = bison output,$$ token value, followed by the 3 types that will be applied to
 /*-----------------------------------------.
 | Code output in the implementation file.  |
 `-----------------------------------------*/
@@ -198,15 +198,18 @@
 %type <ast::FieldInit*>       recfield
 %type <ast::VarChunk*>        varchunk formals formals.1
 %type <ast::VarDec*>          vardec
-%type <ast::FunctionChunk*>   funchunk methodchunk
+%type <ast::FunctionChunk*>   funchunk
+%type <ast::MethodChunk*>     methodchunk
 %type <ast::FunctionDec*>     fundec
 %type <ast::MethodDec*>       methoddec
 %type <ast::ChunkList*>       classfields
   // FIXME: Some code was deleted here (Priorities/associativities).
+%precedence DO
+%precedence OF
 %precedence THEN    //those 2 lines ll tie the closet else to the then to solve shift/reduce ambiguity
 %precedence ELSE
 
-%right ASSIGN       //right assign in bidding arrithmetic
+%nonassoc ASSIGN       //right assign in bidding arrithmetic
 %left OR            //or priority<and priority
 %left AND
 %nonassoc EQ NE GT GE LT LE //comparisons cannot be chained
@@ -237,7 +240,7 @@ program:
    { td.ast_ = $1; }
 | /* Parsing an imported file.  */
   chunks
-   { td.ast_ = $1; }
+   { td.ast_ = make_LetExp(@$, $1, make_SeqExp(@$, make_exps_type())); }
 ;
 
 exp:
@@ -247,31 +250,33 @@ exp:
 //all that block defines all the ways on how an expression can be wrote in tiger  and how to tuurn it on cpp object
 // "is it that symbole?" ->     {cpp code that will be executed } $$=rule res,function, @$=localisation, X element
 | STRING                            { $$ = make_StringExp(@$, $1); }
+| IMPORT STRING                     { $$ = td.parse_import($2, @$); }
 | NIL                               { $$ = make_NilExp(@$); }
 | lvalue                            { $$ = $1; }
 | LPAREN exps RPAREN                { $$ = make_SeqExp(@$, $2); }
 | ID LPAREN args RPAREN             { $$ = make_CallExp(@$, $1, $3); }
 | lvalue DOT ID LPAREN args RPAREN  { $$ = make_MethodCallExp(@$, $3, $5, $1); }
-| typeid LBRACE recfields RBRACE    { $$ = make_RecordExp(@$, $1, $3); }
-| typeid LBRACK exp RBRACK OF exp   { $$ = make_ArrayExp(@$, $1, $3, $6); }
+//| typeid LBRACE recfields RBRACE    { $$ = make_RecordExp(@$, $1, $3); }
+| ID LBRACK exp RBRACK OF exp                 { $$ = make_ArrayExp(@$, make_NameTy(@1, $1), $3, $6); }
+| NAMETY "(" INT ")" LBRACK exp RBRACK OF exp { $$ = make_ArrayExp(@$, metavar<ast::NameTy>(td, $3), $6, $9); }
 | lvalue ASSIGN exp                 { $$ = make_AssignExp(@$, $1, $3); }
-| IF exp THEN exp                   { $$ = make_IfExp(@$, $2, $4); }
+| IF exp THEN exp %prec THEN        { $$ = make_IfExp(@$, $2, $4); }
 | IF exp THEN exp ELSE exp          { $$ = make_IfExp(@$, $2, $4, $6); }
 | WHILE exp DO exp                  { $$ = make_WhileExp(@$, $2, $4); }
 | FOR ID ASSIGN exp TO exp DO exp   { $$ = make_ForExp(@$, make_VarDec(@2, $2, nullptr, $4), $6, $8); }
 | BREAK                             { $$ = make_BreakExp(@$); }
 | LET chunks IN exps END            { $$ = make_LetExp(@$, $2, make_SeqExp(@4, $4)); }
-| exp PLUS exp                      { $$ = make_OpExp(@$, ast::OpExp::add, $1, $3); }
-| exp MINUS exp                     { $$ = make_OpExp(@$, ast::OpExp::sub, $1, $3); }
-| exp TIMES exp                     { $$ = make_OpExp(@$, ast::OpExp::mul, $1, $3); }
-| exp DIVIDE exp                    { $$ = make_OpExp(@$, ast::OpExp::div, $1, $3); }
-| exp EQ exp                        { $$ = make_OpExp(@$, ast::OpExp::eq, $1, $3); }
-| exp NE exp                        { $$ = make_OpExp(@$, ast::OpExp::ne, $1, $3); }
-| exp LT exp                        { $$ = make_OpExp(@$, ast::OpExp::lt, $1, $3); }
-| exp LE exp                        { $$ = make_OpExp(@$, ast::OpExp::le, $1, $3); }
-| exp GT exp                        { $$ = make_OpExp(@$, ast::OpExp::gt, $1, $3); }
-| exp GE exp                        { $$ = make_OpExp(@$, ast::OpExp::ge, $1, $3); }
-| MINUS exp %prec UMINUS            { $$ = make_OpExp(@$, ast::OpExp::sub, make_IntExp(@1, 0), $2); }
+| exp PLUS exp                      { $$ = make_OpExp(@$, $1, ast::OpExp::Oper::add, $3); }
+| exp MINUS exp                     { $$ = make_OpExp(@$, $1, ast::OpExp::Oper::sub, $3); }
+| exp TIMES exp                     { $$ = make_OpExp(@$, $1, ast::OpExp::Oper::mul, $3); }
+| exp DIVIDE exp                    { $$ = make_OpExp(@$, $1, ast::OpExp::Oper::div, $3); }
+| exp EQ exp                        { $$ = make_OpExp(@$, $1, ast::OpExp::Oper::eq, $3); }
+| exp NE exp                        { $$ = make_OpExp(@$, $1, ast::OpExp::Oper::ne, $3); }
+| exp LT exp                        { $$ = make_OpExp(@$, $1, ast::OpExp::Oper::lt, $3); }
+| exp LE exp                        { $$ = make_OpExp(@$, $1, ast::OpExp::Oper::le, $3); }
+| exp GT exp                        { $$ = make_OpExp(@$, $1, ast::OpExp::Oper::gt, $3); }
+| exp GE exp                        { $$ = make_OpExp(@$, $1, ast::OpExp::Oper::ge, $3); }
+| MINUS exp %prec UMINUS            { $$ = make_OpExp(@$, make_IntExp(@1, 0), ast::OpExp::Oper::sub, $2); }
 | exp AND exp                       { $$ = make_IfExp(@$, $1, $3, make_IntExp(@3, 0)); }
 | exp OR exp                        { $$ = make_IfExp(@$, $1, make_IntExp(@1, 1), $3); }
 | NEW typeid                        { $$ = make_ObjectExp(@$, $2); }
@@ -328,9 +333,58 @@ chunks:
             ..
         end
      which is why we end the recursion with a %empty. */
-  %empty                  { $$ = make_ChunkList(@$); }
+%empty                  { $$ = make_ChunkList(@$); }
 | tychunk   chunks        { $$ = $2; $$->push_front($1); }
-  // FIXME: Some code was deleted here (More rules).
+  /* Ajout des règles manquantes pour compléter le FIXME */
+| varchunk  chunks        { $$ = $2; $$->push_front($1); }
+| funchunk  chunks        { $$ = $2; $$->push_front($1); }
+;
+
+/* Regroupement récursif pour les variables */
+varchunk:
+  vardec %prec CHUNKS     { $$ = make_VarChunk(@1); $$->push_front(*$1); }
+| vardec varchunk         { $$ = $2; $$->push_front(*$1); }
+;
+
+/* Regroupement récursif pour les fonctions */
+funchunk:
+  fundec %prec CHUNKS     { $$ = make_FunctionChunk(@1); $$->push_front(*$1); }
+| fundec funchunk         { $$ = $2; $$->push_front(*$1); }
+;
+
+vardec:
+  "var" ID ":=" exp                 { $$ = make_VarDec(@$, $2, nullptr, $4); }
+| "var" ID ":" typeid ":=" exp      { $$ = make_VarDec(@$, $2, $4, $6); }
+;
+formals:
+  %empty                            { $$ = make_VarChunk(@$); }
+| formals.1                         { $$ = $1; }
+;
+
+formals.1:
+  tyfield                           { $$ = make_VarChunk(@$); $$->push_front(*make_VarDec(@$, $1->name_get(), &($1->type_name_get()), nullptr)); }
+| formals.1 "," tyfield             { $$ = $1; $$->emplace_back(*make_VarDec(@3, $3->name_get(), &($3->type_name_get()), nullptr)); }
+;
+fundec:
+  "function" ID "(" formals ")" "=" exp               { $$ = make_FunctionDec(@$, $2, $4, nullptr, $7); }
+| "function" ID "(" formals ")" ":" typeid "=" exp    { $$ = make_FunctionDec(@$, $2, $4, $7, $9); }
+| "primitive" ID "(" formals ")"                      { $$ = make_FunctionDec(@$, $2, $4, nullptr, nullptr); }
+| "primitive" ID "(" formals ")" ":" typeid           { $$ = make_FunctionDec(@$, $2, $4, $7, nullptr); }
+;
+classfields:
+  %empty                            { $$ = make_ChunkList(@$); }
+| varchunk classfields              { $$ = $2; $$->push_front($1); }
+| methodchunk classfields           { $$ = $2; $$->push_front($1); }
+;
+
+methodchunk:
+  methoddec %prec CHUNKS            { $$ = make_MethodChunk(@1); $$->push_front(*$1); }
+| methoddec methodchunk             { $$ = $2; $$->push_front(*$1); }
+;
+
+methoddec:
+  "method" ID "(" formals ")" "=" exp               { $$ = make_MethodDec(@$, $2, $4, nullptr, $7); }
+| "method" ID "(" formals ")" ":" typeid "=" exp    { $$ = make_MethodDec(@$, $2, $4, $7, $9); }
 ;
 
 /*--------------------.
@@ -352,6 +406,8 @@ ty:
   typeid               { $$ = $1; }
 | "{" tyfields "}"     { $$ = make_RecordTy(@$, $2); }
 | "array" "of" typeid  { $$ = make_ArrayTy(@$, $3); }
+| "class" "extends" typeid "{" classfields "}" { $$ = make_ClassTy(@$, $3, $5); }
+| "class" "{" classfields "}"                  { $$ = make_ClassTy(@$, make_NameTy(@$, "Object"), $3); }
 ;
 
 tyfields:
@@ -382,4 +438,5 @@ void
 parse::parser::error(const location_type& l, const std::string& m)
 {
   // FIXME: Some code was deleted here.
+  td.error_ << l << ": " << m << std::endl;
 }

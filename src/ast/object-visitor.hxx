@@ -27,39 +27,38 @@ namespace ast
   template <template <typename> class Const>
   void GenObjectVisitor<Const>::operator()(const_t<ClassTy>& e)
   {
-    this->accept(e.super_get());
-    e.fields_get().accept(*this);
-    e.methods_get().accept(*this);
+    this->accept(&e.super_get());
+    this->accept(&e.chunks_get());
   }
   //visite les declarations de methode dans le chunk
   template <template <typename> class Const>
   void GenObjectVisitor<Const>::operator()(const_t<MethodChunk>& e)
   {
-    e.formals_get().accept(*this);
-    this->accept(e.result_get());
-    this->accept(e.body_get());
+    for (auto meth : e)
+      this->accept(meth);
   }
   //visite les parametres le type de retour et le body de la methode
   template <template <typename> class Const>
   void GenObjectVisitor<Const>::operator()(const_t<MethodDec>& e)
   {
-    e.object_get().accept(*this);
-    for (auto* arg : e.args_get())
-      arg->accept(*this);
+    this->accept(&e.formals_get());
+    if (e.result_get())
+      this->accept(e.result_get());
+    this->accept(e.body_get());
   }
   //visite l objet et les arguments de l appel de methode
   template <template <typename> class Const>
   void GenObjectVisitor<Const>::operator()(const_t<MethodCallExp>& e)
   {
-    e.class_name_get().accept(*this);
-    for (auto* arg : e.args_get())
-      arg->accept(*this);
+    this->accept(&e.object_get());
+    for (auto arg : e.args_get())
+      this->accept(arg);
   }
   //visite le nom de classe et les arguments du nouvel objet
   template <template <typename> class Const>
   void GenObjectVisitor<Const>::operator()(const_t<ObjectExp>& e)
   {
-    e.object_get().accept(*this);
+    this->accept(&e.type_name_get());
   }
 
 } // namespace ast

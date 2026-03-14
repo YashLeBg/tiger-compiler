@@ -44,7 +44,7 @@ namespace ast
     void operator()(const BreakExp&) override;
     void operator()(const LetExp& e) override;
     void operator()(const ArrayExp& e) override;
-    void operator()(const FieldInit& e) override;.
+    void operator()(const FieldInit& e) override;
     void operator()(const VarDec& e) override;
     void operator()(const FunctionDec& e) override;
     void operator()(const TypeDec& e) override;
