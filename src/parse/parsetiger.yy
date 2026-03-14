@@ -250,7 +250,6 @@ exp:
 //all that block defines all the ways on how an expression can be wrote in tiger  and how to tuurn it on cpp object
 // "is it that symbole?" ->     {cpp code that will be executed } $$=rule res,function, @$=localisation, X element
 | STRING                            { $$ = make_StringExp(@$, $1); }
-| IMPORT STRING                     { $$ = td.parse_import($2, @$); }
 | NIL                               { $$ = make_NilExp(@$); }
 | lvalue                            { $$ = $1; }
 | LPAREN exps RPAREN                { $$ = make_SeqExp(@$, $2); }
