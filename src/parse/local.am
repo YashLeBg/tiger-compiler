@@ -86,7 +86,14 @@ generate-parser: $(SOURCES_PARSETIGER_YY)
 
 PARSE_PRELUDE_GENERATION = %D%/generate-prelude.sh
 EXTRA_DIST += $(PARSE_PRELUDE_GENERATION)
-CLEANFILES += %D%/prelude.cc
+CLEANFILES += %D%/prelude.cc \
+    src/parse/parsetiger.output    \
+  src/parse/parsetiger.xml       \
+  src/parse/parsetiger.cc        \
+  src/parse/scantiger.hh         \
+  src/parse/parsetiger.html      \
+  src/parse/scantiger.cc         \
+  src/parse/parsetiger.stamp
 %D%/prelude.cc: $(top_srcdir)/data/prelude.tih
 	$(AM_V_GEN)$(srcdir)/$(PARSE_PRELUDE_GENERATION) $< $@
 
