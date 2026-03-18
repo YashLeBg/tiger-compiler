@@ -877,7 +877,10 @@ BUILT_SOURCES = $(nodist_src_libtc_la_SOURCES) $(SOURCES_REFLEX) \
 FORMAT_IGNORE = $REFLEX_HEADER
 CLEANFILES = $(EXTRA_PROGRAMS) src/version.stamp \
 	$(nodist_src_libtc_la_SOURCES) src/parse/prelude.cc \
-	doc/Doxyfile authors.h tc.log.bz2
+	src/parse/parsetiger.output src/parse/parsetiger.xml \
+	src/parse/parsetiger.cc src/parse/scantiger.hh \
+	src/parse/parsetiger.html src/parse/scantiger.cc \
+	src/parse/parsetiger.stamp doc/Doxyfile authors.h tc.log.bz2
 
 # Compile the parser and save cycles.
 # This code comes from "Handling Tools that Produce Many Outputs",

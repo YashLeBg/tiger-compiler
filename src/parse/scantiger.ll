@@ -144,11 +144,11 @@ id        [a-zA-Z][a-zA-Z0-9_]*
 
 "/*"        {nb_coms=1;start(SC_COMMENT);}//That part is just multiple line commentary scanner send error if ther is needed.
 <SC_COMMENT>{
-    "/*"    {nb_coms++;}
-    "*/"    {nb_coms--; if(nb_coms==0) start(INITIAL);}
-    \n+     {td.location_.lines(yyleng); td.location_.step();}
-    .       {}
-    <<EOF>> {td.error_<<misc::error::error_type::scan<<td.location_<<": the comment is not finished\n"; start(INITIAL);}
+"/*"    {nb_coms++;}
+"*/"    {nb_coms--; if(nb_coms==0) start(INITIAL);}
+\n+     {td.location_.lines(yyleng); td.location_.step();}
+.       {}
+<<EOF>> {td.error_<<misc::error::error_type::scan<<td.location_<<": the comment is not finished\n"; start(INITIAL);}
 }
 
 "\""        {cur_string.clear(); start(SC_STRING);}//That one is for strings mananing backslash,newline,tab,... .Send error if needed.

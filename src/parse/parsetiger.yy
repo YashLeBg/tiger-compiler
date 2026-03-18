@@ -107,7 +107,7 @@
 # include <ast/all.hh>
 # include <ast/libast.hh>
 # include <parse/tiger-factory.hh>
-
+# include <parse/tiger-driver.hh>
   namespace
   {
 
