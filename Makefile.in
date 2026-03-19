@@ -915,32 +915,27 @@ AM_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_srcdir)/src \
 	-DPKGDATADIR="\"$(pkgdatadir)\"" -I$(top_builddir) -I$(srcdir)
 AM_CXXFLAGS = $(WARNING_CXXFLAGS)
 noinst_LTLIBRARIES = lib/misc/libmisc.la
-lib_misc_libmisc_la_SOURCES = \
-  lib/misc/fwd.hh                                                                   \
-  lib/misc/libmisc.hh                                                               \
-  lib/misc/concepts.hh                                                              \
-  lib/misc/algorithm.hh lib/misc/algorithm.hxx                                           \
-  lib/misc/contract.hh lib/misc/contract.hxx lib/misc/contract.cc                             \
-  lib/misc/deref.hh lib/misc/deref.hxx lib/misc/deref.cc                                      \
-  lib/misc/error.hh lib/misc/error.hxx lib/misc/error.cc                                      \
-  lib/misc/escape.hh lib/misc/escape.hxx lib/misc/escape.cc                                   \
-  lib/misc/file-library.hh lib/misc/file-library.hxx lib/misc/file-library.cc                 \
-  lib/misc/graph.hh lib/misc/graph.hxx                                                   \
-  lib/misc/indent.hh lib/misc/indent.cc                                                  \
-  lib/misc/map.hh lib/misc/map.hxx                                                       \
-  lib/misc/endomap.hh lib/misc/endomap.hxx                                               \
-  lib/misc/ref.hh lib/misc/ref.hxx                                                       \
-  lib/misc/select-const.hh                                                          \
-  lib/misc/set.hh lib/misc/set.hxx                                                       \
-  lib/misc/separator.hh lib/misc/separator.hxx                                           \
-  lib/misc/symbol.hh lib/misc/symbol.hxx lib/misc/symbol.cc                                   \
-  lib/misc/timer.hh lib/misc/timer.hxx lib/misc/timer.cc                                      \
-  lib/misc/unique.hh lib/misc/unique.hxx                                                 \
-  lib/misc/variant.hh lib/misc/variant.hxx lib/misc/vector.hh lib/misc/vector.hxx                  \
-  lib/misc/lambda-visitor.hh                                                        \
-  lib/misc/list.hh lib/misc/list.hxx                                                     \
-  lib/misc/xalloc.hh lib/misc/xalloc.hxx
-
+lib_misc_libmisc_la_SOURCES = lib/misc/fwd.hh lib/misc/libmisc.hh \
+	lib/misc/concepts.hh lib/misc/algorithm.hh \
+	lib/misc/algorithm.hxx lib/misc/contract.hh \
+	lib/misc/contract.hxx lib/misc/contract.cc lib/misc/deref.hh \
+	lib/misc/deref.hxx lib/misc/deref.cc lib/misc/error.hh \
+	lib/misc/error.hxx lib/misc/error.cc lib/misc/escape.hh \
+	lib/misc/escape.hxx lib/misc/escape.cc \
+	lib/misc/file-library.hh lib/misc/file-library.hxx \
+	lib/misc/file-library.cc lib/misc/graph.hh lib/misc/graph.hxx \
+	lib/misc/indent.hh lib/misc/indent.cc lib/misc/map.hh \
+	lib/misc/map.hxx lib/misc/endomap.hh lib/misc/endomap.hxx \
+	lib/misc/ref.hh lib/misc/ref.hxx lib/misc/select-const.hh \
+	lib/misc/set.hh lib/misc/set.hxx lib/misc/separator.hh \
+	lib/misc/separator.hxx lib/misc/symbol.hh lib/misc/symbol.hxx \
+	lib/misc/symbol.cc lib/misc/timer.hh lib/misc/timer.hxx \
+	lib/misc/timer.cc lib/misc/unique.hh lib/misc/unique.hxx \
+	lib/misc/variant.hh lib/misc/variant.hxx lib/misc/vector.hh \
+	lib/misc/vector.hxx lib/misc/lambda-visitor.hh \
+	lib/misc/list.hh lib/misc/list.hxx lib/misc/xalloc.hh \
+	lib/misc/xalloc.hxx lib/misc/scoped-map.hh \
+	lib/misc/scoped-map.hxx
 lib_misc_libmisc_la_LDFLAGS = $(BOOST_SYSTEM_LDFLAGS)
 lib_misc_libmisc_la_LIBADD = $(BOOST_SYSTEM_LIBS)
 lib_misc_test_variant_CXXFLAGS = -Wno-unused

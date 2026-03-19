@@ -1,0 +1,11 @@
+let
+  type C = Objectvar a := 42print_int(a)var c := C
+in
+  (c.a := 51; c)
+end
+let
+  type C = Objectvar a := 42print_int(a)var c := C
+in
+  (c.a := 51; c)
+end
+PASS src/object/test-parse (exit status: 0)

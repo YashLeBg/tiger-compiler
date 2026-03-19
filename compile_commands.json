@@ -1,0 +1,37 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-DHAVE_CONFIG_H",
+      "-I./lib",
+      "-I./src",
+      "-I./src",
+      "-DPKGDATADIR=\"/usr/local/share/tc\"",
+      "-I.",
+      "-I.",
+      "-Wall",
+      "-W",
+      "-Wcast-align",
+      "-Wcast-qual",
+      "-Wformat",
+      "-Wwrite-strings",
+      "-Wmissing-declarations",
+      "-Wunused-parameter",
+      "-Wunused-function",
+      "-Woverloaded-virtual",
+      "-Wno-shadow",
+      "-Wno-subobject-linkage",
+      "-g",
+      "-O2",
+      "-std=c++20",
+      "-pipe",
+      "-c",
+      "-o",
+      "src/parse/parsetiger.o",
+      "src/parse/parsetiger.cc"
+    ],
+    "directory": "/home/coco/Tiger",
+    "file": "/home/coco/Tiger/src/parse/parsetiger.cc",
+    "output": "/home/coco/Tiger/src/parse/parsetiger.o"
+  }
+]

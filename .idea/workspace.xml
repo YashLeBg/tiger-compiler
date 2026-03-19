@@ -8,12 +8,193 @@
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
   </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="Tiger" targetName="cscopelist-am" />
+      <config projectName="Tiger" targetName="ps-recursive" />
+      <config projectName="Tiger" targetName="installcheck-recursive" />
+      <config projectName="Tiger" targetName="installdirs-recursive" />
+      <config projectName="Tiger" targetName="mostlyclean-recursive" />
+      <config projectName="Tiger" targetName="install" />
+      <config projectName="Tiger" targetName="install-ps-recursive" />
+      <config projectName="Tiger" targetName="installdirs-am" />
+      <config projectName="Tiger" targetName="bootstrap" />
+      <config projectName="Tiger" targetName="install-checkPROGRAMS" />
+      <config projectName="Tiger" targetName="html" />
+      <config projectName="Tiger" targetName="dist-zip" />
+      <config projectName="Tiger" targetName="cscopelist-recursive" />
+      <config projectName="Tiger" targetName="check-recursive" />
+      <config projectName="Tiger" targetName="install-libLTLIBRARIES" />
+      <config projectName="Tiger" targetName="clean-noinstLTLIBRARIES" />
+      <config projectName="Tiger" targetName="install-ps-am" />
+      <config projectName="Tiger" targetName="all-am" />
+      <config projectName="Tiger" targetName="CTAGS" />
+      <config projectName="Tiger" targetName="clean-am" />
+      <config projectName="Tiger" targetName="dist-zstd" />
+      <config projectName="Tiger" targetName="am--force-recheck" />
+      <config projectName="Tiger" targetName="info-recursive" />
+      <config projectName="Tiger" targetName="install-dvi-am" />
+      <config projectName="Tiger" targetName="clean-generic" />
+      <config projectName="Tiger" targetName="install-data-recursive" />
+      <config projectName="Tiger" targetName="distclean" />
+      <config projectName="Tiger" targetName="distuninstallcheck" />
+      <config projectName="Tiger" targetName="install-pdf" />
+      <config projectName="Tiger" targetName="install-pdf-recursive" />
+      <config projectName="Tiger" targetName="install-info" />
+      <config projectName="Tiger" targetName="install-am" />
+      <config projectName="Tiger" targetName="mostlyclean" />
+      <config projectName="Tiger" targetName="ChangeLog" />
+      <config projectName="Tiger" targetName="Makefile" />
+      <config projectName="Tiger" targetName="recheck" />
+      <config projectName="Tiger" targetName="clean-binPROGRAMS" />
+      <config projectName="Tiger" targetName="install-ps" />
+      <config projectName="Tiger" targetName="install-html-am" />
+      <config projectName="Tiger" targetName="distcheck" />
+      <config projectName="Tiger" targetName="am--fnord" />
+      <config projectName="Tiger" targetName="distclean-tags" />
+      <config projectName="Tiger" targetName="distdir" />
+      <config projectName="Tiger" targetName="distclean-am" />
+      <config projectName="Tiger" targetName="mostlyclean-generic" />
+      <config projectName="Tiger" targetName="boost-m4-up" />
+      <config projectName="Tiger" targetName="ctags-recursive" />
+      <config projectName="Tiger" targetName="distclean-generic" />
+      <config projectName="Tiger" targetName="doc" />
+      <config projectName="Tiger" targetName="generate-parser" />
+      <config projectName="Tiger" targetName="dist-tarZ" />
+      <config projectName="Tiger" targetName="dvi" />
+      <config projectName="Tiger" targetName="install-html-recursive" />
+      <config projectName="Tiger" targetName="dist-shar" />
+      <config projectName="Tiger" targetName="maintainer-clean-generic" />
+      <config projectName="Tiger" targetName="ctags" />
+      <config projectName="Tiger" targetName="distclean-recursive" />
+      <config projectName="Tiger" targetName="install-exec-recursive" />
+      <config projectName="Tiger" targetName="ps-am" />
+      <config projectName="Tiger" targetName="installdirs" />
+      <config projectName="Tiger" targetName="html-am" />
+      <config projectName="Tiger" targetName="tags-am" />
+      <config projectName="Tiger" targetName="html-recursive" />
+      <config projectName="Tiger" targetName="install-strip" />
+      <config projectName="Tiger" targetName="pdf-am" />
+      <config projectName="Tiger" targetName="pdf-recursive" />
+      <config projectName="Tiger" targetName="info" />
+      <config projectName="Tiger" targetName="all-recursive" />
+      <config projectName="Tiger" targetName="install-info-am" />
+      <config projectName="Tiger" targetName="install-recursive" />
+      <config projectName="Tiger" targetName="cscopelist" />
+      <config projectName="Tiger" targetName="clean-cscope" />
+      <config projectName="Tiger" targetName="am--depfiles" />
+      <config projectName="Tiger" targetName="GTAGS" />
+      <config projectName="Tiger" targetName="install-dvi" />
+      <config projectName="Tiger" targetName="info-am" />
+      <config projectName="Tiger" targetName="clean-checkPROGRAMS" />
+      <config projectName="Tiger" targetName="install-data-am" />
+      <config projectName="Tiger" targetName="mostlyclean-libtool" />
+      <config projectName="Tiger" targetName="uninstall-libLTLIBRARIES" />
+      <config projectName="Tiger" targetName="install-html" />
+      <config projectName="Tiger" targetName="install-dvi-recursive" />
+      <config projectName="Tiger" targetName="dist-all" />
+      <config projectName="Tiger" targetName="installcheck-am" />
+      <config projectName="Tiger" targetName="install-man" />
+      <config projectName="Tiger" targetName="uninstall-binPROGRAMS" />
+      <config projectName="Tiger" targetName="ctags-am" />
+      <config projectName="Tiger" targetName="all" />
+      <config projectName="Tiger" targetName="uninstall" />
+      <config projectName="Tiger" targetName="clean-local" />
+      <config projectName="Tiger" targetName="installcheck" />
+      <config projectName="Tiger" targetName="dist-gzip" />
+      <config projectName="Tiger" targetName="install-info-recursive" />
+      <config projectName="Tiger" targetName="dist-lzip" />
+      <config projectName="Tiger" targetName="ps" />
+      <config projectName="Tiger" targetName="check-am" />
+      <config projectName="Tiger" targetName="cscope" />
+      <config projectName="Tiger" targetName="ID" />
+      <config projectName="Tiger" targetName="maintainer-clean-am" />
+      <config projectName="Tiger" targetName="dist-hook" />
+      <config projectName="Tiger" targetName="uninstall-recursive" />
+      <config projectName="Tiger" targetName="uninstall-am" />
+      <config projectName="Tiger" targetName="TAGS" />
+      <config projectName="Tiger" targetName="clean-recursive" />
+      <config projectName="Tiger" targetName="dist-hook-parse" />
+      <config projectName="Tiger" targetName="check" />
+      <config projectName="Tiger" targetName="dist" />
+      <config projectName="Tiger" targetName="maintainer-clean-recursive" />
+      <config projectName="Tiger" targetName="distclean-libtool" />
+      <config projectName="Tiger" targetName="install-pdf-am" />
+      <config projectName="Tiger" targetName="html-local" />
+      <config projectName="Tiger" targetName="tags" />
+      <config projectName="Tiger" targetName="dvi-am" />
+      <config projectName="Tiger" targetName="clean-libLTLIBRARIES" />
+      <config projectName="Tiger" targetName="distclean-hdr" />
+      <config projectName="Tiger" targetName="install-binPROGRAMS" />
+      <config projectName="Tiger" targetName="distdir-am" />
+      <config projectName="Tiger" targetName="install-exec-am" />
+      <config projectName="Tiger" targetName="clean-libtool" />
+      <config projectName="Tiger" targetName="dvi-recursive" />
+      <config projectName="Tiger" targetName="dist-bzip2" />
+      <config projectName="Tiger" targetName="distcleancheck" />
+      <config projectName="Tiger" targetName="dist-xz" />
+      <config projectName="Tiger" targetName="mostlyclean-compile" />
+      <config projectName="Tiger" targetName="uninstall-dist_lispDATA" />
+      <config projectName="Tiger" targetName="clean-doc" />
+      <config projectName="Tiger" targetName="am--refresh" />
+      <config projectName="Tiger" targetName="check-TESTS" />
+      <config projectName="Tiger" targetName="distclean-compile" />
+      <config projectName="Tiger" targetName="pdf" />
+      <config projectName="Tiger" targetName="tags-recursive" />
+      <config projectName="Tiger" targetName="install-data" />
+      <config projectName="Tiger" targetName="mostlyclean-am" />
+      <config projectName="Tiger" targetName="install-exec" />
+      <config projectName="Tiger" targetName="stamp-h1" />
+      <config projectName="Tiger" targetName="maintainer-clean" />
+      <config projectName="Tiger" targetName="install-dist_lispDATA" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="36d75086-5ccc-407e-a072-b36361d3fbab" name="Changes" comment="" />
+    <list default="true" id="36d75086-5ccc-407e-a072-b36361d3fbab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile.in" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aclocal.m4" beforeDir="false" afterPath="$PROJECT_DIR$/aclocal.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/output.0" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/output.0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/output.1" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/output.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/output.2" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/output.2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/requests" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/requests" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/traces.0" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/traces.0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/traces.1" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/traces.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/traces.2" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/traces.2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-aux/config.guess" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/config.guess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-aux/config.sub" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/config.sub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-aux/install-sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/install-sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-aux/ltmain.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/ltmain.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-aux/m4/libtool.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/m4/libtool.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-aux/m4/ltoptions.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/m4/ltoptions.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-aux/m4/ltsugar.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/m4/ltsugar.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-aux/m4/ltversion.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/m4/ltversion.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-aux/m4/lt~obsolete.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/m4/lt~obsolete.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/config.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/config.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.h.in" beforeDir="false" afterPath="$PROJECT_DIR$/config.h.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configure" beforeDir="false" afterPath="$PROJECT_DIR$/configure" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="760" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,11 +203,35 @@
     <option name="directoryName" value="xJirx3Zc" />
   </component>
   <component name="MakefileLocalSettings">
+    <option name="availableProjects">
+      <map>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="Tiger" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="Tiger" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="projectSyncType">
       <map>
         <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
       </map>
     </option>
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -42,24 +247,861 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cf.advertisement.text.overridden&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu/home/jessim/dev/Tiger&quot;,
-    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cf.advertisement.text.overridden": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/jessim/dev/Tiger",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.first.attach.projects": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RunManager" selected="Native Application.all">
+    <configuration name="CTAGS" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="CTAGS" CONFIG_NAME="CTAGS" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChangeLog" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="ChangeLog" CONFIG_NAME="ChangeLog" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GTAGS" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="GTAGS" CONFIG_NAME="GTAGS" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ID" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="ID" CONFIG_NAME="ID" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Makefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="Makefile" CONFIG_NAME="Makefile" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TAGS" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="TAGS" CONFIG_NAME="TAGS" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="all-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="all-am" CONFIG_NAME="all-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="all-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="all-recursive" CONFIG_NAME="all-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="all" CONFIG_NAME="all" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="am--depfiles" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="am--depfiles" CONFIG_NAME="am--depfiles" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="am--fnord" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="am--fnord" CONFIG_NAME="am--fnord" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="am--force-recheck" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="am--force-recheck" CONFIG_NAME="am--force-recheck" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="am--refresh" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="am--refresh" CONFIG_NAME="am--refresh" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="boost-m4-up" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="boost-m4-up" CONFIG_NAME="boost-m4-up" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="bootstrap" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="bootstrap" CONFIG_NAME="bootstrap" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="check-TESTS" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="check-TESTS" CONFIG_NAME="check-TESTS" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="check-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="check-am" CONFIG_NAME="check-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="check-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="check-recursive" CONFIG_NAME="check-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="check" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="check" CONFIG_NAME="check" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-am" CONFIG_NAME="clean-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-binPROGRAMS" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-binPROGRAMS" CONFIG_NAME="clean-binPROGRAMS" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-checkPROGRAMS" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-checkPROGRAMS" CONFIG_NAME="clean-checkPROGRAMS" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-cscope" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-cscope" CONFIG_NAME="clean-cscope" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-doc" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-doc" CONFIG_NAME="clean-doc" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-generic" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-generic" CONFIG_NAME="clean-generic" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-libLTLIBRARIES" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-libLTLIBRARIES" CONFIG_NAME="clean-libLTLIBRARIES" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-libtool" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-libtool" CONFIG_NAME="clean-libtool" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-local" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-local" CONFIG_NAME="clean-local" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-noinstLTLIBRARIES" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-noinstLTLIBRARIES" CONFIG_NAME="clean-noinstLTLIBRARIES" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clean-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="clean-recursive" CONFIG_NAME="clean-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cscope" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="cscope" CONFIG_NAME="cscope" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cscopelist-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="cscopelist-am" CONFIG_NAME="cscopelist-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cscopelist-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="cscopelist-recursive" CONFIG_NAME="cscopelist-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cscopelist" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="cscopelist" CONFIG_NAME="cscopelist" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ctags-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="ctags-am" CONFIG_NAME="ctags-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ctags-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="ctags-recursive" CONFIG_NAME="ctags-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ctags" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="ctags" CONFIG_NAME="ctags" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-all" CONFIG_NAME="dist-all" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-bzip2" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-bzip2" CONFIG_NAME="dist-bzip2" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-gzip" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-gzip" CONFIG_NAME="dist-gzip" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-hook-parse" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-hook-parse" CONFIG_NAME="dist-hook-parse" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-hook" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-hook" CONFIG_NAME="dist-hook" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-lzip" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-lzip" CONFIG_NAME="dist-lzip" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-shar" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-shar" CONFIG_NAME="dist-shar" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-tarZ" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-tarZ" CONFIG_NAME="dist-tarZ" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-xz" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-xz" CONFIG_NAME="dist-xz" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-zip" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-zip" CONFIG_NAME="dist-zip" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist-zstd" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist-zstd" CONFIG_NAME="dist-zstd" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dist" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dist" CONFIG_NAME="dist" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distcheck" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distcheck" CONFIG_NAME="distcheck" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distclean-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distclean-am" CONFIG_NAME="distclean-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distclean-compile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distclean-compile" CONFIG_NAME="distclean-compile" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distclean-generic" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distclean-generic" CONFIG_NAME="distclean-generic" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distclean-hdr" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distclean-hdr" CONFIG_NAME="distclean-hdr" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distclean-libtool" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distclean-libtool" CONFIG_NAME="distclean-libtool" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distclean-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distclean-recursive" CONFIG_NAME="distclean-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distclean-tags" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distclean-tags" CONFIG_NAME="distclean-tags" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distclean" CONFIG_NAME="distclean" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distcleancheck" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distcleancheck" CONFIG_NAME="distcleancheck" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distdir-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distdir-am" CONFIG_NAME="distdir-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distdir" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distdir" CONFIG_NAME="distdir" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="distuninstallcheck" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="distuninstallcheck" CONFIG_NAME="distuninstallcheck" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="doc" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="doc" CONFIG_NAME="doc" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dvi-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dvi-am" CONFIG_NAME="dvi-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dvi-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dvi-recursive" CONFIG_NAME="dvi-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dvi" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="dvi" CONFIG_NAME="dvi" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="generate-parser" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="generate-parser" CONFIG_NAME="generate-parser" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="html-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="html-am" CONFIG_NAME="html-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="html-local" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="html-local" CONFIG_NAME="html-local" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="html-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="html-recursive" CONFIG_NAME="html-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="html" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="html" CONFIG_NAME="html" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="info-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="info-am" CONFIG_NAME="info-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="info-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="info-recursive" CONFIG_NAME="info-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="info" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="info" CONFIG_NAME="info" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-am" CONFIG_NAME="install-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-binPROGRAMS" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-binPROGRAMS" CONFIG_NAME="install-binPROGRAMS" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-checkPROGRAMS" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-checkPROGRAMS" CONFIG_NAME="install-checkPROGRAMS" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-data-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-data-am" CONFIG_NAME="install-data-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-data-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-data-recursive" CONFIG_NAME="install-data-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-data" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-data" CONFIG_NAME="install-data" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-dist_lispDATA" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-dist_lispDATA" CONFIG_NAME="install-dist_lispDATA" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-dvi-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-dvi-am" CONFIG_NAME="install-dvi-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-dvi-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-dvi-recursive" CONFIG_NAME="install-dvi-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-dvi" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-dvi" CONFIG_NAME="install-dvi" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-exec-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-exec-am" CONFIG_NAME="install-exec-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-exec-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-exec-recursive" CONFIG_NAME="install-exec-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-exec" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-exec" CONFIG_NAME="install-exec" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-html-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-html-am" CONFIG_NAME="install-html-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-html-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-html-recursive" CONFIG_NAME="install-html-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-html" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-html" CONFIG_NAME="install-html" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-info-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-info-am" CONFIG_NAME="install-info-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-info-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-info-recursive" CONFIG_NAME="install-info-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-info" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-info" CONFIG_NAME="install-info" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-libLTLIBRARIES" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-libLTLIBRARIES" CONFIG_NAME="install-libLTLIBRARIES" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-man" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-man" CONFIG_NAME="install-man" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-pdf-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-pdf-am" CONFIG_NAME="install-pdf-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-pdf-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-pdf-recursive" CONFIG_NAME="install-pdf-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-pdf" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-pdf" CONFIG_NAME="install-pdf" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-ps-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-ps-am" CONFIG_NAME="install-ps-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-ps-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-ps-recursive" CONFIG_NAME="install-ps-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-ps" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-ps" CONFIG_NAME="install-ps" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-recursive" CONFIG_NAME="install-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install-strip" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install-strip" CONFIG_NAME="install-strip" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="install" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="install" CONFIG_NAME="install" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="installcheck-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="installcheck-am" CONFIG_NAME="installcheck-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="installcheck-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="installcheck-recursive" CONFIG_NAME="installcheck-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="installcheck" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="installcheck" CONFIG_NAME="installcheck" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="installdirs-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="installdirs-am" CONFIG_NAME="installdirs-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="installdirs-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="installdirs-recursive" CONFIG_NAME="installdirs-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="installdirs" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="installdirs" CONFIG_NAME="installdirs" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="maintainer-clean-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="maintainer-clean-am" CONFIG_NAME="maintainer-clean-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="maintainer-clean-generic" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="maintainer-clean-generic" CONFIG_NAME="maintainer-clean-generic" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="maintainer-clean-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="maintainer-clean-recursive" CONFIG_NAME="maintainer-clean-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="maintainer-clean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="maintainer-clean" CONFIG_NAME="maintainer-clean" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mostlyclean-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="mostlyclean-am" CONFIG_NAME="mostlyclean-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mostlyclean-compile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="mostlyclean-compile" CONFIG_NAME="mostlyclean-compile" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mostlyclean-generic" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="mostlyclean-generic" CONFIG_NAME="mostlyclean-generic" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mostlyclean-libtool" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="mostlyclean-libtool" CONFIG_NAME="mostlyclean-libtool" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mostlyclean-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="mostlyclean-recursive" CONFIG_NAME="mostlyclean-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mostlyclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="mostlyclean" CONFIG_NAME="mostlyclean" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="pdf-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="pdf-am" CONFIG_NAME="pdf-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="pdf-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="pdf-recursive" CONFIG_NAME="pdf-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="pdf" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="pdf" CONFIG_NAME="pdf" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ps-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="ps-am" CONFIG_NAME="ps-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ps-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="ps-recursive" CONFIG_NAME="ps-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ps" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="ps" CONFIG_NAME="ps" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="recheck" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="recheck" CONFIG_NAME="recheck" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="stamp-h1" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="stamp-h1" CONFIG_NAME="stamp-h1" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tags-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="tags-am" CONFIG_NAME="tags-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tags-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="tags-recursive" CONFIG_NAME="tags-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tags" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="tags" CONFIG_NAME="tags" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="uninstall-am" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="uninstall-am" CONFIG_NAME="uninstall-am" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="uninstall-binPROGRAMS" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="uninstall-binPROGRAMS" CONFIG_NAME="uninstall-binPROGRAMS" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="uninstall-dist_lispDATA" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="uninstall-dist_lispDATA" CONFIG_NAME="uninstall-dist_lispDATA" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="uninstall-libLTLIBRARIES" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="uninstall-libLTLIBRARIES" CONFIG_NAME="uninstall-libLTLIBRARIES" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="uninstall-recursive" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="uninstall-recursive" CONFIG_NAME="uninstall-recursive" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="uninstall" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tiger" TARGET_NAME="uninstall" CONFIG_NAME="uninstall" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Native Application.all" />
+      <item itemvalue="Native Application.all-am" />
+      <item itemvalue="Native Application.all-recursive" />
+      <item itemvalue="Native Application.am--depfiles" />
+      <item itemvalue="Native Application.am--refresh" />
+      <item itemvalue="Native Application.boost-m4-up" />
+      <item itemvalue="Native Application.check" />
+      <item itemvalue="Native Application.check-am" />
+      <item itemvalue="Native Application.check-recursive" />
+      <item itemvalue="Native Application.check-TESTS" />
+      <item itemvalue="Native Application.clean-binPROGRAMS" />
+      <item itemvalue="Native Application.clean-checkPROGRAMS" />
+      <item itemvalue="Native Application.clean-cscope" />
+      <item itemvalue="Native Application.clean-generic" />
+      <item itemvalue="Native Application.clean-libLTLIBRARIES" />
+      <item itemvalue="Native Application.clean-libtool" />
+      <item itemvalue="Native Application.clean-local" />
+      <item itemvalue="Native Application.clean-noinstLTLIBRARIES" />
+      <item itemvalue="Native Application.clean-recursive" />
+      <item itemvalue="Native Application.cscope" />
+      <item itemvalue="Native Application.cscopelist-am" />
+      <item itemvalue="Native Application.cscopelist-recursive" />
+      <item itemvalue="Native Application.CTAGS" />
+      <item itemvalue="Native Application.ctags" />
+      <item itemvalue="Native Application.ctags-am" />
+      <item itemvalue="Native Application.ctags-recursive" />
+      <item itemvalue="Native Application.dist" />
+      <item itemvalue="Native Application.dist-all" />
+      <item itemvalue="Native Application.dist-bzip2" />
+      <item itemvalue="Native Application.dist-gzip" />
+      <item itemvalue="Native Application.dist-hook" />
+      <item itemvalue="Native Application.dist-lzip" />
+      <item itemvalue="Native Application.dist-shar" />
+      <item itemvalue="Native Application.dist-tarZ" />
+      <item itemvalue="Native Application.dist-xz" />
+      <item itemvalue="Native Application.dist-zip" />
+      <item itemvalue="Native Application.dist-zstd" />
+      <item itemvalue="Native Application.distcheck" />
+      <item itemvalue="Native Application.distclean" />
+      <item itemvalue="Native Application.distclean-compile" />
+      <item itemvalue="Native Application.distclean-generic" />
+      <item itemvalue="Native Application.distclean-hdr" />
+      <item itemvalue="Native Application.distclean-libtool" />
+      <item itemvalue="Native Application.distclean-recursive" />
+      <item itemvalue="Native Application.distclean-tags" />
+      <item itemvalue="Native Application.distcleancheck" />
+      <item itemvalue="Native Application.distdir" />
+      <item itemvalue="Native Application.distuninstallcheck" />
+      <item itemvalue="Native Application.doc" />
+      <item itemvalue="Native Application.dvi" />
+      <item itemvalue="Native Application.dvi-am" />
+      <item itemvalue="Native Application.dvi-recursive" />
+      <item itemvalue="Native Application.generate-parser" />
+      <item itemvalue="Native Application.GTAGS" />
+      <item itemvalue="Native Application.html" />
+      <item itemvalue="Native Application.html-am" />
+      <item itemvalue="Native Application.html-local" />
+      <item itemvalue="Native Application.html-recursive" />
+      <item itemvalue="Native Application.info" />
+      <item itemvalue="Native Application.info-am" />
+      <item itemvalue="Native Application.info-recursive" />
+      <item itemvalue="Native Application.install" />
+      <item itemvalue="Native Application.install-am" />
+      <item itemvalue="Native Application.install-binPROGRAMS" />
+      <item itemvalue="Native Application.install-data" />
+      <item itemvalue="Native Application.install-data-am" />
+      <item itemvalue="Native Application.install-data-recursive" />
+      <item itemvalue="Native Application.install-dist_lispDATA" />
+      <item itemvalue="Native Application.install-dvi" />
+      <item itemvalue="Native Application.install-dvi-am" />
+      <item itemvalue="Native Application.install-dvi-recursive" />
+      <item itemvalue="Native Application.install-exec" />
+      <item itemvalue="Native Application.install-exec-am" />
+      <item itemvalue="Native Application.install-exec-recursive" />
+      <item itemvalue="Native Application.install-html" />
+      <item itemvalue="Native Application.install-html-am" />
+      <item itemvalue="Native Application.install-html-recursive" />
+      <item itemvalue="Native Application.install-info" />
+      <item itemvalue="Native Application.install-info-am" />
+      <item itemvalue="Native Application.install-info-recursive" />
+      <item itemvalue="Native Application.install-libLTLIBRARIES" />
+      <item itemvalue="Native Application.install-man" />
+      <item itemvalue="Native Application.install-pdf" />
+      <item itemvalue="Native Application.install-pdf-am" />
+      <item itemvalue="Native Application.install-pdf-recursive" />
+      <item itemvalue="Native Application.install-ps" />
+      <item itemvalue="Native Application.install-ps-am" />
+      <item itemvalue="Native Application.install-ps-recursive" />
+      <item itemvalue="Native Application.install-recursive" />
+      <item itemvalue="Native Application.install-strip" />
+      <item itemvalue="Native Application.installcheck" />
+      <item itemvalue="Native Application.installcheck-am" />
+      <item itemvalue="Native Application.installcheck-recursive" />
+      <item itemvalue="Native Application.installdirs" />
+      <item itemvalue="Native Application.installdirs-am" />
+      <item itemvalue="Native Application.installdirs-recursive" />
+      <item itemvalue="Native Application.maintainer-clean" />
+      <item itemvalue="Native Application.maintainer-clean-generic" />
+      <item itemvalue="Native Application.maintainer-clean-recursive" />
+      <item itemvalue="Native Application.mostlyclean" />
+      <item itemvalue="Native Application.mostlyclean-compile" />
+      <item itemvalue="Native Application.mostlyclean-generic" />
+      <item itemvalue="Native Application.mostlyclean-libtool" />
+      <item itemvalue="Native Application.mostlyclean-recursive" />
+      <item itemvalue="Native Application.pdf" />
+      <item itemvalue="Native Application.pdf-am" />
+      <item itemvalue="Native Application.pdf-recursive" />
+      <item itemvalue="Native Application.ps" />
+      <item itemvalue="Native Application.ps-am" />
+      <item itemvalue="Native Application.ps-recursive" />
+      <item itemvalue="Native Application.recheck" />
+      <item itemvalue="Native Application.TAGS" />
+      <item itemvalue="Native Application.tags" />
+      <item itemvalue="Native Application.tags-am" />
+      <item itemvalue="Native Application.tags-recursive" />
+      <item itemvalue="Native Application.uninstall" />
+      <item itemvalue="Native Application.uninstall-am" />
+      <item itemvalue="Native Application.uninstall-binPROGRAMS" />
+      <item itemvalue="Native Application.uninstall-dist_lispDATA" />
+      <item itemvalue="Native Application.uninstall-libLTLIBRARIES" />
+      <item itemvalue="Native Application.uninstall-recursive" />
+      <item itemvalue="Native Application.am--fnord" />
+      <item itemvalue="Native Application.am--force-recheck" />
+      <item itemvalue="Native Application.bootstrap" />
+      <item itemvalue="Native Application.ChangeLog" />
+      <item itemvalue="Native Application.clean-am" />
+      <item itemvalue="Native Application.clean-doc" />
+      <item itemvalue="Native Application.cscopelist" />
+      <item itemvalue="Native Application.dist-hook-parse" />
+      <item itemvalue="Native Application.distclean-am" />
+      <item itemvalue="Native Application.distdir-am" />
+      <item itemvalue="Native Application.ID" />
+      <item itemvalue="Native Application.install-checkPROGRAMS" />
+      <item itemvalue="Native Application.maintainer-clean-am" />
+      <item itemvalue="Native Application.Makefile" />
+      <item itemvalue="Native Application.mostlyclean-am" />
+      <item itemvalue="Native Application.stamp-h1" />
+    </list>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="36d75086-5ccc-407e-a072-b36361d3fbab" name="Changes" comment="" />
@@ -69,6 +1111,7 @@
       <updated>1773178870047</updated>
       <workItem from="1773178871790" duration="4704000" />
       <workItem from="1773435581276" duration="2590000" />
+      <workItem from="1773916084316" duration="1685000" />
     </task>
     <servers />
   </component>
