@@ -57,6 +57,13 @@ namespace bind
 
     /* The visiting methods. */
     // FIXME: Some code was deleted here.
+    void operator()(ast::SimpleVar& e) override;
+    void operator()(ast::LetExp& e) override;
+    void operator()(ast::CallExp& e) override;
+    void operator()(ast::WhileExp& e) override;
+    void operator()(ast::ForExp& e) override;
+    void operator()(ast::BreakExp& e) override;
+    void operator()(ast::NameTy& e) override;
 
     // ---------------- //
     // Visiting /Dec/.  //
@@ -78,6 +85,12 @@ namespace bind
     /// belonging to the current chunk.
 
     // FIXME: Some code was deleted here.
+    void operator()(ast::VarChunk& e) override;
+    void operator()(ast::VarDec& e) override;
+    void operator()(ast::FunctionChunk& e) override;
+    void operator()(ast::FunctionDec& e) override;
+    void operator()(ast::TypeChunk& e) override;
+    void operator()(ast::TypeDec& e) override;
     /// \}
 
   protected:
@@ -85,6 +98,13 @@ namespace bind
     misc::error error_;
 
     // FIXME: Some code was deleted here (More members).
+    void scope_begin();
+    void scope_end();
+    template <class D, class M> void chunk_visit(ast::Chunk<D>& e, M& map);
+    misc::scoped_map<misc::symbol, ast::VarDec*> vars_;
+    misc::scoped_map<misc::symbol, ast::FunctionDec*> funcs_;
+    misc::scoped_map<misc::symbol, ast::TypeDec*> types_;
+    ast::Exp* loop_ = nullptr;
   };
 
 } // namespace bind
