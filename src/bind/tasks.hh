@@ -3,4 +3,28 @@
  ** \brief Bind module related tasks.
  */
 
-// FIXME: Some code was deleted here.
+#pragma once
+
+#include <task/libtask.hh>
+
+namespace bind::tasks
+{
+  TASK_GROUP("3. Binding");
+
+  /// Flag to display addresses or not
+  BOOLEAN_TASK_DECLARE("B|bindings-display",
+                       "display bindings",
+                       bindings_display_p,
+                       "");
+
+  /// Run bindings
+  TASK_DECLARE("b|bindings-compute",
+               "bind the chunklist",
+               bindings_compute,
+               "parse");
+
+  // Check that bindings have been computed
+  TASK_DECLARE("bound", "check bindings", bound,
+               "bindings-compute");
+
+} // namespace bind::tasks
