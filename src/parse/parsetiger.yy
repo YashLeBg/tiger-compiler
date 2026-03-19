@@ -397,7 +397,10 @@ tychunk:
 
 tydec:
   "type" ID "=" ty { $$ = make_TypeDec(@$, $2, $4); }
+| "class" ID "extends" typeid "{" classfields "}" { $$ = make_TypeDec(@$, $2, make_ClassTy(@$, $4, $6)); }
+| "class" ID "{" classfields "}"                  { $$ = make_TypeDec(@$, $2, make_ClassTy(@$, make_NameTy(@$, "Object"), $4)); }
 ;
+
 
 ty:
   typeid               { $$ = $1; }
