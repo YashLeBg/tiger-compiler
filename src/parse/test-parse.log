@@ -1,9 +1,0 @@
-a + b
-let
-  function f(a : int, b : string) : int = 
-    a
-  
-in
-  (a)
-end
-PASS src/parse/test-parse (exit status: 0)

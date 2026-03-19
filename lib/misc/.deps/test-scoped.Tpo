@@ -1,4 +1,4 @@
-lib/misc/test-symbol.o: lib/misc/test-symbol.cc \
+lib/misc/test-scoped.o: lib/misc/test-scoped.cc \
  /usr/include/stdc-predef.h /usr/include/c++/13/ostream \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -162,14 +162,37 @@ lib/misc/test-symbol.o: lib/misc/test-symbol.cc \
  /usr/include/c++/13/bits/ostream.tcc lib/misc/contract.hh \
  lib/misc/contract.hxx /usr/include/c++/13/iostream \
  /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
- lib/misc/symbol.hh /usr/include/c++/13/set \
+ lib/misc/scoped-map.hh /usr/include/c++/13/map \
  /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/bits/node_handle.h \
- /usr/include/c++/13/bits/stl_set.h \
- /usr/include/c++/13/bits/stl_multiset.h \
- /usr/include/c++/13/bits/erase_if.h lib/misc/unique.hh \
- lib/misc/unique.hxx lib/misc/symbol.hxx
+ /usr/include/c++/13/bits/stl_map.h \
+ /usr/include/c++/13/bits/stl_multimap.h \
+ /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/vector \
+ /usr/include/c++/13/bits/stl_uninitialized.h \
+ /usr/include/c++/13/bits/stl_vector.h \
+ /usr/include/c++/13/bits/stl_bvector.h \
+ /usr/include/c++/13/bits/vector.tcc lib/misc/scoped-map.hxx \
+ /usr/include/c++/13/sstream /usr/include/c++/13/bits/sstream.tcc \
+ /usr/include/c++/13/ranges /usr/include/c++/13/iterator \
+ /usr/include/c++/13/bits/stream_iterator.h /usr/include/c++/13/optional \
+ /usr/include/c++/13/bits/enable_special_members.h \
+ /usr/include/c++/13/span /usr/include/c++/13/array lib/misc/algorithm.hh \
+ lib/misc/concepts.hh lib/misc/algorithm.hxx \
+ /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/stl_heap.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/bits/stl_tempbuf.h \
+ /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/bits/ranges_algobase.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/functional \
+ /usr/include/c++/13/bits/std_function.h \
+ /usr/include/c++/13/unordered_map \
+ /usr/include/c++/13/bits/unordered_map.h \
+ /usr/include/c++/13/bits/hashtable.h \
+ /usr/include/c++/13/bits/hashtable_policy.h lib/misc/indent.hh
 /usr/include/stdc-predef.h:
 /usr/include/c++/13/ostream:
 /usr/include/c++/13/bits/requires_hosted.h:
@@ -374,14 +397,46 @@ lib/misc/contract.hxx:
 /usr/include/c++/13/iostream:
 /usr/include/c++/13/istream:
 /usr/include/c++/13/bits/istream.tcc:
-lib/misc/symbol.hh:
-/usr/include/c++/13/set:
+lib/misc/scoped-map.hh:
+/usr/include/c++/13/map:
 /usr/include/c++/13/bits/stl_tree.h:
 /usr/include/c++/13/ext/aligned_buffer.h:
 /usr/include/c++/13/bits/node_handle.h:
-/usr/include/c++/13/bits/stl_set.h:
-/usr/include/c++/13/bits/stl_multiset.h:
+/usr/include/c++/13/bits/stl_map.h:
+/usr/include/c++/13/bits/stl_multimap.h:
 /usr/include/c++/13/bits/erase_if.h:
-lib/misc/unique.hh:
-lib/misc/unique.hxx:
-lib/misc/symbol.hxx:
+/usr/include/c++/13/vector:
+/usr/include/c++/13/bits/stl_uninitialized.h:
+/usr/include/c++/13/bits/stl_vector.h:
+/usr/include/c++/13/bits/stl_bvector.h:
+/usr/include/c++/13/bits/vector.tcc:
+lib/misc/scoped-map.hxx:
+/usr/include/c++/13/sstream:
+/usr/include/c++/13/bits/sstream.tcc:
+/usr/include/c++/13/ranges:
+/usr/include/c++/13/iterator:
+/usr/include/c++/13/bits/stream_iterator.h:
+/usr/include/c++/13/optional:
+/usr/include/c++/13/bits/enable_special_members.h:
+/usr/include/c++/13/span:
+/usr/include/c++/13/array:
+lib/misc/algorithm.hh:
+lib/misc/concepts.hh:
+lib/misc/algorithm.hxx:
+/usr/include/c++/13/algorithm:
+/usr/include/c++/13/bits/stl_algo.h:
+/usr/include/c++/13/bits/algorithmfwd.h:
+/usr/include/c++/13/bits/stl_heap.h:
+/usr/include/c++/13/bits/uniform_int_dist.h:
+/usr/include/c++/13/bits/stl_tempbuf.h:
+/usr/include/c++/13/bits/ranges_algo.h:
+/usr/include/c++/13/bits/ranges_algobase.h:
+/usr/include/c++/13/pstl/glue_algorithm_defs.h:
+/usr/include/c++/13/pstl/execution_defs.h:
+/usr/include/c++/13/functional:
+/usr/include/c++/13/bits/std_function.h:
+/usr/include/c++/13/unordered_map:
+/usr/include/c++/13/bits/unordered_map.h:
+/usr/include/c++/13/bits/hashtable.h:
+/usr/include/c++/13/bits/hashtable_policy.h:
+lib/misc/indent.hh:
