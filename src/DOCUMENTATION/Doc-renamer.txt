@@ -1,0 +1,6 @@
+Here is the documentation for renamer part.
+Actually there is not much to talk about just a link to explain design pattern visotor:
+https://refactoring.guru/design-patterns/visitor
+
+In That part of the project we just overided functions to handdle the creation of new symbols (var,func and type) and will generate a unique name and use map to update ast and process into the child nodes
+In the second part we applied the newly generated names to existing symbol usage, then finaly replace the old name in the AST. and continue to change all other ocurences of the old name by the new one
