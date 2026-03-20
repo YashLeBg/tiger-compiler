@@ -6,8 +6,14 @@
 // FIXME: Some code was deleted here.
 #pragma once
 
+#include <map>
+#include <ostream>
+
+
 #include <bind/binder.hh>
 #include <misc/contract.hh>
+
+#include "binder.hh"
 
 namespace bind
 {
@@ -27,17 +33,16 @@ namespace bind
 
   template <class D, class M> void Binder::chunk_visit(ast::Chunk<D>& e, M& map)
   {
-    std::unordered_map<misc::symbol, const D*> seen;
+    std::map<misc::symbol, const D*> seen;
     for (const auto* dec : e)
       {
         auto dup = seen.find(dec->name_get());
         if (dup != seen.end())
-          error_ << misc::error::error_type::bind;
+          error_ << misc::error::error_type::bind<< dec->location_get()<< ": redefinition: " << dec->name_get() << std::endl;
         else
           seen.emplace(dec->name_get(), dec);
         map.put(dec->name_get(), const_cast<D*>(dec));
       }
-
     for (auto* dec : e)
       operator()(*dec);
   }

@@ -5,6 +5,7 @@
 
 #include <ast/tasks.hh>
 #include <bind/libbind.hh>
+#include <common.hh>
 #define DEFINE_TASKS 1
 #include <bind/tasks.hh>
 #undef DEFINE_TASKS

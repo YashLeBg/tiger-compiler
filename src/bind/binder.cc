@@ -3,8 +3,12 @@
  ** \brief Implementation for bind/binder.hh.
  */
 
+#include "binder.hh"
+
 #include <ast/all.hh>
 #include <bind/binder.hh>
+
+#include <ostream>
 
 #include <misc/contract.hh>
 
@@ -22,7 +26,7 @@ namespace bind
   {
     auto* def = vars_.get(e.name_get());
     if (def == nullptr)
-      error_ << misc::error::error_type::bind;
+      error_ << misc::error::error_type::bind << e.location_get() << ": undeclared variable: " << e.name_get() << std::endl;
     else
       e.def_set(def);
   }
@@ -39,7 +43,7 @@ namespace bind
   {
     auto* def = funcs_.get(e.name_get());
     if (def == nullptr)
-      error_ << misc::error::error_type::bind;
+      error_ << misc::error::error_type::bind << e.location_get() << ": undeclared function: " << e.name_get() << std::endl;
     else
       e.def_set(def);
     for (auto* arg : e.args_get())
@@ -64,23 +68,20 @@ namespace bind
     loop_ = &e;
     e.body_get().accept(*this);
     loop_ = old_loop;
-
     scope_end();
   }
 
   void Binder::operator()(ast::BreakExp& e)
   {
     if (loop_ == nullptr)
-      error_ << misc::error::error_type::bind;
-    else
-      e.def_set(loop_);
+      error_ << misc::error::error_type::bind << e.location_get() << ": break outside of any loop" << std::endl;
   }
 
   void Binder::operator()(ast::NameTy& e)
   {
     auto* def = types_.get(e.name_get());
     if (def == nullptr)
-      error_ << misc::error::error_type::bind;
+      error_ << misc::error::error_type::bind << e.location_get() << ": undeclared type: " << e.name_get() << std::endl;
     else
       e.def_set(def);
   }
