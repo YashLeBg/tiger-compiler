@@ -1,0 +1,5 @@
+let
+  auto a := 1/*instead of var*/
+in
+  print_int(a)
+end

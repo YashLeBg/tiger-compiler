@@ -1,0 +1,10 @@
+let
+    var a := 2
+in
+    let
+        var a := "blyat"
+    in
+        print(a)
+    end;
+    print_int(a+1)
+end

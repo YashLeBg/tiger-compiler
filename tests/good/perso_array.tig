@@ -1,0 +1,10 @@
+let
+    type pixel = {x : int, y: int , color : string}
+    type p_array= array of pixel
+    var a := pixel {x=10,y=20,color="red"}
+    var b := pixel {x=30,y=40,color="white"}
+    var arr:=p_array [2] of a
+in
+    arr[1]:=b;
+    print_int(arr[0].x + arr[1].y)
+end
