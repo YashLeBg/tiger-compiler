@@ -3,4 +3,14 @@
  ** \brief Interface of the bind module.
  */
 
-// FIXME: Some code was deleted here.
+#pragma once
+
+#include <ast/fwd.hh>
+#include <misc/error.hh>
+
+namespace bind
+{
+  // Bind the chunk.
+  misc::error bind(ast::ChunkList& e);
+
+} // namespace bind

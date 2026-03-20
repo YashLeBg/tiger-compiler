@@ -31,7 +31,12 @@ namespace ast
     : ostr_(ostr)
   {}
 
-  void PrettyPrinter::operator()(const SimpleVar& e) { ostr_ << e.name_get(); }
+  void PrettyPrinter::operator()(const SimpleVar& e)
+  {
+    ostr_ << e.name_get();
+    if (bindings_display(ostr_))
+      ostr_ << " /* " << static_cast<const void*>(e.def_get()) << " */";
+  }
 
   // var.name
   void PrettyPrinter::operator()(const FieldVar& e)
@@ -71,9 +76,13 @@ namespace ast
   }
 
   // func_name(arg1, arg2, ...)
-  void PrettyPrinter::operator()(const CallExp& e) 
+  void PrettyPrinter::operator()(const CallExp& e)
   {
-    ostr_ << e.name_get() << "(" << misc::incindent << misc::separate(e.args_get(), ", ") << misc::decindent << ")";
+    ostr_ << e.name_get();
+    if (bindings_display(ostr_))
+      ostr_ << " /* " << static_cast<const void*>(e.def_get()) << " */";
+    ostr_ << "(" << misc::incindent << misc::separate(e.args_get(), ", ")
+          << misc::decindent << ")";
   }
 
   // a + b
@@ -189,22 +198,16 @@ namespace ast
   // var name := init
   void PrettyPrinter::operator()(const VarDec& e)
   {
+    ostr_ << "var " << e.name_get();
+    
+    if (bindings_display(ostr_))
+      ostr_ << " /* " << static_cast<const void*>(&e) << " */";
 
-    if (e.init_get()) 
-    {
-      ostr_ << "var " << e.name_get();
+    if (e.type_name_get())
+      ostr_ << " : " << *e.type_name_get();
 
-      if (e.type_name_get()) 
-      {
-        ostr_ << " : " << *e.type_name_get();
-      }
-
+    if (e.init_get())
       ostr_ << " := " << *e.init_get();
-    }
-    else 
-    {
-      ostr_ << e.name_get() << " : " << *e.type_name_get();
-    }
   }
 
   // function name(formals) : result = body
@@ -223,7 +226,10 @@ namespace ast
       ostr_ << "primitive ";
     }
 
-    ostr_ << e.name_get() << "(" << misc::separate(e.formals_get(), ", ") << ")";
+    ostr_ << e.name_get();
+    if (bindings_display(ostr_))
+      ostr_ << " /* " << static_cast<const void*>(&e) << " */";
+    ostr_ << "(" << misc::separate(e.formals_get(), ", ") << ")";
     
     if (e.result_get())
     {
@@ -238,13 +244,18 @@ namespace ast
   // type name = ty
   void PrettyPrinter::operator()(const TypeDec& e)
   {
-    ostr_ << "type " << e.name_get() << " = " << e.ty_get();
+    ostr_ << "type " << e.name_get();
+    if (bindings_display(ostr_))
+      ostr_ << " /* " << static_cast<const void*>(&e) << " */";
+    ostr_ << " = " << e.ty_get();
   }
 
   // int 
   void PrettyPrinter::operator()(const NameTy& e)
   {
     ostr_ << e.name_get();
+    if (bindings_display(ostr_))
+      ostr_ << " /* " << static_cast<const void*>(e.def_get()) << " */";
   }
 
   // Factor pretty-printing of RecordExp and RecordTy.

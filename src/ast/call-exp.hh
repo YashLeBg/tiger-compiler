@@ -43,6 +43,12 @@ namespace ast
     const exps_type& args_get() const;
     /// Return list of arguments passed to the function.
     exps_type& args_get();
+    /// Return definition site.
+    const FunctionDec* def_get() const;
+    /// Return definition site.
+    FunctionDec* def_get();
+    /// Set definition site.
+    void def_set(FunctionDec*);
     /** \} */
 
   protected:
