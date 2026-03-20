@@ -105,7 +105,6 @@ namespace bind
     misc::scoped_map<misc::symbol, ast::FunctionDec*> funcs_;
     misc::scoped_map<misc::symbol, ast::TypeDec*> types_;
     ast::Exp* loop_ = nullptr;
-    bool bindings_display_p;
   };
 
 } // namespace bind
