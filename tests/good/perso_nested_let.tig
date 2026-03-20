@@ -1,0 +1,19 @@
+let 
+    var a := 1
+    function func() : int =
+        let
+            var b := 2
+            function func2() : int =
+                let
+                    var c := 3
+                in
+                a + b + c
+                end
+        in
+            func2()
+        end
+in
+    print_int(func())
+end
+
+

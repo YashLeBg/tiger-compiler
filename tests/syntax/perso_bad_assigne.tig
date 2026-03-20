@@ -1,0 +1,6 @@
+let
+    var a = 1 /*insted of :=*/
+in
+    print_int(a)
+end
+

@@ -1,0 +1,5 @@
+let
+    var a := 100 $
+in
+    print_int(a)
+end
