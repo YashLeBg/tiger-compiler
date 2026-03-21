@@ -159,29 +159,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36d75086-5ccc-407e-a072-b36361d3fbab" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile.in" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aclocal.m4" beforeDir="false" afterPath="$PROJECT_DIR$/aclocal.m4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autom4te.cache/output.0" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/output.0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autom4te.cache/output.1" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/output.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autom4te.cache/output.2" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/output.2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/output.3" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/output.3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autom4te.cache/requests" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/requests" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autom4te.cache/traces.0" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/traces.0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autom4te.cache/traces.1" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/traces.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autom4te.cache/traces.2" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/traces.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-aux/config.guess" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/config.guess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-aux/config.sub" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/config.sub" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-aux/install-sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/install-sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-aux/ltmain.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/ltmain.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-aux/m4/libtool.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/m4/libtool.m4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-aux/m4/ltoptions.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/m4/ltoptions.m4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-aux/m4/ltsugar.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/m4/ltsugar.m4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-aux/m4/ltversion.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/m4/ltversion.m4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-aux/m4/lt~obsolete.m4" beforeDir="false" afterPath="$PROJECT_DIR$/build-aux/m4/lt~obsolete.m4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/config.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/config.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.h.in" beforeDir="false" afterPath="$PROJECT_DIR$/config.h.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configure" beforeDir="false" afterPath="$PROJECT_DIR$/configure" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autom4te.cache/traces.3" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/traces.3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,6 +234,7 @@
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
@@ -260,8 +242,8 @@
     "cf.advertisement.text.overridden": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/jessim/dev/Tiger",
+    "git-widget-placeholder": "more__test",
+    "last_opened_file_path": "/home/joachim/Bureau/proj/Tiger",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -957,11 +939,6 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.all-am" />
@@ -1112,6 +1089,7 @@
       <workItem from="1773178871790" duration="4704000" />
       <workItem from="1773435581276" duration="2590000" />
       <workItem from="1773916084316" duration="1685000" />
+      <workItem from="1773926022640" duration="14314000" />
     </task>
     <servers />
   </component>

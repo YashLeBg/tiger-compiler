@@ -7,7 +7,7 @@
 #include <ast/libast.hh>
 #include <bind/libbind.hh>
 #include <parse/libparse.hh>
-
+#include <bind/binder.hh>
 const char* program_name = "test-parse";
 
 // Return true on correct binding.
@@ -16,6 +16,14 @@ static bool bound(const std::string& s)
   ast::ChunkList* d = parse::parse_unit(s);
   misc::error e;
   // FIXME: Some code was deleted here (Run the binder).
+  if(!d)
+  {
+      return false;
+  }
+  bind::Binder b;
+d->accept(b);
+e<<b.error_get();
+
   std::cout << *d << '\n';
   if (e)
     std::cerr << "error-->" << e << '\n';

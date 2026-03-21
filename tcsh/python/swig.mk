@@ -74,6 +74,48 @@ nodist_python_PYTHON += tiger_parse.py
 tiger_parse.py: $(tcdir)/tcsh/src/tiger_parse.i
 	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_parse-wrap.cc
 
+## Module: bind.
+pyexec_LTLIBRARIES += _tiger_bind.la
+nodist__tiger_bind_la_SOURCES = tiger_bind-wrap.cc
+_tiger_bind_la_LIBADD = $(AM_LIBADD)
+CLEANFILES += tiger_bind-wrap.cc tiger_bind.py tiger_bind.pyc
+tiger_bind-wrap.cc: $(tcdir)/tcsh/src/tiger_bind.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_bind-wrap.Tcc" -o tiger_bind-wrap.cc $(tcdir)/tcsh/src/tiger_bind.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_bind-wrap.Tcc" "$(DEPDIR)/tiger_bind-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_bind-wrap.Tcc"; exit 1; \
+	fi
+
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_bind-wrap.Pcc@am__quote@
+
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_bind-wrap.Pcc
+
+nodist_python_PYTHON += tiger_bind.py
+tiger_bind.py: $(tcdir)/tcsh/src/tiger_bind.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_bind-wrap.cc
+
+## Module: escapes.
+pyexec_LTLIBRARIES += _tiger_escapes.la
+nodist__tiger_escapes_la_SOURCES = tiger_escapes-wrap.cc
+_tiger_escapes_la_LIBADD = $(AM_LIBADD)
+CLEANFILES += tiger_escapes-wrap.cc tiger_escapes.py tiger_escapes.pyc
+tiger_escapes-wrap.cc: $(tcdir)/tcsh/src/tiger_escapes.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_escapes-wrap.Tcc" -o tiger_escapes-wrap.cc $(tcdir)/tcsh/src/tiger_escapes.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_escapes-wrap.Tcc" "$(DEPDIR)/tiger_escapes-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_escapes-wrap.Tcc"; exit 1; \
+	fi
+
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_escapes-wrap.Pcc@am__quote@
+
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_escapes-wrap.Pcc
+
+nodist_python_PYTHON += tiger_escapes.py
+tiger_escapes.py: $(tcdir)/tcsh/src/tiger_escapes.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_escapes-wrap.cc
+
 ## Module: misc.
 pyexec_LTLIBRARIES += _tiger_misc.la
 nodist__tiger_misc_la_SOURCES = tiger_misc-wrap.cc

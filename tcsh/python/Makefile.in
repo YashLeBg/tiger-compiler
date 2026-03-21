@@ -152,9 +152,15 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+_tiger_bind_la_DEPENDENCIES = $(AM_LIBADD)
+nodist__tiger_bind_la_OBJECTS = tiger_bind-wrap.lo
+_tiger_bind_la_OBJECTS = $(nodist__tiger_bind_la_OBJECTS)
 _tiger_common_la_DEPENDENCIES = $(AM_LIBADD)
 nodist__tiger_common_la_OBJECTS = tiger_common-wrap.lo
 _tiger_common_la_OBJECTS = $(nodist__tiger_common_la_OBJECTS)
+_tiger_escapes_la_DEPENDENCIES = $(AM_LIBADD)
+nodist__tiger_escapes_la_OBJECTS = tiger_escapes-wrap.lo
+_tiger_escapes_la_OBJECTS = $(nodist__tiger_escapes_la_OBJECTS)
 _tiger_misc_la_DEPENDENCIES = $(AM_LIBADD)
 nodist__tiger_misc_la_OBJECTS = tiger_misc-wrap.lo
 _tiger_misc_la_OBJECTS = $(nodist__tiger_misc_la_OBJECTS)
@@ -180,7 +186,9 @@ DEFAULT_INCLUDES =
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = ./$(DEPDIR)/tiger_ast-wrap.Plo \
+	./$(DEPDIR)/tiger_bind-wrap.Plo \
 	./$(DEPDIR)/tiger_common-wrap.Plo \
+	./$(DEPDIR)/tiger_escapes-wrap.Plo \
 	./$(DEPDIR)/tiger_misc-wrap.Plo \
 	./$(DEPDIR)/tiger_object-wrap.Plo \
 	./$(DEPDIR)/tiger_parse-wrap.Plo
@@ -204,7 +212,9 @@ am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(nodist__tiger_ast_la_SOURCES) \
+	$(nodist__tiger_bind_la_SOURCES) \
 	$(nodist__tiger_common_la_SOURCES) \
+	$(nodist__tiger_escapes_la_SOURCES) \
 	$(nodist__tiger_misc_la_SOURCES) \
 	$(nodist__tiger_object_la_SOURCES) \
 	$(nodist__tiger_parse_la_SOURCES)
@@ -578,26 +588,33 @@ top_srcdir = @top_srcdir@
 RUN = $(top_builddir)/tcsh/run
 RUN_IN = $(top_srcdir)/tcsh/run.in
 pyexec_LTLIBRARIES = _tiger_ast.la _tiger_object.la _tiger_parse.la \
-	_tiger_misc.la _tiger_common.la
+	_tiger_bind.la _tiger_escapes.la _tiger_misc.la \
+	_tiger_common.la
 AM_LDFLAGS = -avoid-version -module -shared
 AM_LIBADD = $(top_builddir)/src/libtc.la
 tcdir = $(top_srcdir)
 CLEANFILES = tiger_ast-wrap.cc tiger_ast.py tiger_ast.pyc \
 	tiger_object-wrap.cc tiger_object.py tiger_object.pyc \
 	tiger_parse-wrap.cc tiger_parse.py tiger_parse.pyc \
+	tiger_bind-wrap.cc tiger_bind.py tiger_bind.pyc \
+	tiger_escapes-wrap.cc tiger_escapes.py tiger_escapes.pyc \
 	tiger_misc-wrap.cc tiger_misc.py tiger_misc.pyc \
 	tiger_common-wrap.cc tiger_common.py tiger_common.pyc
 
 # The list of dependencies generated as a side-effect of running swig.
 SWIG_GENERATED_DEPS = 
 nodist_python_PYTHON = tiger_ast.py tiger_object.py tiger_parse.py \
-	tiger_misc.py tiger_common.py
+	tiger_bind.py tiger_escapes.py tiger_misc.py tiger_common.py
 nodist__tiger_ast_la_SOURCES = tiger_ast-wrap.cc
 _tiger_ast_la_LIBADD = $(AM_LIBADD)
 nodist__tiger_object_la_SOURCES = tiger_object-wrap.cc
 _tiger_object_la_LIBADD = $(AM_LIBADD)
 nodist__tiger_parse_la_SOURCES = tiger_parse-wrap.cc
 _tiger_parse_la_LIBADD = $(AM_LIBADD)
+nodist__tiger_bind_la_SOURCES = tiger_bind-wrap.cc
+_tiger_bind_la_LIBADD = $(AM_LIBADD)
+nodist__tiger_escapes_la_SOURCES = tiger_escapes-wrap.cc
+_tiger_escapes_la_LIBADD = $(AM_LIBADD)
 nodist__tiger_misc_la_SOURCES = tiger_misc-wrap.cc
 _tiger_misc_la_LIBADD = $(AM_LIBADD)
 nodist__tiger_common_la_SOURCES = tiger_common-wrap.cc
@@ -697,8 +714,14 @@ clean-pyexecLTLIBRARIES:
 _tiger_ast.la: $(_tiger_ast_la_OBJECTS) $(_tiger_ast_la_DEPENDENCIES) $(EXTRA__tiger_ast_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(pyexecdir) $(_tiger_ast_la_OBJECTS) $(_tiger_ast_la_LIBADD) $(LIBS)
 
+_tiger_bind.la: $(_tiger_bind_la_OBJECTS) $(_tiger_bind_la_DEPENDENCIES) $(EXTRA__tiger_bind_la_DEPENDENCIES) 
+	$(AM_V_CXXLD)$(CXXLINK) -rpath $(pyexecdir) $(_tiger_bind_la_OBJECTS) $(_tiger_bind_la_LIBADD) $(LIBS)
+
 _tiger_common.la: $(_tiger_common_la_OBJECTS) $(_tiger_common_la_DEPENDENCIES) $(EXTRA__tiger_common_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(pyexecdir) $(_tiger_common_la_OBJECTS) $(_tiger_common_la_LIBADD) $(LIBS)
+
+_tiger_escapes.la: $(_tiger_escapes_la_OBJECTS) $(_tiger_escapes_la_DEPENDENCIES) $(EXTRA__tiger_escapes_la_DEPENDENCIES) 
+	$(AM_V_CXXLD)$(CXXLINK) -rpath $(pyexecdir) $(_tiger_escapes_la_OBJECTS) $(_tiger_escapes_la_LIBADD) $(LIBS)
 
 _tiger_misc.la: $(_tiger_misc_la_OBJECTS) $(_tiger_misc_la_DEPENDENCIES) $(EXTRA__tiger_misc_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(pyexecdir) $(_tiger_misc_la_OBJECTS) $(_tiger_misc_la_LIBADD) $(LIBS)
@@ -716,7 +739,9 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_ast-wrap.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_bind-wrap.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_common-wrap.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_escapes-wrap.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_misc-wrap.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_object-wrap.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_parse-wrap.Plo@am__quote@ # am--include-marker
@@ -1178,7 +1203,9 @@ clean-am: clean-generic clean-libtool clean-pyexecLTLIBRARIES \
 
 distclean: distclean-am
 		-rm -f ./$(DEPDIR)/tiger_ast-wrap.Plo
+	-rm -f ./$(DEPDIR)/tiger_bind-wrap.Plo
 	-rm -f ./$(DEPDIR)/tiger_common-wrap.Plo
+	-rm -f ./$(DEPDIR)/tiger_escapes-wrap.Plo
 	-rm -f ./$(DEPDIR)/tiger_misc-wrap.Plo
 	-rm -f ./$(DEPDIR)/tiger_object-wrap.Plo
 	-rm -f ./$(DEPDIR)/tiger_parse-wrap.Plo
@@ -1228,7 +1255,9 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-am
 		-rm -f ./$(DEPDIR)/tiger_ast-wrap.Plo
+	-rm -f ./$(DEPDIR)/tiger_bind-wrap.Plo
 	-rm -f ./$(DEPDIR)/tiger_common-wrap.Plo
+	-rm -f ./$(DEPDIR)/tiger_escapes-wrap.Plo
 	-rm -f ./$(DEPDIR)/tiger_misc-wrap.Plo
 	-rm -f ./$(DEPDIR)/tiger_object-wrap.Plo
 	-rm -f ./$(DEPDIR)/tiger_parse-wrap.Plo
@@ -1320,6 +1349,32 @@ tiger_parse-wrap.cc: $(tcdir)/tcsh/src/tiger_parse.i
 @AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_parse-wrap.Pcc
 tiger_parse.py: $(tcdir)/tcsh/src/tiger_parse.i
 	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_parse-wrap.cc
+tiger_bind-wrap.cc: $(tcdir)/tcsh/src/tiger_bind.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_bind-wrap.Tcc" -o tiger_bind-wrap.cc $(tcdir)/tcsh/src/tiger_bind.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_bind-wrap.Tcc" "$(DEPDIR)/tiger_bind-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_bind-wrap.Tcc"; exit 1; \
+	fi
+
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_bind-wrap.Pcc@am__quote@
+
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_bind-wrap.Pcc
+tiger_bind.py: $(tcdir)/tcsh/src/tiger_bind.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_bind-wrap.cc
+tiger_escapes-wrap.cc: $(tcdir)/tcsh/src/tiger_escapes.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_escapes-wrap.Tcc" -o tiger_escapes-wrap.cc $(tcdir)/tcsh/src/tiger_escapes.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_escapes-wrap.Tcc" "$(DEPDIR)/tiger_escapes-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_escapes-wrap.Tcc"; exit 1; \
+	fi
+
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_escapes-wrap.Pcc@am__quote@
+
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_escapes-wrap.Pcc
+tiger_escapes.py: $(tcdir)/tcsh/src/tiger_escapes.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_escapes-wrap.cc
 tiger_misc-wrap.cc: $(tcdir)/tcsh/src/tiger_misc.i
 	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_misc-wrap.Tcc" -o tiger_misc-wrap.cc $(tcdir)/tcsh/src/tiger_misc.i; \
 	then \

@@ -13,7 +13,7 @@
 #include <parse/tasks.hh>
 #include <parse/tiger-driver.hh>
 #include <parse/tweast.hh>
-
+#include <ast/let-exp.hh>
 // Define exported parse functions.
 namespace parse
 {
@@ -79,13 +79,13 @@ namespace parse
     td.enable_extensions();
     td.enable_object_extensions();
     ast_type res = td.parse(input);
-    if (td.error_get())
+    /*if (td.error_get())
       {
         misc::error e;
         e << "Failed to resolve Tweast:" << misc::incendl << input;
         e << "Got: " << td.error_get();
         e.ice_here();
-      }
+      }*/
     return res;
   }
 
@@ -97,17 +97,43 @@ namespace parse
     td.error_get().ice_on_error_here();
     return res;
   }
-
-  ast::ChunkList* parse_unit(const std::string& str,
+ast::ChunkList* parse_unit(const std::string& str,
+                           bool enable_object_extensions_p)
+{
+  (void)enable_object_extensions_p;
+  Tweast rewrite;
+  rewrite << "function _main() = (" << str << "; ())";
+  ast_type tree = parse(rewrite);
+  ast::ChunkList** chunks = std::get_if<ast::ChunkList*>(&tree);
+  if (chunks && *chunks)
+    return *chunks;
+  ast::Exp** exp = std::get_if<ast::Exp*>(&tree);
+  if (exp && *exp)
+    {
+      ast::LetExp* let = dynamic_cast<ast::LetExp*>(*exp);
+      if (let)
+        return &let->chunks_get();
+    }
+  return nullptr;
+}
+ /* ast::ChunkList* parse_unit(const std::string& str,
                              bool enable_object_extensions_p)
-  {
-    TigerDriver td;
-    td.enable_object_extensions(enable_object_extensions_p);
-    std::string rewrite = "function _main() = (" + str + "; ())";
-    ast::ChunkList* res = td.parse(rewrite);
-    td.error_get().ice_on_error_here();
-    return res;
-  }
+  {(void)enable_object_extensions_p;
+    Tweast rewrite;
+    rewrite << "function _main() = (" << str << "; ())";
+    ast_type tree =parse(rewrite);
+    ast::ChunkList** chunks = std::get_if<ast::ChunkList*>(&tree);
+    ast::Exp** exp = std::get_if<ast::Exp*>(&tree);
+  std::cerr << "chunks=" << (chunks && *chunks ? "OK" : "null")
+            << " exp=" << (exp && *exp ? "OK" : "null") << '\n';
+  //  if(res &&*res)
+    //{
+      //  return *res;
+   // }
+   if (chunks && *chunks)
+    return *chunks;
+  return nullptr;
+  }*/
 
   // Parse a set of declarations.
   ast::ChunkInterface* parse_chunks(Tweast& in)

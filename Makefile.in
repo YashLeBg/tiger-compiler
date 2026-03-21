@@ -100,7 +100,7 @@ check_PROGRAMS = lib/misc/test-deref$(EXEEXT) \
 	lib/misc/test-unique$(EXEEXT) lib/misc/test-variant$(EXEEXT) \
 	lib/misc/test-xalloc$(EXEEXT) src/ast/test-ast$(EXEEXT) \
 	src/parse/test-parse$(EXEEXT) src/parse/test-tweast$(EXEEXT) \
-	src/object/test-parse$(EXEEXT)
+	src/object/test-parse$(EXEEXT) src/bind/test-bind$(EXEEXT)
 @ENABLE_TCSH_TRUE@am__append_1 = tcsh
 bin_PROGRAMS = src/tc$(EXEEXT)
 subdir = .
@@ -205,7 +205,8 @@ am_src_libtc_la_OBJECTS = src/common.lo src/task/task.lo \
 	src/ast/dumper-dot.lo src/ast/pretty-printer.lo \
 	src/ast/libast.lo $(am__objects_3) $(am__objects_4) \
 	src/parse/libparse.lo src/parse/tiger-driver.lo \
-	src/parse/tweast.lo src/object/libobject.lo
+	src/parse/tweast.lo src/object/libobject.lo src/bind/binder.lo \
+	src/bind/libbind.lo src/bind/renamer.lo
 nodist_src_libtc_la_OBJECTS = src/version.lo src/parse/prelude.lo
 src_libtc_la_OBJECTS = $(am_src_libtc_la_OBJECTS) \
 	$(nodist_src_libtc_la_OBJECTS)
@@ -268,6 +269,9 @@ lib_misc_test_xalloc_DEPENDENCIES = lib/misc/libmisc.la
 src_ast_test_ast_SOURCES = src/ast/test-ast.cc
 src_ast_test_ast_OBJECTS = src/ast/test-ast.$(OBJEXT)
 src_ast_test_ast_DEPENDENCIES = src/libtc.la
+src_bind_test_bind_SOURCES = src/bind/test-bind.cc
+src_bind_test_bind_OBJECTS = src/bind/test-bind.$(OBJEXT)
+src_bind_test_bind_DEPENDENCIES = src/libtc.la
 src_object_test_parse_SOURCES = src/object/test-parse.cc
 src_object_test_parse_OBJECTS = src/object/test-parse.$(OBJEXT)
 src_object_test_parse_DEPENDENCIES = src/libtc.la
@@ -279,7 +283,8 @@ src_parse_test_tweast_SOURCES = src/parse/test-tweast.cc
 src_parse_test_tweast_OBJECTS = src/parse/test-tweast.$(OBJEXT)
 src_parse_test_tweast_DEPENDENCIES = src/libtc.la
 am__objects_5 = src/task/tasks.$(OBJEXT) src/ast/tasks.$(OBJEXT) \
-	src/parse/tasks.$(OBJEXT) src/object/tasks.$(OBJEXT)
+	src/parse/tasks.$(OBJEXT) src/object/tasks.$(OBJEXT) \
+	src/bind/tasks.$(OBJEXT)
 dist_src_tc_OBJECTS = $(am__objects_5) src/tc.$(OBJEXT)
 src_tc_OBJECTS = $(dist_src_tc_OBJECTS)
 src_tc_DEPENDENCIES = src/libtc.la
@@ -344,6 +349,9 @@ am__depfiles_remade = lib/misc/$(DEPDIR)/contract.Plo \
 	src/ast/$(DEPDIR)/test-ast.Po src/ast/$(DEPDIR)/ty.Plo \
 	src/ast/$(DEPDIR)/type-dec.Plo src/ast/$(DEPDIR)/var-dec.Plo \
 	src/ast/$(DEPDIR)/var.Plo src/ast/$(DEPDIR)/while-exp.Plo \
+	src/bind/$(DEPDIR)/binder.Plo src/bind/$(DEPDIR)/libbind.Plo \
+	src/bind/$(DEPDIR)/renamer.Plo src/bind/$(DEPDIR)/tasks.Po \
+	src/bind/$(DEPDIR)/test-bind.Po \
 	src/object/$(DEPDIR)/libobject.Plo \
 	src/object/$(DEPDIR)/tasks.Po \
 	src/object/$(DEPDIR)/test-parse.Po \
@@ -411,8 +419,9 @@ SOURCES = $(lib_misc_libmisc_la_SOURCES) $(src_libtc_la_SOURCES) \
 	lib/misc/test-symbol.cc lib/misc/test-timer.cc \
 	lib/misc/test-unique.cc lib/misc/test-variant.cc \
 	lib/misc/test-xalloc.cc src/ast/test-ast.cc \
-	src/object/test-parse.cc src/parse/test-parse.cc \
-	src/parse/test-tweast.cc $(dist_src_tc_SOURCES)
+	src/bind/test-bind.cc src/object/test-parse.cc \
+	src/parse/test-parse.cc src/parse/test-tweast.cc \
+	$(dist_src_tc_SOURCES)
 DIST_SOURCES = $(lib_misc_libmisc_la_SOURCES) $(src_libtc_la_SOURCES) \
 	lib/misc/test-deref.cc lib/misc/test-error.cc \
 	lib/misc/test-escape.cc lib/misc/test-graph.cc \
@@ -420,9 +429,9 @@ DIST_SOURCES = $(lib_misc_libmisc_la_SOURCES) $(src_libtc_la_SOURCES) \
 	lib/misc/test-separator.cc lib/misc/test-symbol.cc \
 	lib/misc/test-timer.cc lib/misc/test-unique.cc \
 	lib/misc/test-variant.cc lib/misc/test-xalloc.cc \
-	src/ast/test-ast.cc src/object/test-parse.cc \
-	src/parse/test-parse.cc src/parse/test-tweast.cc \
-	$(dist_src_tc_SOURCES)
+	src/ast/test-ast.cc src/bind/test-bind.cc \
+	src/object/test-parse.cc src/parse/test-parse.cc \
+	src/parse/test-tweast.cc $(dist_src_tc_SOURCES)
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
 	install-data-recursive install-dvi-recursive \
@@ -647,9 +656,10 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/build-aux/local.am \
 	$(srcdir)/config.h.in $(srcdir)/data/local.am \
 	$(srcdir)/doc/local.am $(srcdir)/lib/local.am \
 	$(srcdir)/lib/misc/local.am $(srcdir)/src/ast/ast-nodes.mk \
-	$(srcdir)/src/ast/local.am $(srcdir)/src/local.am \
-	$(srcdir)/src/object/local.am $(srcdir)/src/parse/local.am \
-	$(srcdir)/src/task/local.am $(top_srcdir)/build-aux/ar-lib \
+	$(srcdir)/src/ast/local.am $(srcdir)/src/bind/local.am \
+	$(srcdir)/src/local.am $(srcdir)/src/object/local.am \
+	$(srcdir)/src/parse/local.am $(srcdir)/src/task/local.am \
+	$(top_srcdir)/build-aux/ar-lib \
 	$(top_srcdir)/build-aux/bin/bison++.in \
 	$(top_srcdir)/build-aux/compile \
 	$(top_srcdir)/build-aux/config.guess \
@@ -971,7 +981,10 @@ src_libtc_la_SOURCES = src/version.hh src/common.cc src/task/fwd.hh \
 	src/parse/tweast.hh src/parse/tweast.cc src/parse/tweast.hxx \
 	src/parse/tiger-factory.hh src/parse/tiger-factory.hxx \
 	src/object/libobject.hh src/object/libobject.cc \
-	src/object/libobject.hxx src/object/fwd.hh
+	src/object/libobject.hxx src/object/fwd.hh src/bind/binder.hh \
+	src/bind/binder.hxx src/bind/binder.cc src/bind/libbind.hh \
+	src/bind/libbind.cc src/bind/renamer.hh src/bind/renamer.hxx \
+	src/bind/renamer.cc
 nodist_src_libtc_la_SOURCES = src/version.cc src/parse/prelude.cc
 src_libtc_la_LDFLAGS = $(BOOST_PROGRAM_OPTIONS_LDFLAGS) -lreflex
 src_libtc_la_LIBADD = \
@@ -987,7 +1000,8 @@ dist_src_tc_SOURCES = \
 src_tc_LDADD = src/libtc.la
 TASKS = src/task/tasks.hh src/task/tasks.cc src/ast/tasks.hh \
 	src/ast/tasks.cc src/parse/tasks.hh src/parse/tasks.cc \
-	src/object/tasks.hh src/object/tasks.cc
+	src/object/tasks.hh src/object/tasks.cc src/bind/tasks.hh \
+	src/bind/tasks.cc
 ast_basedir = src/ast/
 ast_srcdir = $(srcdir)/src/ast
 AST_NODES = \
@@ -1059,6 +1073,7 @@ src_parse_test_parse_CPPFLAGS = $(AM_CPPFLAGS) -DPKGDATADIR=\"$(pkgdatadir)\"
 src_parse_test_parse_LDADD = src/libtc.la
 src_parse_test_tweast_LDADD = src/libtc.la
 src_object_test_parse_LDADD = src/libtc.la
+src_bind_test_bind_LDADD = src/libtc.la
 DOXYGEN = doxygen
 edit = sed -e "s|@ID@|$$Id|"                                                   \
            -e 's,@PACKAGE_NAME\@,$(PACKAGE_NAME),g'                            \
@@ -1075,7 +1090,7 @@ all: $(BUILT_SOURCES) config.h
 .SUFFIXES: .cc .lo .log .o .obj .test .test$(EXEEXT) .trs
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(srcdir)/build-aux/local.am $(srcdir)/data/local.am $(srcdir)/lib/local.am $(srcdir)/lib/misc/local.am $(srcdir)/src/local.am $(srcdir)/src/task/local.am $(srcdir)/src/ast/local.am $(srcdir)/src/ast/ast-nodes.mk $(srcdir)/src/parse/local.am $(srcdir)/src/object/local.am $(srcdir)/doc/local.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(srcdir)/build-aux/local.am $(srcdir)/data/local.am $(srcdir)/lib/local.am $(srcdir)/lib/misc/local.am $(srcdir)/src/local.am $(srcdir)/src/task/local.am $(srcdir)/src/ast/local.am $(srcdir)/src/ast/ast-nodes.mk $(srcdir)/src/parse/local.am $(srcdir)/src/object/local.am $(srcdir)/src/bind/local.am $(srcdir)/doc/local.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -1097,7 +1112,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles);; \
 	esac;
-$(srcdir)/build-aux/local.am $(srcdir)/data/local.am $(srcdir)/lib/local.am $(srcdir)/lib/misc/local.am $(srcdir)/src/local.am $(srcdir)/src/task/local.am $(srcdir)/src/ast/local.am $(srcdir)/src/ast/ast-nodes.mk $(srcdir)/src/parse/local.am $(srcdir)/src/object/local.am $(srcdir)/doc/local.am $(am__empty):
+$(srcdir)/build-aux/local.am $(srcdir)/data/local.am $(srcdir)/lib/local.am $(srcdir)/lib/misc/local.am $(srcdir)/src/local.am $(srcdir)/src/task/local.am $(srcdir)/src/ast/local.am $(srcdir)/src/ast/ast-nodes.mk $(srcdir)/src/parse/local.am $(srcdir)/src/object/local.am $(srcdir)/src/bind/local.am $(srcdir)/doc/local.am $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
@@ -1394,6 +1409,18 @@ src/object/$(DEPDIR)/$(am__dirstamp):
 	@: > src/object/$(DEPDIR)/$(am__dirstamp)
 src/object/libobject.lo: src/object/$(am__dirstamp) \
 	src/object/$(DEPDIR)/$(am__dirstamp)
+src/bind/$(am__dirstamp):
+	@$(MKDIR_P) src/bind
+	@: > src/bind/$(am__dirstamp)
+src/bind/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/bind/$(DEPDIR)
+	@: > src/bind/$(DEPDIR)/$(am__dirstamp)
+src/bind/binder.lo: src/bind/$(am__dirstamp) \
+	src/bind/$(DEPDIR)/$(am__dirstamp)
+src/bind/libbind.lo: src/bind/$(am__dirstamp) \
+	src/bind/$(DEPDIR)/$(am__dirstamp)
+src/bind/renamer.lo: src/bind/$(am__dirstamp) \
+	src/bind/$(DEPDIR)/$(am__dirstamp)
 src/version.lo: src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
 src/parse/prelude.lo: src/parse/$(am__dirstamp) \
 	src/parse/$(DEPDIR)/$(am__dirstamp)
@@ -1478,6 +1505,12 @@ src/ast/test-ast.$(OBJEXT): src/ast/$(am__dirstamp) \
 src/ast/test-ast$(EXEEXT): $(src_ast_test_ast_OBJECTS) $(src_ast_test_ast_DEPENDENCIES) $(EXTRA_src_ast_test_ast_DEPENDENCIES) src/ast/$(am__dirstamp)
 	@rm -f src/ast/test-ast$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(src_ast_test_ast_OBJECTS) $(src_ast_test_ast_LDADD) $(LIBS)
+src/bind/test-bind.$(OBJEXT): src/bind/$(am__dirstamp) \
+	src/bind/$(DEPDIR)/$(am__dirstamp)
+
+src/bind/test-bind$(EXEEXT): $(src_bind_test_bind_OBJECTS) $(src_bind_test_bind_DEPENDENCIES) $(EXTRA_src_bind_test_bind_DEPENDENCIES) src/bind/$(am__dirstamp)
+	@rm -f src/bind/test-bind$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(src_bind_test_bind_OBJECTS) $(src_bind_test_bind_LDADD) $(LIBS)
 src/object/test-parse.$(OBJEXT): src/object/$(am__dirstamp) \
 	src/object/$(DEPDIR)/$(am__dirstamp)
 
@@ -1504,6 +1537,8 @@ src/parse/tasks.$(OBJEXT): src/parse/$(am__dirstamp) \
 	src/parse/$(DEPDIR)/$(am__dirstamp)
 src/object/tasks.$(OBJEXT): src/object/$(am__dirstamp) \
 	src/object/$(DEPDIR)/$(am__dirstamp)
+src/bind/tasks.$(OBJEXT): src/bind/$(am__dirstamp) \
+	src/bind/$(DEPDIR)/$(am__dirstamp)
 src/tc.$(OBJEXT): src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
 
 src/tc$(EXEEXT): $(src_tc_OBJECTS) $(src_tc_DEPENDENCIES) $(EXTRA_src_tc_DEPENDENCIES) src/$(am__dirstamp)
@@ -1518,6 +1553,8 @@ mostlyclean-compile:
 	-rm -f src/*.lo
 	-rm -f src/ast/*.$(OBJEXT)
 	-rm -f src/ast/*.lo
+	-rm -f src/bind/*.$(OBJEXT)
+	-rm -f src/bind/*.lo
 	-rm -f src/object/*.$(OBJEXT)
 	-rm -f src/object/*.lo
 	-rm -f src/parse/*.$(OBJEXT)
@@ -1592,6 +1629,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/var-dec.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/var.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/while-exp.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/bind/$(DEPDIR)/binder.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/bind/$(DEPDIR)/libbind.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/bind/$(DEPDIR)/renamer.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/bind/$(DEPDIR)/tasks.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/bind/$(DEPDIR)/test-bind.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/object/$(DEPDIR)/libobject.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/object/$(DEPDIR)/tasks.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/object/$(DEPDIR)/test-parse.Po@am__quote@ # am--include-marker
@@ -1682,6 +1724,7 @@ clean-libtool:
 	-rm -rf lib/misc/.libs lib/misc/_libs
 	-rm -rf src/.libs src/_libs
 	-rm -rf src/ast/.libs src/ast/_libs
+	-rm -rf src/bind/.libs src/bind/_libs
 	-rm -rf src/object/.libs src/object/_libs
 	-rm -rf src/parse/.libs src/parse/_libs
 	-rm -rf src/task/.libs src/task/_libs
@@ -2069,6 +2112,13 @@ src/object/test-parse.log: src/object/test-parse$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+src/bind/test-bind.log: src/bind/test-bind$(EXEEXT)
+	@p='src/bind/test-bind$(EXEEXT)'; \
+	b='src/bind/test-bind'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 .test.log:
 	@p='$<'; \
 	$(am__set_b); \
@@ -2336,6 +2386,8 @@ distclean-generic:
 	-rm -f src/$(am__dirstamp)
 	-rm -f src/ast/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/ast/$(am__dirstamp)
+	-rm -f src/bind/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/bind/$(am__dirstamp)
 	-rm -f src/object/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/object/$(am__dirstamp)
 	-rm -f src/parse/$(DEPDIR)/$(am__dirstamp)
@@ -2420,6 +2472,11 @@ distclean: distclean-recursive
 	-rm -f src/ast/$(DEPDIR)/var-dec.Plo
 	-rm -f src/ast/$(DEPDIR)/var.Plo
 	-rm -f src/ast/$(DEPDIR)/while-exp.Plo
+	-rm -f src/bind/$(DEPDIR)/binder.Plo
+	-rm -f src/bind/$(DEPDIR)/libbind.Plo
+	-rm -f src/bind/$(DEPDIR)/renamer.Plo
+	-rm -f src/bind/$(DEPDIR)/tasks.Po
+	-rm -f src/bind/$(DEPDIR)/test-bind.Po
 	-rm -f src/object/$(DEPDIR)/libobject.Plo
 	-rm -f src/object/$(DEPDIR)/tasks.Po
 	-rm -f src/object/$(DEPDIR)/test-parse.Po
@@ -2554,6 +2611,11 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f src/ast/$(DEPDIR)/var-dec.Plo
 	-rm -f src/ast/$(DEPDIR)/var.Plo
 	-rm -f src/ast/$(DEPDIR)/while-exp.Plo
+	-rm -f src/bind/$(DEPDIR)/binder.Plo
+	-rm -f src/bind/$(DEPDIR)/libbind.Plo
+	-rm -f src/bind/$(DEPDIR)/renamer.Plo
+	-rm -f src/bind/$(DEPDIR)/tasks.Po
+	-rm -f src/bind/$(DEPDIR)/test-bind.Po
 	-rm -f src/object/$(DEPDIR)/libobject.Plo
 	-rm -f src/object/$(DEPDIR)/tasks.Po
 	-rm -f src/object/$(DEPDIR)/test-parse.Po
