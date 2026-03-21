@@ -343,6 +343,12 @@ chunks:
     $$ = $5;
     $$->splice_front(*metavar<ast::ChunkList>(td, $3));
   }
+| IMPORT STRING chunks {
+    ast::ChunkList* imported = td.parse_import($2, @$);
+    $$ = $3;
+    if (imported)
+      $$->splice_front(*imported);
+  }
 ;
 
 varchunk:
