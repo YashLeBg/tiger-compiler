@@ -113,8 +113,15 @@ namespace bind
   void Binder::operator()(ast::FunctionDec& e)
   {
     scope_begin();
+    std::set<misc::symbol> seen;
     for (auto* formal : e.formals_get())
-      operator()(*formal);
+      {
+        if (seen.find(formal->name_get()) != seen.end())
+          error_ << misc::error::error_type::bind << formal->location_get() << ": redefinition: " << formal->name_get() << std::endl;
+        else
+          seen.insert(formal->name_get());
+        operator()(*formal);
+      }
     if (e.result_get())
       e.result_get()->accept(*this);
     if (e.body_get())
