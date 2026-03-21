@@ -3,8 +3,6 @@
  ** \brief Implementation for bind/binder.hh.
  */
 
-#include "binder.hh"
-
 #include <ast/all.hh>
 #include <bind/binder.hh>
 
