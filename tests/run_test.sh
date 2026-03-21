@@ -3,7 +3,7 @@
 TIGFILE=$1
 
 if echo "$TIGFILE" | grep -q "/good/"; then
-  $TC --bind "$TIGFILE" 2>/dev/null
+  $TC --bindings-compute "$TIGFILE" 2>/dev/null
   if [ $? -eq 0 ]; then
     exit 0
   else
@@ -24,7 +24,7 @@ elif echo "$TIGFILE" | grep -q "/syntax/"; then
     exit 1
   fi
 elif echo "$TIGFILE" | grep -q "/bind/"; then
-  $TC --bind "$TIGFILE" 2>/dev/null
+  $TC --bindings-compute "$TIGFILE" 2>/dev/null
   if [ $? -eq 4 ]; then
     exit 0
   else

@@ -136,6 +136,10 @@ id_ext  _[a-zA-Z][a-zA-Z0-9_]*
 //ps:checextension check if u r running your compiler with options allowing using of those words.
 
 {id}  {return TOKEN_VAL(ID,misc::symbol(text()));}  //just for return the name of function haishi variable
+"_cast"     {CHECK_EXTENSION(); return TOKEN(CAST);}    //used for convert a type to another else (casting bro...)
+"_chunks"   {CHECK_EXTENSION(); return TOKEN(CHUNKS);}  //use for testing : injecting some declarations blocks in the ast.
+"_exp"      {CHECK_EXTENSION(); return TOKEN(EXP);}
+"_namety"   {CHECK_EXTENSION(); return TOKEN(NAMETY);}  //use for tweast : its to assigned a type to a number and using the number instead.
 {id_ext}  {
     if (!td.enable_extensions_p_)
       td.error_ << misc::error::error_type::scan
@@ -144,11 +148,6 @@ id_ext  _[a-zA-Z][a-zA-Z0-9_]*
                 << misc::escape(text()) << "'\n";
     return TOKEN_VAL(ID, misc::symbol(text()));
   } //same for external id begning with _
-"_cast"     {CHECK_EXTENSION(); return TOKEN(CAST);}    //used for convert a type to another else (casting bro...)
-
-"_chunks"   {CHECK_EXTENSION(); return TOKEN(CHUNKS);}  //use for testing : injecting some declarations blocks in the ast.
-
-"_namety"   {CHECK_EXTENSION(); return TOKEN(NAMETY);}  //use for tweast : its to assigned a type to a number and using the number instead.
 
 "/*"        {nb_coms=1;start(SC_COMMENT);}//That part is just multiple line commentary scanner send error if ther is needed.
 <SC_COMMENT>{
