@@ -240,12 +240,14 @@ program:
    { td.ast_ = $1; }
 | /* Parsing an imported file.  */
   chunks
-   { td.ast_ = make_LetExp(@$, $1, make_SeqExp(@$, make_exps_type())); }
+   { td.ast_ = $1; }
 ;
 
+%token EXP "_exp";
 exp:
   INT
    { $$ = make_IntExp(@$, $1); }
+| EXP "(" INT ")"               { $$ = metavar<ast::Exp>(td, $3); }
   // FIXME: Some code was deleted here (More rules).
 //all that block defines all the ways on how an expression can be wrote in tiger  and how to tuurn it on cpp object
 // "is it that symbole?" ->     {cpp code that will be executed } $$=rule res,function, @$=localisation, X element
@@ -255,7 +257,7 @@ exp:
 | LPAREN exps RPAREN                { $$ = make_SeqExp(@$, $2); }
 | ID LPAREN args RPAREN             { $$ = make_CallExp(@$, $1, $3); }
 | lvalue DOT ID LPAREN args RPAREN  { $$ = make_MethodCallExp(@$, $3, $5, $1); }
-//| typeid LBRACE recfields RBRACE    { $$ = make_RecordExp(@$, $1, $3); }
+| typeid LBRACE recfields RBRACE    { $$ = make_RecordExp(@$, $1, $3); }
 | ID LBRACK exp RBRACK OF exp                 { $$ = make_ArrayExp(@$, make_NameTy(@1, $1), $3, $6); }
 | NAMETY "(" INT ")" LBRACK exp RBRACK OF exp { $$ = make_ArrayExp(@$, metavar<ast::NameTy>(td, $3), $6, $9); }
 | lvalue ASSIGN exp                 { $$ = make_AssignExp(@$, $1, $3); }
@@ -337,6 +339,10 @@ chunks:
 | tychunk   chunks        { $$ = $2; $$->push_front($1); }
 | varchunk  chunks        { $$ = $2; $$->push_front($1); }
 | funchunk  chunks        { $$ = $2; $$->push_front($1); }
+| CHUNKS "(" INT ")" chunks {
+    $$ = $5;
+    $$->splice_front(*metavar<ast::ChunkList>(td, $3));
+  }
 ;
 
 varchunk:
@@ -437,6 +443,6 @@ typeid:
 void
 parse::parser::error(const location_type& l, const std::string& m)
 {
-  // FIXME: Some code was deleted here.
-  td.error_ << l << ": " << m << std::endl;
+  // FIXED: Some code was deleted here.
+  td.error_ << misc::error::error_type::parse << l << ": " << m << std::endl;
 }
