@@ -1,5 +1,3 @@
-TC = $(top_builddir)/src/tc
-
 EXTRA_DIST = \
   good/array-of-alias.tig \
   good/array.tig \
@@ -150,5 +148,8 @@ TESTS = \
   type/types-endless-recursion.tig \
   type/unconstrained-nil.tig
 
+TC = $(top_builddir)/src/tc
+
+TESTS_ENVIRONMENT = TC="$(TC)"
 LOG_COMPILER = $(srcdir)/run_test.sh
-TESTS_ENVIRONMENT=TC= $(TC)
+
