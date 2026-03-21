@@ -1,0 +1,9 @@
+a + b
+let
+  function f(var a : int, var b : string) : int = 
+    a
+  
+in
+  (a)
+end
+PASS src/parse/test-parse (exit status: 0)

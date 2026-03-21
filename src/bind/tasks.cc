@@ -17,6 +17,10 @@ namespace bind::tasks
     task_error() << bind::bind(*ast::tasks::the_program);
     task_error().exit_on_error();
   }
+void rename_compute()
+  {
+    bind::rename(*ast::tasks::the_program);
+  }
 
   void bound() {}
 

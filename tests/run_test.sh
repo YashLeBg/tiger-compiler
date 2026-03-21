@@ -1,7 +1,6 @@
 #!/bin/sh
 
-TC=$1
-TIGFILE=$2
+TIGFILE=$1
 
 if echo "$TIGFILE" | grep -q "/good/"; then
   $TC --bind "$TIGFILE" 2>/dev/null

@@ -26,5 +26,8 @@ namespace bind::tasks
   // Check that bindings have been computed
   TASK_DECLARE("bound", "check bindings", bound,
                "bindings-compute");
+  //the one to rename identifiers  
+  TASK_DECLARE("rename", "rename identifiers", rename_compute,
+               "bindings-compute");
 
 } // namespace bind::tasks

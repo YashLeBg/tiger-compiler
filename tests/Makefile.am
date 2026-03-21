@@ -151,4 +151,4 @@ TESTS = \
   type/unconstrained-nil.tig
 
 LOG_COMPILER = $(srcdir)/run_test.sh
-LOG_COMPILER_FLAGS = $(TC)
+TESTS_ENVIRONMENT=TC= $(TC)

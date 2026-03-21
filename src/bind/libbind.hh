@@ -12,5 +12,6 @@ namespace bind
 {
   // Bind the chunk.
   misc::error bind(ast::ChunkList& e);
+void rename(ast::Ast& e);
 
 } // namespace bind

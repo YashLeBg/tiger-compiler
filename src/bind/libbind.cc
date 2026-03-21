@@ -5,7 +5,7 @@
 
 #include <bind/binder.hh>
 #include <bind/libbind.hh>
-
+#include <bind/renamer.cc>
 namespace bind
 {
   // function to
@@ -14,6 +14,11 @@ namespace bind
     Binder b;
     b(e);
     return b.error_get();
+  }
+void rename(ast::Ast& e)
+  {
+    Renamer rename_visitor;
+    rename_visitor(e);
   }
 
 } // namespace bind
