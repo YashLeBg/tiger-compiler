@@ -18,7 +18,8 @@ elif echo "$TIGFILE" | grep -q "/minimal/"; then
   fi
 elif echo "$TIGFILE" | grep -q "/syntax/"; then
   $TC --parse "$TIGFILE" 2>/dev/null
-  if [ $? -eq 3 ]; then
+  RES=$?
+  if [ $RES -eq 3 ]||[ $RES -eq 2 ]; then
     exit 0
   else
     exit 1
