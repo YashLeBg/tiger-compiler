@@ -207,7 +207,7 @@ namespace ast
           ostr_ << " /* " << static_cast<const void*>(&e) << " */";
         if (e.type_name_get())
           ostr_ << " : " << *e.type_name_get();
-        ostr_ << " := " << *e.init_get();
+        ostr_ << " := " << *e.init_get() << '\n';
       }
     else
       {
@@ -244,9 +244,13 @@ namespace ast
     {
       ostr_ << " : " << *e.result_get();
     }
-    if (e.body_get()) 
+    if (e.body_get())
     {
       ostr_ << " = " << misc::incendl << *e.body_get() << misc::decendl;
+    }
+    else
+    {
+      ostr_ << '\n';
     }
   }
 
@@ -256,7 +260,7 @@ namespace ast
     ostr_ << "type " << e.name_get();
     if (bindings_display(ostr_))
       ostr_ << " /* " << static_cast<const void*>(&e) << " */";
-    ostr_ << " = " << e.ty_get();
+    ostr_ << " = " << e.ty_get() << '\n';
   }
 
   // int 
