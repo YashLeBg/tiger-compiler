@@ -38,7 +38,12 @@ namespace bind
       {
         auto dup = seen.find(dec->name_get());
         if (dup != seen.end())
-          error_ << misc::error::error_type::bind<< dec->location_get()<< ": redefinition: " << dec->name_get() << std::endl;
+          {
+            error_ << misc::error::error_type::bind << dec->location_get()
+                   << ": redefinition: " << dec->name_get() << '\n';
+            error_ << misc::error::error_type::bind << dup->second->location_get()
+                   << ": first definition\n";
+          }
         else
           seen.emplace(dec->name_get(), dec);
         map.put(dec->name_get(), const_cast<D*>(dec));

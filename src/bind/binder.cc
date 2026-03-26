@@ -6,6 +6,7 @@
 #include <ast/all.hh>
 #include <bind/binder.hh>
 
+#include <map>
 #include <ostream>
 
 #include <misc/contract.hh>
@@ -73,6 +74,8 @@ namespace bind
   {
     if (loop_ == nullptr)
       error_ << misc::error::error_type::bind << e.location_get() << ": break outside of any loop" << std::endl;
+    else
+      e.def_set(loop_);
   }
 
   void Binder::operator()(ast::NameTy& e)
@@ -111,13 +114,19 @@ namespace bind
   void Binder::operator()(ast::FunctionDec& e)
   {
     scope_begin();
-    std::set<misc::symbol> seen;
+    std::map<misc::symbol, const ast::VarDec*> seen;
     for (auto* formal : e.formals_get())
       {
-        if (seen.find(formal->name_get()) != seen.end())
-          error_ << misc::error::error_type::bind << formal->location_get() << ": redefinition: " << formal->name_get() << std::endl;
+        auto dup = seen.find(formal->name_get());
+        if (dup != seen.end())
+          {
+            error_ << misc::error::error_type::bind << formal->location_get()
+                   << ": redefinition: " << formal->name_get() << '\n';
+            error_ << misc::error::error_type::bind << dup->second->location_get()
+                   << ": first definition\n";
+          }
         else
-          seen.insert(formal->name_get());
+          seen.emplace(formal->name_get(), formal);
         operator()(*formal);
       }
     if (e.result_get())

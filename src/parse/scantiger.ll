@@ -82,7 +82,7 @@ id_ext  _[a-zA-Z][a-zA-Z0-9_]*
                 return TOKEN_VAL(INT, val);
               }
   /* FIXME: Some code was deleted here. */
-[ \t]+  { td.location_.step();}
+[ \t\r]+  { td.location_.step();}
 \n+   {td.location_.lines(yyleng); td.location_.step();}
 "array" {return TOKEN(ARRAY);}
 "if"    {return TOKEN(IF);}
@@ -103,10 +103,22 @@ id_ext  _[a-zA-Z][a-zA-Z0-9_]*
 "type"        {return TOKEN(TYPE);}
 "import"      {return TOKEN(IMPORT);}
 "primitive"   {return TOKEN(PRIMITIVE);}
-"class"       {return TOKEN(CLASS);}
-"extends"     {return TOKEN(EXTENDS);}
-"method"      {return TOKEN(METHOD);}
-"new"         {return TOKEN(NEW);}
+"class"       {
+                if (td.enable_object_extensions_p_) return TOKEN(CLASS);
+                else return TOKEN_VAL(ID, misc::symbol(text()));
+              }
+"extends"     {
+                if (td.enable_object_extensions_p_) return TOKEN(EXTENDS);
+                else return TOKEN_VAL(ID, misc::symbol(text()));
+              }
+"method"      {
+                if (td.enable_object_extensions_p_) return TOKEN(METHOD);
+                else return TOKEN_VAL(ID, misc::symbol(text()));
+              }
+"new"         {
+                if (td.enable_object_extensions_p_) return TOKEN(NEW);
+                else return TOKEN_VAL(ID, misc::symbol(text()));
+              }
 ","           {return TOKEN(COMMA);}
 ":"           {return TOKEN(COLON);}
 ";"           {return TOKEN(SEMI);}

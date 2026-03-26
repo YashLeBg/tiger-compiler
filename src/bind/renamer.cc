@@ -62,7 +62,4 @@ namespace bind
     }
     super_type::operator()(e);
   }
-
-  // FIXME: Some code was deleted here.
-
- // namespace bind
+} // namespace bind
