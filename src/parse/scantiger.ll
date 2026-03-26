@@ -104,20 +104,28 @@ id_ext  _[a-zA-Z][a-zA-Z0-9_]*
 "import"      {return TOKEN(IMPORT);}
 "primitive"   {return TOKEN(PRIMITIVE);}
 "class"       {
-                if (td.enable_object_extensions_p_) return TOKEN(CLASS);
-                else return TOKEN_VAL(ID, misc::symbol(text()));
+                if (td.enable_object_extensions_p_) 
+                  return TOKEN(CLASS);
+                else 
+                  return TOKEN_VAL(ID, misc::symbol(text()));
               }
 "extends"     {
-                if (td.enable_object_extensions_p_) return TOKEN(EXTENDS);
-                else return TOKEN_VAL(ID, misc::symbol(text()));
+                if (td.enable_object_extensions_p_) 
+                  return TOKEN(EXTENDS);
+                else 
+                  return TOKEN_VAL(ID, misc::symbol(text()));
               }
 "method"      {
-                if (td.enable_object_extensions_p_) return TOKEN(METHOD);
-                else return TOKEN_VAL(ID, misc::symbol(text()));
+                if (td.enable_object_extensions_p_) 
+                  return TOKEN(METHOD);
+                else 
+                  return TOKEN_VAL(ID, misc::symbol(text()));
               }
 "new"         {
-                if (td.enable_object_extensions_p_) return TOKEN(NEW);
-                else return TOKEN_VAL(ID, misc::symbol(text()));
+                if (td.enable_object_extensions_p_) 
+                  return TOKEN(NEW);
+                else 
+                  return TOKEN_VAL(ID, misc::symbol(text()));
               }
 ","           {return TOKEN(COMMA);}
 ":"           {return TOKEN(COLON);}
@@ -152,6 +160,7 @@ id_ext  _[a-zA-Z][a-zA-Z0-9_]*
 "_chunks"   {CHECK_EXTENSION(); return TOKEN(CHUNKS);}  //use for testing : injecting some declarations blocks in the ast.
 "_exp"      {CHECK_EXTENSION(); return TOKEN(EXP);}
 "_namety"   {CHECK_EXTENSION(); return TOKEN(NAMETY);}  //use for tweast : its to assigned a type to a number and using the number instead.
+"_main"     {return TOKEN_VAL(ID, misc::symbol(text()));}
 {id_ext}  {
     if (!td.enable_extensions_p_)
       td.error_ << misc::error::error_type::scan
