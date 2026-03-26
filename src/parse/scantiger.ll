@@ -82,7 +82,7 @@ id_ext  _[a-zA-Z][a-zA-Z0-9_]*
                 return TOKEN_VAL(INT, val);
               }
   /* FIXME: Some code was deleted here. */
-[ \t]+  { td.location_.step();}
+[ \t\r]+  { td.location_.step();}
 \n+   {td.location_.lines(yyleng); td.location_.step();}
 "array" {return TOKEN(ARRAY);}
 "if"    {return TOKEN(IF);}

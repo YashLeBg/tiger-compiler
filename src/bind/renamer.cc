@@ -40,22 +40,26 @@ namespace bind
   //That function apply new name to variable
   void Renamer::operator()(ast::SimpleVar& e)
   {
-    visit(e, e.def_get());
+    if(e.def_get()){
+        visit(e,e.def_get());
+    }
     super_type::operator()(e);
   }
   //That function apply a new name to function
   void Renamer::operator()(ast::CallExp& e)
   {
-    visit(e, e.def_get());
+  if(e.def_get()){
+        visit(e,e.def_get());
+    }
     super_type::operator()(e);
   }
+
   //That function apply new name to type
   void Renamer::operator()(ast::NameTy& e)
   {
-    visit(e, e.def_get());
+      if(e.def_get()){
+        visit(e,e.def_get());
+    }
     super_type::operator()(e);
   }
-
-  // FIXME: Some code was deleted here.
-
 } // namespace bind

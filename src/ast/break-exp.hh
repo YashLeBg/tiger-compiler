@@ -30,9 +30,10 @@ namespace ast
     void accept(Visitor& v) override;
     /// \}
 
-    /** \name Accessors.
-     ** \{ */
-    /** \} */
+
+    const Exp* def_get() const;
+    Exp* def_get();
+    void def_set(Exp*);
 
   protected:
     /// The loop it breaks.
