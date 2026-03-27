@@ -160,9 +160,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36d75086-5ccc-407e-a072-b36361d3fbab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autom4te.cache/output.3" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/output.3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autom4te.cache/requests" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/requests" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autom4te.cache/traces.3" beforeDir="false" afterPath="$PROJECT_DIR$/autom4te.cache/traces.3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +239,7 @@
     "cf.advertisement.text.overridden": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "more__test",
+    "git-widget-placeholder": "fix__rename",
     "last_opened_file_path": "/home/joachim/Bureau/proj/Tiger",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -940,19 +937,30 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Native Application.all" />
+      <item itemvalue="Native Application.CTAGS" />
+      <item itemvalue="Native Application.ChangeLog" />
+      <item itemvalue="Native Application.GTAGS" />
+      <item itemvalue="Native Application.ID" />
+      <item itemvalue="Native Application.Makefile" />
+      <item itemvalue="Native Application.TAGS" />
       <item itemvalue="Native Application.all-am" />
       <item itemvalue="Native Application.all-recursive" />
+      <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.am--depfiles" />
+      <item itemvalue="Native Application.am--fnord" />
+      <item itemvalue="Native Application.am--force-recheck" />
       <item itemvalue="Native Application.am--refresh" />
       <item itemvalue="Native Application.boost-m4-up" />
-      <item itemvalue="Native Application.check" />
+      <item itemvalue="Native Application.bootstrap" />
+      <item itemvalue="Native Application.check-TESTS" />
       <item itemvalue="Native Application.check-am" />
       <item itemvalue="Native Application.check-recursive" />
-      <item itemvalue="Native Application.check-TESTS" />
+      <item itemvalue="Native Application.check" />
+      <item itemvalue="Native Application.clean-am" />
       <item itemvalue="Native Application.clean-binPROGRAMS" />
       <item itemvalue="Native Application.clean-checkPROGRAMS" />
       <item itemvalue="Native Application.clean-cscope" />
+      <item itemvalue="Native Application.clean-doc" />
       <item itemvalue="Native Application.clean-generic" />
       <item itemvalue="Native Application.clean-libLTLIBRARIES" />
       <item itemvalue="Native Application.clean-libtool" />
@@ -962,14 +970,14 @@
       <item itemvalue="Native Application.cscope" />
       <item itemvalue="Native Application.cscopelist-am" />
       <item itemvalue="Native Application.cscopelist-recursive" />
-      <item itemvalue="Native Application.CTAGS" />
-      <item itemvalue="Native Application.ctags" />
+      <item itemvalue="Native Application.cscopelist" />
       <item itemvalue="Native Application.ctags-am" />
       <item itemvalue="Native Application.ctags-recursive" />
-      <item itemvalue="Native Application.dist" />
+      <item itemvalue="Native Application.ctags" />
       <item itemvalue="Native Application.dist-all" />
       <item itemvalue="Native Application.dist-bzip2" />
       <item itemvalue="Native Application.dist-gzip" />
+      <item itemvalue="Native Application.dist-hook-parse" />
       <item itemvalue="Native Application.dist-hook" />
       <item itemvalue="Native Application.dist-lzip" />
       <item itemvalue="Native Application.dist-shar" />
@@ -977,106 +985,95 @@
       <item itemvalue="Native Application.dist-xz" />
       <item itemvalue="Native Application.dist-zip" />
       <item itemvalue="Native Application.dist-zstd" />
+      <item itemvalue="Native Application.dist" />
       <item itemvalue="Native Application.distcheck" />
-      <item itemvalue="Native Application.distclean" />
+      <item itemvalue="Native Application.distclean-am" />
       <item itemvalue="Native Application.distclean-compile" />
       <item itemvalue="Native Application.distclean-generic" />
       <item itemvalue="Native Application.distclean-hdr" />
       <item itemvalue="Native Application.distclean-libtool" />
       <item itemvalue="Native Application.distclean-recursive" />
       <item itemvalue="Native Application.distclean-tags" />
+      <item itemvalue="Native Application.distclean" />
       <item itemvalue="Native Application.distcleancheck" />
+      <item itemvalue="Native Application.distdir-am" />
       <item itemvalue="Native Application.distdir" />
       <item itemvalue="Native Application.distuninstallcheck" />
       <item itemvalue="Native Application.doc" />
-      <item itemvalue="Native Application.dvi" />
       <item itemvalue="Native Application.dvi-am" />
       <item itemvalue="Native Application.dvi-recursive" />
+      <item itemvalue="Native Application.dvi" />
       <item itemvalue="Native Application.generate-parser" />
-      <item itemvalue="Native Application.GTAGS" />
-      <item itemvalue="Native Application.html" />
       <item itemvalue="Native Application.html-am" />
       <item itemvalue="Native Application.html-local" />
       <item itemvalue="Native Application.html-recursive" />
-      <item itemvalue="Native Application.info" />
+      <item itemvalue="Native Application.html" />
       <item itemvalue="Native Application.info-am" />
       <item itemvalue="Native Application.info-recursive" />
-      <item itemvalue="Native Application.install" />
+      <item itemvalue="Native Application.info" />
       <item itemvalue="Native Application.install-am" />
       <item itemvalue="Native Application.install-binPROGRAMS" />
-      <item itemvalue="Native Application.install-data" />
+      <item itemvalue="Native Application.install-checkPROGRAMS" />
       <item itemvalue="Native Application.install-data-am" />
       <item itemvalue="Native Application.install-data-recursive" />
+      <item itemvalue="Native Application.install-data" />
       <item itemvalue="Native Application.install-dist_lispDATA" />
-      <item itemvalue="Native Application.install-dvi" />
       <item itemvalue="Native Application.install-dvi-am" />
       <item itemvalue="Native Application.install-dvi-recursive" />
-      <item itemvalue="Native Application.install-exec" />
+      <item itemvalue="Native Application.install-dvi" />
       <item itemvalue="Native Application.install-exec-am" />
       <item itemvalue="Native Application.install-exec-recursive" />
-      <item itemvalue="Native Application.install-html" />
+      <item itemvalue="Native Application.install-exec" />
       <item itemvalue="Native Application.install-html-am" />
       <item itemvalue="Native Application.install-html-recursive" />
-      <item itemvalue="Native Application.install-info" />
+      <item itemvalue="Native Application.install-html" />
       <item itemvalue="Native Application.install-info-am" />
       <item itemvalue="Native Application.install-info-recursive" />
+      <item itemvalue="Native Application.install-info" />
       <item itemvalue="Native Application.install-libLTLIBRARIES" />
       <item itemvalue="Native Application.install-man" />
-      <item itemvalue="Native Application.install-pdf" />
       <item itemvalue="Native Application.install-pdf-am" />
       <item itemvalue="Native Application.install-pdf-recursive" />
-      <item itemvalue="Native Application.install-ps" />
+      <item itemvalue="Native Application.install-pdf" />
       <item itemvalue="Native Application.install-ps-am" />
       <item itemvalue="Native Application.install-ps-recursive" />
+      <item itemvalue="Native Application.install-ps" />
       <item itemvalue="Native Application.install-recursive" />
       <item itemvalue="Native Application.install-strip" />
-      <item itemvalue="Native Application.installcheck" />
+      <item itemvalue="Native Application.install" />
       <item itemvalue="Native Application.installcheck-am" />
       <item itemvalue="Native Application.installcheck-recursive" />
-      <item itemvalue="Native Application.installdirs" />
+      <item itemvalue="Native Application.installcheck" />
       <item itemvalue="Native Application.installdirs-am" />
       <item itemvalue="Native Application.installdirs-recursive" />
-      <item itemvalue="Native Application.maintainer-clean" />
+      <item itemvalue="Native Application.installdirs" />
+      <item itemvalue="Native Application.maintainer-clean-am" />
       <item itemvalue="Native Application.maintainer-clean-generic" />
       <item itemvalue="Native Application.maintainer-clean-recursive" />
-      <item itemvalue="Native Application.mostlyclean" />
+      <item itemvalue="Native Application.maintainer-clean" />
+      <item itemvalue="Native Application.mostlyclean-am" />
       <item itemvalue="Native Application.mostlyclean-compile" />
       <item itemvalue="Native Application.mostlyclean-generic" />
       <item itemvalue="Native Application.mostlyclean-libtool" />
       <item itemvalue="Native Application.mostlyclean-recursive" />
-      <item itemvalue="Native Application.pdf" />
+      <item itemvalue="Native Application.mostlyclean" />
       <item itemvalue="Native Application.pdf-am" />
       <item itemvalue="Native Application.pdf-recursive" />
-      <item itemvalue="Native Application.ps" />
+      <item itemvalue="Native Application.pdf" />
       <item itemvalue="Native Application.ps-am" />
       <item itemvalue="Native Application.ps-recursive" />
+      <item itemvalue="Native Application.ps" />
       <item itemvalue="Native Application.recheck" />
-      <item itemvalue="Native Application.TAGS" />
-      <item itemvalue="Native Application.tags" />
+      <item itemvalue="Native Application.stamp-h1" />
       <item itemvalue="Native Application.tags-am" />
       <item itemvalue="Native Application.tags-recursive" />
-      <item itemvalue="Native Application.uninstall" />
+      <item itemvalue="Native Application.tags" />
       <item itemvalue="Native Application.uninstall-am" />
       <item itemvalue="Native Application.uninstall-binPROGRAMS" />
       <item itemvalue="Native Application.uninstall-dist_lispDATA" />
       <item itemvalue="Native Application.uninstall-libLTLIBRARIES" />
       <item itemvalue="Native Application.uninstall-recursive" />
-      <item itemvalue="Native Application.am--fnord" />
-      <item itemvalue="Native Application.am--force-recheck" />
-      <item itemvalue="Native Application.bootstrap" />
-      <item itemvalue="Native Application.ChangeLog" />
-      <item itemvalue="Native Application.clean-am" />
-      <item itemvalue="Native Application.clean-doc" />
-      <item itemvalue="Native Application.cscopelist" />
-      <item itemvalue="Native Application.dist-hook-parse" />
-      <item itemvalue="Native Application.distclean-am" />
-      <item itemvalue="Native Application.distdir-am" />
-      <item itemvalue="Native Application.ID" />
-      <item itemvalue="Native Application.install-checkPROGRAMS" />
-      <item itemvalue="Native Application.maintainer-clean-am" />
-      <item itemvalue="Native Application.Makefile" />
-      <item itemvalue="Native Application.mostlyclean-am" />
-      <item itemvalue="Native Application.stamp-h1" />
+      <item itemvalue="Native Application.uninstall" />
     </list>
   </component>
   <component name="TaskManager">
@@ -1090,6 +1087,7 @@
       <workItem from="1773435581276" duration="2590000" />
       <workItem from="1773916084316" duration="1685000" />
       <workItem from="1773926022640" duration="14314000" />
+      <workItem from="1774471153390" duration="23000" />
     </task>
     <servers />
   </component>

@@ -282,6 +282,9 @@ exp:
 | exp OR exp                        { $$ = make_IfExp(@$, $1, make_IntExp(@1, 1), $3); }
 | NEW typeid                        { $$ = make_ObjectExp(@$, $2); }
 | CAST LPAREN exp COMMA ty RPAREN   { $$ = make_CastExp(@$, $3, $5); }
+| LPAREN error RPAREN               { $$ = make_IntExp(@$, 0); }
+| IF error                          { $$ = make_IntExp(@$, 0); }
+| LET error END                     { $$ = make_IntExp(@$, 0); }
 ;
 //that block is for everything that can be on the left of ":=" 
 //works on the same way as before

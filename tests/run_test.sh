@@ -39,5 +39,5 @@ elif echo "$TIGFILE" | grep -q "/type/"; then
     exit 1
   fi
 else
-  exit 99
+  exit 99999
 fi
