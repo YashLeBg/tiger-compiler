@@ -11,6 +11,27 @@ SWIG_GENERATED_DEPS =
 
 nodist_python_PYTHON =
 
+## Module: type.
+pyexec_LTLIBRARIES += _tiger_type.la
+nodist__tiger_type_la_SOURCES = tiger_type-wrap.cc
+_tiger_type_la_LIBADD = $(AM_LIBADD)
+CLEANFILES += tiger_type-wrap.cc tiger_type.py tiger_type.pyc
+tiger_type-wrap.cc: $(tcdir)/tcsh/src/tiger_type.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_type-wrap.Tcc" -o tiger_type-wrap.cc $(tcdir)/tcsh/src/tiger_type.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_type-wrap.Tcc" "$(DEPDIR)/tiger_type-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_type-wrap.Tcc"; exit 1; \
+	fi
+
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_type-wrap.Pcc@am__quote@
+
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_type-wrap.Pcc
+
+nodist_python_PYTHON += tiger_type.py
+tiger_type.py: $(tcdir)/tcsh/src/tiger_type.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_type-wrap.cc
+
 ## Module: ast.
 pyexec_LTLIBRARIES += _tiger_ast.la
 nodist__tiger_ast_la_SOURCES = tiger_ast-wrap.cc
@@ -31,6 +52,27 @@ tiger_ast-wrap.cc: $(tcdir)/tcsh/src/tiger_ast.i
 nodist_python_PYTHON += tiger_ast.py
 tiger_ast.py: $(tcdir)/tcsh/src/tiger_ast.i
 	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_ast-wrap.cc
+
+## Module: astclone.
+pyexec_LTLIBRARIES += _tiger_astclone.la
+nodist__tiger_astclone_la_SOURCES = tiger_astclone-wrap.cc
+_tiger_astclone_la_LIBADD = $(AM_LIBADD)
+CLEANFILES += tiger_astclone-wrap.cc tiger_astclone.py tiger_astclone.pyc
+tiger_astclone-wrap.cc: $(tcdir)/tcsh/src/tiger_astclone.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_astclone-wrap.Tcc" -o tiger_astclone-wrap.cc $(tcdir)/tcsh/src/tiger_astclone.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_astclone-wrap.Tcc" "$(DEPDIR)/tiger_astclone-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_astclone-wrap.Tcc"; exit 1; \
+	fi
+
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_astclone-wrap.Pcc@am__quote@
+
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_astclone-wrap.Pcc
+
+nodist_python_PYTHON += tiger_astclone.py
+tiger_astclone.py: $(tcdir)/tcsh/src/tiger_astclone.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_astclone-wrap.cc
 
 ## Module: object.
 pyexec_LTLIBRARIES += _tiger_object.la
@@ -94,6 +136,27 @@ tiger_bind-wrap.cc: $(tcdir)/tcsh/src/tiger_bind.i
 nodist_python_PYTHON += tiger_bind.py
 tiger_bind.py: $(tcdir)/tcsh/src/tiger_bind.i
 	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_bind-wrap.cc
+
+## Module: desugar.
+pyexec_LTLIBRARIES += _tiger_desugar.la
+nodist__tiger_desugar_la_SOURCES = tiger_desugar-wrap.cc
+_tiger_desugar_la_LIBADD = $(AM_LIBADD)
+CLEANFILES += tiger_desugar-wrap.cc tiger_desugar.py tiger_desugar.pyc
+tiger_desugar-wrap.cc: $(tcdir)/tcsh/src/tiger_desugar.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_desugar-wrap.Tcc" -o tiger_desugar-wrap.cc $(tcdir)/tcsh/src/tiger_desugar.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_desugar-wrap.Tcc" "$(DEPDIR)/tiger_desugar-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_desugar-wrap.Tcc"; exit 1; \
+	fi
+
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_desugar-wrap.Pcc@am__quote@
+
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_desugar-wrap.Pcc
+
+nodist_python_PYTHON += tiger_desugar.py
+tiger_desugar.py: $(tcdir)/tcsh/src/tiger_desugar.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_desugar-wrap.cc
 
 ## Module: escapes.
 pyexec_LTLIBRARIES += _tiger_escapes.la
