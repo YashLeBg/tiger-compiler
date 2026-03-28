@@ -25,6 +25,10 @@ namespace type
 
   void Function::accept(Visitor& v) { v(*this); }
 
-  // FIXME: Some code was deleted here.
+  bool Function::compatible_with(const Type& other) const
+  {
+    const Function* f = dynamic_cast<const Function*>(&other.actual());
+    return f && result_ == f->result_ && *formals_ == *f->formals_;
+  }
 
 } // namespace type

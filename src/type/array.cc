@@ -8,6 +8,12 @@
 
 namespace type
 {
-  // FIXME: Some code was deleted here.
+  
+  Array::Array(const Type& type) 
+    : type_(type) 
+  {}
+  
+  void Array::accept(ConstVisitor& v) const { v(*this); }
+  void Array::accept(Visitor& v) { v(*this); }
 
 } // namespace type
