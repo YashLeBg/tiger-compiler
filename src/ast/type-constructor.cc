@@ -9,4 +9,7 @@
 namespace ast
 {
   // FIXME: Some code was deleted here.
+  TypeConstructor::TypeConstructor()
+    : created_type_(nullptr)
+  {}
 } // namespace ast

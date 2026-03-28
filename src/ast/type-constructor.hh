@@ -17,6 +17,16 @@ namespace ast
   class TypeConstructor
   {
     // FIXME: Some code was deleted here.
+    // basicly thats the same thing as typebale but there we juste stock the created type
+    TypeConstructor();
+    virtual ~TypeConstructor()=default;
+    const type::Type* created_type_get() const;
+    void created_type_set(const type::Type* t);
+    protected:
+      const type::Type* created_type_;
+
+        
+
   };
 } // namespace ast
 #include <ast/type-constructor.hxx>

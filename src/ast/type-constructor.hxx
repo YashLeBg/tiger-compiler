@@ -11,4 +11,13 @@
 namespace ast
 {
   // FIXME: Some code was deleted here.
+  inline const type::Type* TypeConstructor::created_type_get() const
+  {
+    return created_type_;
+  }
+  inline void TypeConstructor::created_type_set(const type::Type* type)
+  {
+    created_type_ = type;
+  }
+
 } // namespace ast

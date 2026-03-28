@@ -9,4 +9,8 @@
 namespace ast
 {
   // FIXME: Some code was deleted here.
+  //just the constructor
+    Typable::Typable():type_(nullptr)
+    {
+    }
 } // namespace ast
