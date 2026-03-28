@@ -8,6 +8,7 @@
 #include <misc/algorithm.hh>
 #include <type/class.hh>
 #include <type/visitor.hh>
+#include <type/builtin-types.hh>
 
 namespace type
 {
@@ -24,23 +25,57 @@ namespace type
 
   const Type* Class::attr_type(misc::symbol key) const
   {
-    // FIXME: Some code was deleted here.
+    const Attribute* attribute = attr_find(key);
+    if (!attribute)
+      return nullptr;
+    return &attribute->type_get();
   }
 
   const Type* Class::meth_type(misc::symbol key) const
   {
-    // FIXME: Some code was deleted here.
+    return meth_find(key);
   }
 
-  // FIXME: Some code was deleted here (Find common super class).
+  // FIXED: Some code was deleted here (Find common super class).
+  const Class* Class::common_root(const Class& other) const
+  {
+    std::set<const Class*> ancestors;
+    for (const Class* c = this; c != nullptr; c = c->super_get())
+      ancestors.insert(c);
+    for (const Class* c = &other; c; c = c->super_get())
+      if (ancestors.count(c))
+        return c;
+    return nullptr;
+  }
 
-  // FIXME: Some code was deleted here (Super class soundness test).
+  // FIXED: Some code was deleted here (Super class soundness test).
+  bool Class::sound() const
+  {
+    std::set<const Class*> seen;
+    for (const Class* c = this; c; c = c->super_get())
+      if (!seen.insert(c).second)
+        return false;
+    return true;
+  }
 
-  // FIXME: Some code was deleted here (Special implementation of "compatible_with" for Class).
+  // FIXED: Some code was deleted here (Special implementation of "compatible_with" for Class).
+  bool Class::compatible_with(const Type& other) const
+  {
+    if (dynamic_cast<const Nil*>(&other.actual()))
+      return true;
+    const Class* c = dynamic_cast<const Class*>(&other.actual());
+    if (!c)
+      return false;
+    for (const Class* current = this; current; current = current->super_get())
+      if (current == c)
+        return true;
+    return false;
+  }
 
   const Class& Class::object_instance()
   {
-    // FIXME: Some code was deleted here.
+    static Class instance_;
+    return instance_;
   }
 
   unsigned Class::fresh_id()
