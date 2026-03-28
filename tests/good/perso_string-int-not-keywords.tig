@@ -1,0 +1,7 @@
+let
+  var int := 10
+  var string := "testt"
+in
+  print_int(int);
+  print(string)
+end

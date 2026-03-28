@@ -1,0 +1,8 @@
+let
+  type r = {a: int, b: int}
+  type tab = array of r
+  var table := tab [10] of r {a=0, b=0}
+in
+  table[1].a := table[2].b;
+  print_int(table[1].a)
+end

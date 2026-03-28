@@ -1,0 +1,7 @@
+let
+  var i := 10
+in
+  for i := 0 to 5 do
+    print_int(i);
+  print_int(i)
+end

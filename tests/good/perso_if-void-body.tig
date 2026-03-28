@@ -1,0 +1,2 @@
+if 212>0 then
+  (print("okk"); ())

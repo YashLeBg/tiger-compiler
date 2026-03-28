@@ -1,0 +1,5 @@
+let
+  var hexa := "\x41\x42\x43\x44"
+in
+  print(hexa)
+end

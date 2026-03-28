@@ -1,0 +1,6 @@
+let
+  type int = string
+  var a : int := "now string"
+in
+  print(a)
+end

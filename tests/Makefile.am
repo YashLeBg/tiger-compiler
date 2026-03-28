@@ -15,6 +15,13 @@ EXTRA_DIST = \
   good/perso_array.tig \
   good/perso_nested_let.tig \
   good/perso_over.tig \
+  good/perso_string-int-not-keywords.tig \
+  good/perso_four-hex-backslash.tig \
+  good/perso_big-lvalue.tig \
+  good/perso_redefine-int.tig \
+  good/perso_for-scope.tig \
+  good/perso_if-void-body.tig \
+  good/perso_axel.ribon-while-precedence.tig \
   good/queens.tig \
   good/record.tig \
   good/recursive-types.tig \
@@ -91,6 +98,13 @@ TESTS = \
   good/perso_array.tig \
   good/perso_nested_let.tig \
   good/perso_over.tig \
+  good/perso_string-int-not-keywords.tig \
+  good/perso_four-hex-backslash.tig \
+  good/perso_big-lvalue.tig \
+  good/perso_redefine-int.tig \
+  good/perso_for-scope.tig \
+  good/perso_if-void-body.tig \
+  good/perso_axel.ribon-while-precedence.tig \
   good/queens.tig \
   good/record.tig \
   good/recursive-types.tig \
