@@ -1,0 +1,5 @@
+let
+  type t = nil
+in
+  0
+end

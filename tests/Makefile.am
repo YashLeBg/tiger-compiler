@@ -45,6 +45,24 @@ EXTRA_DIST = \
   syntax/perso_lexic_commentary.tig \
   syntax/perso_lexic_dollar.tig \
   syntax/perso_lexic_unclosed.tig \
+  syntax/perso_call-separator-1.tig \
+  syntax/perso_call-separator-2.tig \
+  syntax/perso_function-without-argument-list.tig \
+  syntax/perso_less-than-non-assoc-with-uminus.tig \
+  syntax/perso_less-than-non-assoc.tig \
+  syntax/perso_multi-functions.tig \
+  syntax/perso_multi-types.tig \
+  syntax/perso_multi-vars.tig \
+  syntax/perso_nil-keyword.tig \
+  syntax/perso_record-exp-1.tig \
+  syntax/perso_record-exp-2.tig \
+  syntax/perso_seqexp-1.tig \
+  syntax/perso_seqexp-2.tig \
+  syntax/perso_seqexp-3.tig \
+  syntax/perso_seqexp-4.tig \
+  syntax/perso_several-exps.tig \
+  syntax/perso_syntax-vs-type-1.tig \
+  syntax/perso_type-nil.tig \
   syntax/typeid.tig \
   bind/break-outside-loop.tig \
   bind/invalid-function-redefinition-1.tig \
@@ -127,6 +145,24 @@ TESTS = \
   syntax/perso_lexic_commentary.tig \
   syntax/perso_lexic_dollar.tig \
   syntax/perso_lexic_unclosed.tig \
+  syntax/perso_call-separator-1.tig \
+  syntax/perso_call-separator-2.tig \
+  syntax/perso_function-without-argument-list.tig \
+  syntax/perso_less-than-non-assoc-with-uminus.tig \
+  syntax/perso_less-than-non-assoc.tig \
+  syntax/perso_multi-functions.tig \
+  syntax/perso_multi-types.tig \
+  syntax/perso_multi-vars.tig \
+  syntax/perso_nil-keyword.tig \
+  syntax/perso_record-exp-1.tig \
+  syntax/perso_record-exp-2.tig \
+  syntax/perso_seqexp-1.tig \
+  syntax/perso_seqexp-2.tig \
+  syntax/perso_seqexp-3.tig \
+  syntax/perso_seqexp-4.tig \
+  syntax/perso_several-exps.tig \
+  syntax/perso_syntax-vs-type-1.tig \
+  syntax/perso_type-nil.tig \
   syntax/typeid.tig \
   bind/break-outside-loop.tig \
   bind/invalid-function-redefinition-1.tig \

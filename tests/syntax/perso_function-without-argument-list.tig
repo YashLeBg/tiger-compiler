@@ -1,0 +1,5 @@
+let
+  function f = 212
+in
+  f
+end

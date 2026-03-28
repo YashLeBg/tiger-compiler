@@ -1,0 +1,5 @@
+let
+  var nil := 212
+in
+  nil
+end
