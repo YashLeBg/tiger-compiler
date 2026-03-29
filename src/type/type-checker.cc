@@ -21,7 +21,7 @@ namespace type
 
   const Type* TypeChecker::type(ast::Typable& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
     e.accept(*this);
     return e.type_get();
   }
@@ -29,7 +29,7 @@ namespace type
   const Record* TypeChecker::type(const ast::fields_type& e)
   {
     auto res = new Record;
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
     for (const auto& f:e) {
       f->type_name_get().accept(*this);
       res->field_add(f->name_get(),*f->type_name_get().type_get());
@@ -133,7 +133,7 @@ namespace type
 
   void TypeChecker::operator()(ast::RecordExp& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
     e.type_name_get().accept(*this);
     const auto* t = &e.type_name_get().type_get()->actual();
     const auto* record = dynamic_cast<const Record*>(t);
@@ -159,7 +159,7 @@ namespace type
     // FIXME: Some code was deleted here.
   }
 
-  // FIXME: Some code was deleted here.
+  // FIXED: Some code was deleted here.
   void TypeChecker::operator()(ast::LetExp& e) {
     venv_.scope_begin();
     tenv_.scope_begin();
@@ -246,7 +246,7 @@ namespace type
   template <>
   void TypeChecker::visit_dec_header<ast::FunctionDec>(ast::FunctionDec& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
     const Type* res = &Void::instance();
     if (e.result_get())
     {
@@ -274,7 +274,7 @@ namespace type
 
   void TypeChecker::operator()(ast::VarDec& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
     const Type* init = nullptr;
     if (e.init_get()) {
       init = type(*e.init_get());
@@ -328,7 +328,7 @@ namespace type
   // Bind the type body to its name.
   template <> void TypeChecker::visit_dec_body<ast::TypeDec>(ast::TypeDec& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
     const Type* t = tenv_.look(e.name_get());
     const Named* name = dynamic_cast<const Named*>(t);
     e.ty_get().accept(*this);
@@ -359,17 +359,25 @@ namespace type
 
   void TypeChecker::operator()(ast::NameTy& e)
   {
-    // FIXME: Some code was deleted here (Recognize user defined types, and built-in types).
+    // FIXED: Some code was deleted here (Recognize user defined types, and built-in types).
+    const Type* t =tenv_.look(*e.name_get());
+    if (!t) {
+      error(e,"undefined type",*e.name_get());
+    }
+    type_set(e, t);
   }
 
   void TypeChecker::operator()(ast::RecordTy& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
+    type_set(e,type(e.fields_get()));
   }
 
   void TypeChecker::operator()(ast::ArrayTy& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
+    e.base_type_get().accept(*this);
+    type_set(e,new Array(*e.base_type_get().type_get()));
   }
 
 } // namespace type
