@@ -74,7 +74,7 @@ namespace type
     // FIXED: Some code was deleted here.
     const Type* cur = type(e);
     if (!cur->compatible_with(expected)) {
-      type_mismatch(e,s,*cur,"expected",expected);
+      type_mismatch(e,s,*cur,"expected type",expected);
     }
   }
 

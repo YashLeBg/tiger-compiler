@@ -191,7 +191,7 @@ namespace type
     const auto* f = dynamic_cast<const Function*>(venv_.look(e.name_get()));
     if (!f)
     {
-      error(e, "undefined function", e.name_get());
+      error(e, "undeclared function", e.name_get());
       type_set(e, &Void::instance());
       return;
     }
@@ -213,7 +213,7 @@ namespace type
   {
     check_type(e.vardec_get().init_get(), "lower bound", Int::instance());
 
-    check_type(e.hi_get(), "born upper", Int::instance());
+    check_type(e.hi_get(), "upper bound", Int::instance());
     venv_.scope_begin();
 
     e.vardec_get().accept(*this);
@@ -285,10 +285,10 @@ namespace type
       t = e.type_name_get()->type_get();
     }
     if (t && init) {
-      check_types(e, "init", *init, "type", *t);
+      check_types(e, "initialization", *init, "declared type", *t);
     }
     if (!t && init && init->actual() == Nil::instance()) {
-      error(e,"can't use nil where its type can't be determinee");
+      error(e,"nil can't be used");
     }
     const Type* type = init;
     if (t) {
