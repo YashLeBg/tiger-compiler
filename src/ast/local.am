@@ -18,7 +18,8 @@ src_libtc_la_SOURCES +=                                                        \
   %D%/object-visitor.hh %D%/object-visitor.hxx                                 \
   %D%/pretty-printer.hh %D%/pretty-printer.cc                                  \
   %D%/visitor.hxx                                                              \
-  %D%/libast.hh %D%/libast.cc
+  %D%/libast.hh %D%/libast.cc                                                  \
+  %D%/escapable.hh %D%/escapable.hxx %D%/escapable.cc
 
 dist_noinst_DATA += %D%/README.txt
 

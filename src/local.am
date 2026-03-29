@@ -62,3 +62,4 @@ include src/ast/local.am
 include src/parse/local.am
 include src/object/local.am
 include src/bind/local.am
+include src/escapes/local.am

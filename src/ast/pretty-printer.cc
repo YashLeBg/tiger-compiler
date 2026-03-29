@@ -202,15 +202,22 @@ namespace ast
   {
     if (e.init_get())
       {
-        ostr_ << "var " << e.name_get();
+        ostr_ << "var ";
+        if (escapes_display(ostr_) && e.escape_get()) {
+          ostr_ << "/* escaping */ ";
+        }
+        ostr_ << e.name_get();
         if (bindings_display(ostr_))
           ostr_ << " /* " << static_cast<const void*>(&e) << " */";
         if (e.type_name_get())
           ostr_ << " : " << *e.type_name_get();
-        ostr_ << " := " << *e.init_get() << '\n';
+        ostr_ << " := " << *e.init_get() << misc::iendl;
       }
     else
       {
+        if (escapes_display(ostr_) && e.escape_get()) {
+          ostr_ << "/* escaping */ ";
+        }
         ostr_ << e.name_get();
         if (bindings_display(ostr_))
           ostr_ << " /* " << static_cast<const void*>(&e) << " */";

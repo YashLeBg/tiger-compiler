@@ -21,8 +21,16 @@
 
 #pragma once
 
+#include <map>
+#include <set>
+#include <vector>
 #include <ast/default-visitor.hh>
 #include <ast/non-object-visitor.hh>
+
+namespace ast {
+  class SimpleVar;
+  class VarDec;
+}
 
 namespace escapes
 {
@@ -51,7 +59,15 @@ namespace escapes
     /// Import all the overloaded visit methods.
     using super_type::operator();
 
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
+    EscapesVisitor() = default;
+    ~EscapesVisitor() override = default;
+    void operator()(ast::FunctionDec& e) override;
+    void operator()(ast::VarDec& e) override;
+    void operator()(ast::SimpleVar& e) override;
+  private:
+    std::map<const ast::VarDec*, int> deep_var_;
+    std::vector<ast::FunctionDec*> func_history_;
   };
 
 } // namespace escapes
