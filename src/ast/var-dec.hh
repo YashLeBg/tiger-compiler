@@ -8,13 +8,14 @@
 #include <ast/dec.hh>
 #include <ast/exp.hh>
 #include <ast/name-ty.hh>
-
+#include <ast/typable.hh>
 #include "escapable.hh"
+#include <ast/typable.hh>
 
 namespace ast
 {
   /// VarDec.
-  class VarDec : public Dec, public Escapable
+  class VarDec : public Dec, public Escapable , public Typable
   {
   public:
     /** \name Ctor & dtor.

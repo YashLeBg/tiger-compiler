@@ -37,7 +37,7 @@ namespace escapes
   void EscapesVisitor::operator()(ast::SimpleVar& e) {
       ast::VarDec* v = e.def_get();
       if (v) {
-          if (func_history_.size() > deep_var_[v]) {
+          if (static_cast<int>(func_history_.size()) > deep_var_[v]) {
               v->escape_set(true);
           }
       }
