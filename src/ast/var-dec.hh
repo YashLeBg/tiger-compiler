@@ -9,10 +9,12 @@
 #include <ast/exp.hh>
 #include <ast/name-ty.hh>
 
+#include "escapable.hh"
+
 namespace ast
 {
   /// VarDec.
-  class VarDec : public Dec
+  class VarDec : public Dec, public Escapable
   {
   public:
     /** \name Ctor & dtor.
