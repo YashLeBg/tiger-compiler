@@ -6,13 +6,15 @@
 #pragma once
 
 #include <ast/ast.hh>
+#include <ast/typable.hh>
 
 namespace ast
 {
   /// Exp.
-  class Exp : public Ast
+  class Exp : public Ast, public Typable
   {
   public:
+    using Ast::accept;
     /** \name Ctor & dtor.
      ** \{ */
     /// Construct an Exp node.

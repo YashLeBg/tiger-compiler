@@ -9,14 +9,16 @@
 #include <ast/dec.hh>
 #include <ast/exp.hh>
 #include <ast/name-ty.hh>
+#include <ast/typable.hh>
 #include <ast/var-dec.hh>
 
 namespace ast
 {
   /// FunctionDec.
-  class FunctionDec : public Dec
+  class FunctionDec : public Dec, public Typable
   {
   public:
+    using Dec::accept;
     /** \name Ctor & dtor.
      ** \{ */
     /// Construct a FunctionDec node.

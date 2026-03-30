@@ -11,7 +11,9 @@
 #include <ast/default-visitor.hh>
 #include <ast/non-object-visitor.hh>
 #include <misc/error.hh>
+#include <misc/scoped-map.hh>
 #include <misc/set.hh>
+#include <misc/symbol.hh>
 #include <type/fwd.hh>
 
 namespace type
@@ -151,7 +153,8 @@ namespace type
     // ---------------- //
 
     void operator()(ast::SimpleVar& e) override;
-    // FIXME: Some code was deleted here (Other Var nodes).
+    void operator()(ast::FieldVar& e) override;
+    void operator()(ast::SubscriptVar& e) override;
 
     // ---------------- //
     // Visiting /Exp/.  //
@@ -164,8 +167,15 @@ namespace type
 
     // Complex values.
     void operator()(ast::RecordExp& e) override;
+    void operator()(ast::SeqExp& e) override;
     void operator()(ast::OpExp& e) override;
-    // FIXME: Some code was deleted here (Other Exp nodes).
+    void operator()(ast::AssignExp& e) override;
+    void operator()(ast::WhileExp& e) override;
+    void operator()(ast::IfExp& e) override;
+    void operator()(ast::LetExp& e) override;
+    void operator()(ast::ArrayExp& e) override;
+    void operator()(ast::CallExp& e) override;
+    void operator()(ast::ForExp& e) override;
 
     // ---------------- //
     // Visiting /Dec/.  //
@@ -227,6 +237,8 @@ namespace type
     misc::error error_;
     /// Set of for index variable definitions, which are read only.
     misc::set<const ast::VarDec*> var_read_only_;
+    misc::scoped_map<misc::symbol, const type::Type*> venv_;
+    misc::scoped_map<misc::symbol, const type::Type*> tenv_;
   };
 
   /// Visit the lhs of an ast::FunctionDec.

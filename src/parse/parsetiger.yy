@@ -209,7 +209,7 @@
 %precedence THEN    //those 2 lines ll tie the closet else to the then to solve shift/reduce ambiguity
 %precedence ELSE
 
-%nonassoc ASSIGN       //right assign in bidding arrithmetic
+%precedence ASSIGN
 %left OR            //or priority<and priority
 %left AND
 %nonassoc EQ NE GT GE LT LE //comparisons cannot be chained

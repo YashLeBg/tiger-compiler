@@ -34,6 +34,7 @@ namespace ast
 
   template <typename T> inline void DumperDot::dump_def(const T& e) const
   {
+    (void)e;
     const ast::Ast* d = nullptr;
     // FIXME: Some code was deleted here (set d using definition of e).
     if (!d)

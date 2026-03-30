@@ -17,7 +17,10 @@ namespace type
   TypeChecker::TypeChecker()
     : super_type()
     , error_()
-  {}
+  {
+    tenv_.put("int", &Int::instance());
+    tenv_.put("string", &String::instance());
+  }
 
   const Type* TypeChecker::type(ast::Typable& e)
   {
@@ -104,10 +107,44 @@ namespace type
 
   void TypeChecker::operator()(ast::SimpleVar& e)
   {
-    // FIXME: Some code was deleted here.
+    type_set(e, e.def_get()->type_get());
   }
 
-  // FIXME: Some code was deleted here.
+  void TypeChecker::operator()(ast::FieldVar& e)
+  {
+    type(e.var_get());
+    const Type& t = e.var_get().type_get()->actual();
+    const Record* rec = dynamic_cast<const Record*>(&t);
+    if (!rec)
+    {
+      error(e, "not a record type");
+      type_set(e, &Void::instance());
+      return;
+    }
+    const Type* field = rec->field_type(e.name_get());
+    if (!field)
+    {
+      error(e, "field not in record", e.name_get());
+      type_set(e, &Void::instance());
+      return;
+    }
+    type_set(e, field);
+  }
+
+  void TypeChecker::operator()(ast::SubscriptVar& e)
+  {
+    type(e.var_get());
+    const Type& t = e.var_get().type_get()->actual();
+    const Array* arr = dynamic_cast<const Array*>(&t);
+    if (!arr)
+    {
+      error(e, "not an array type");
+      type_set(e, &Void::instance());
+      return;
+    }
+    check_type(e.index_get(), "index", Int::instance());
+    type_set(e, &arr->type_get());
+  }
 
   /*-----------------.
   | Visiting /Exp/.  |
@@ -116,20 +153,28 @@ namespace type
   // Literals.
   void TypeChecker::operator()(ast::NilExp& e)
   {
-    // FIXME: Some code was deleted here.
+    type_set(e, &Nil::instance());
   }
 
   void TypeChecker::operator()(ast::IntExp& e)
   {
-    // FIXME: Some code was deleted here.
+    type_set(e, &Int::instance());
   }
 
   void TypeChecker::operator()(ast::StringExp& e)
   {
-    // FIXME: Some code was deleted here.
+    type_set(e, &String::instance());
   }
 
   // Complex values.
+
+  void TypeChecker::operator()(ast::SeqExp& e)
+  {
+    const Type* t = &Void::instance();
+    for (auto& exp : e.exps_get())
+      t = type(*exp);
+    type_set(e, t);
+  }
 
   void TypeChecker::operator()(ast::RecordExp& e)
   {
@@ -139,7 +184,7 @@ namespace type
     const auto* record = dynamic_cast<const Record*>(t);
     if (!record)
     {
-      error(e, "not a record type", *e.type_name_get().name_get());
+      error(e, "not a record type", e.type_name_get().name_get());
       type_set(e, &Void::instance());
       return;
     }
@@ -156,7 +201,69 @@ namespace type
 
   void TypeChecker::operator()(ast::OpExp& e)
   {
-    // FIXME: Some code was deleted here.
+    type(e.left_get());
+    type(e.right_get());
+    using Oper = ast::OpExp::Oper;
+    switch (e.oper_get())
+      {
+      case Oper::add:
+      case Oper::sub:
+      case Oper::mul:
+      case Oper::div:
+        check_type(e.left_get(), "left operand", Int::instance());
+        check_type(e.right_get(), "right operand", Int::instance());
+        break;
+      case Oper::lt:
+      case Oper::le:
+      case Oper::gt:
+      case Oper::ge:
+        {
+          const Type& ltype = e.left_get().type_get()->actual();
+          if (&ltype != &Int::instance() && &ltype != &String::instance())
+            error(e.left_get(), "integer or string required");
+          check_types(e, "left operand", *e.left_get().type_get(),
+                         "right operand", *e.right_get().type_get());
+        }
+        break;
+      case Oper::eq:
+      case Oper::ne:
+        if (&e.left_get().type_get()->actual() == &Nil::instance()
+            && &e.right_get().type_get()->actual() == &Nil::instance())
+          error(e, "nil comparison requires context");
+        else
+          check_types(e, "left operand", *e.left_get().type_get(),
+                         "right operand", *e.right_get().type_get());
+        break;
+      }
+    type_set(e, &Int::instance());
+  }
+
+  void TypeChecker::operator()(ast::AssignExp& e)
+  {
+    type(e.var_get());
+    if (const auto* sv = dynamic_cast<const ast::SimpleVar*>(&e.var_get()))
+      if (var_read_only_.has(sv->def_get()))
+        error(e, "variable is read-only", sv->name_get());
+    check_types(e, "variable", *e.var_get().type_get(),
+                   "expression", *type(e.exp_get()));
+    type_set(e, &Void::instance());
+  }
+
+  void TypeChecker::operator()(ast::WhileExp& e)
+  {
+    check_type(e.test_get(), "test", Int::instance());
+    check_type(e.body_get(), "body", Void::instance());
+    type_set(e, &Void::instance());
+  }
+
+  void TypeChecker::operator()(ast::IfExp& e)
+  {
+    check_type(e.test_get(), "test", Int::instance());
+    type(e.thenclause_get());
+    type(e.elseclause_get());
+    check_types(e, "then", *e.thenclause_get().type_get(),
+                   "else", *e.elseclause_get().type_get());
+    type_set(e, e.thenclause_get().type_get());
   }
 
   // FIXED: Some code was deleted here.
@@ -177,7 +284,7 @@ namespace type
     const Array* arr = dynamic_cast<const Array*>(res);
     if (!arr)
     {
-      error(e, "not an array type", *e.type_name_get().name_get());
+      error(e, "not an array type", e.type_name_get().name_get());
       type_set(e, &Void::instance());
       return;
     }
@@ -188,7 +295,7 @@ namespace type
 
   void TypeChecker::operator()(ast::CallExp& e)
   {
-    const auto* f = dynamic_cast<const Function*>(venv_.look(e.name_get()));
+    const auto* f = dynamic_cast<const Function*>(venv_.get(e.name_get()));
     if (!f)
     {
       error(e, "undeclared function", e.name_get());
@@ -211,7 +318,7 @@ namespace type
 
   void TypeChecker::operator()(ast::ForExp& e)
   {
-    check_type(e.vardec_get().init_get(), "lower bound", Int::instance());
+    check_type(*e.vardec_get().init_get(), "lower bound", Int::instance());
 
     check_type(e.hi_get(), "upper bound", Int::instance());
     venv_.scope_begin();
@@ -257,7 +364,7 @@ namespace type
     auto func = new Function(f,*res);
 
     type_set(e,func);
-    venv_.push(e.name_get(),func);
+    venv_.put(e.name_get(),func);
   }
 
   // Type check this function's body.
@@ -295,7 +402,7 @@ namespace type
       type = t;
     }
     type_set(e,type);
-    venv_.push(e.name_get(),type);
+    venv_.put(e.name_get(),type);
   }
 
   /*--------------------.
@@ -321,7 +428,7 @@ namespace type
     // the type declared by E.
     // FIXED: Some code was deleted here.
     auto name = new Named(e.name_get());
-    tenv_.push(e.name_get(),name);
+    tenv_.put(e.name_get(),name);
     type_set(e,name);
   }
 
@@ -329,7 +436,7 @@ namespace type
   template <> void TypeChecker::visit_dec_body<ast::TypeDec>(ast::TypeDec& e)
   {
     // FIXED: Some code was deleted here.
-    const Type* t = tenv_.look(e.name_get());
+    const Type* t = tenv_.get(e.name_get());
     const Named* name = dynamic_cast<const Named*>(t);
     e.ty_get().accept(*this);
     name->type_set(e.ty_get().type_get());
@@ -360,9 +467,9 @@ namespace type
   void TypeChecker::operator()(ast::NameTy& e)
   {
     // FIXED: Some code was deleted here (Recognize user defined types, and built-in types).
-    const Type* t =tenv_.look(*e.name_get());
+    const Type* t = tenv_.get(e.name_get());
     if (!t) {
-      error(e,"undefined type",*e.name_get());
+      error(e,"undefined type",e.name_get());
     }
     type_set(e, t);
   }

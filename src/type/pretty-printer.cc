@@ -68,26 +68,31 @@ namespace type
 
   void PrettyPrinter::operator()(const Named& e)
   {
+    (void)e;
     // FIXME: Some code was deleted here.
   }
 
   void PrettyPrinter::operator()(const Array& e)
   {
+    (void)e;
     // FIXME: Some code was deleted here.
   }
 
   void PrettyPrinter::operator()(const Record& e)
   {
+    (void)e;
     // FIXME: Some code was deleted here.
   }
 
   void PrettyPrinter::operator()(const Class& e)
   {
+    (void)e;
     // FIXME: Some code was deleted here.
   }
 
   void PrettyPrinter::operator()(const Function& e)
   {
+    (void)e;
     // FIXME: Some code was deleted here.
   }
 

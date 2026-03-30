@@ -47,7 +47,8 @@ class Nil:public Type,public misc::Singleton<Nil>
         Nil()=default;
         public :
         void accept(ConstVisitor& v) const override;
-    void accept(Visitor& v) override;
+        void accept(Visitor& v) override;
+        bool compatible_with(const Type& other) const override;
     };
 
 

@@ -50,4 +50,11 @@ namespace type
     {
         v(*this);
     }
+
+    bool Nil::compatible_with(const Type& other) const
+    {
+        return dynamic_cast<const Record*>(&other.actual()) != nullptr
+            || dynamic_cast<const Class*>(&other.actual()) != nullptr
+            || *this == other;
+    }
 } // namespace type

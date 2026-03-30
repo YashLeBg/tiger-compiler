@@ -7,13 +7,15 @@
 
 #include <ast/dec.hh>
 #include <ast/ty.hh>
+#include <ast/typable.hh>
 
 namespace ast
 {
   /// TypeDec.
-  class TypeDec : public Dec
+  class TypeDec : public Dec, public Typable
   {
   public:
+    using Dec::accept;
     /** \name Ctor & dtor.
      ** \{ */
     /// Construct a TypeDec node.

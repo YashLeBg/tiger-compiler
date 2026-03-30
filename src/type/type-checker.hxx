@@ -87,14 +87,12 @@ namespace type
   {
     // FIXME: Some code was deleted here.
     venv_.scope_begin();
-    for (const auto& f:e.formals_get()) {
+    for (const auto& f : e.formals_get())
       f->accept(*this);
-      venv_.push(f->name_get(),f);
-    }
     const Type* body = type(*e.body_get());
     const Type& curr_type = e.type_get()->actual();
     const Type& res = dynamic_cast<const Routine_Type&>(curr_type).result_get();
-    check_types(*e.body_get(), "result",*body,"expected",res);
+    check_types(*e.body_get(), "result", *body, "expected", res);
     venv_.scope_end();
   }
 
