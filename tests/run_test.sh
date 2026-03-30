@@ -32,7 +32,7 @@ elif echo "$TIGFILE" | grep -q "/bind/"; then
     exit 1
   fi
 elif echo "$TIGFILE" | grep -q "/type/"; then
-  $TC --type-check "$TIGFILE" 2>/dev/null
+  $TC --types-compute "$TIGFILE" 2>/dev/null
   if [ $? -eq 5 ]; then
     exit 0
   else
