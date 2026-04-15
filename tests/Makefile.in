@@ -363,6 +363,7 @@ BOOST_SYSTEM_LIBS = @BOOST_SYSTEM_LIBS@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
+CLANG = @CLANG@
 CLANG_FORMAT = @CLANG_FORMAT@
 CPPFLAGS = @CPPFLAGS@
 CSCOPE = @CSCOPE@
@@ -400,6 +401,8 @@ LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
+LLVM_CONFIG = @LLVM_CONFIG@
+LLVM_LINK = @LLVM_LINK@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 LT_SYS_LIBRARY_PATH = @LT_SYS_LIBRARY_PATH@
@@ -513,6 +516,13 @@ EXTRA_DIST = \
   good/perso_array.tig \
   good/perso_nested_let.tig \
   good/perso_over.tig \
+  good/perso_string-int-not-keywords.tig \
+  good/perso_four-hex-backslash.tig \
+  good/perso_big-lvalue.tig \
+  good/perso_redefine-int.tig \
+  good/perso_for-scope.tig \
+  good/perso_if-void-body.tig \
+  good/perso_axel.ribon-while-precedence.tig \
   good/queens.tig \
   good/record.tig \
   good/recursive-types.tig \
@@ -536,6 +546,24 @@ EXTRA_DIST = \
   syntax/perso_lexic_commentary.tig \
   syntax/perso_lexic_dollar.tig \
   syntax/perso_lexic_unclosed.tig \
+  syntax/perso_call-separator-1.tig \
+  syntax/perso_call-separator-2.tig \
+  syntax/perso_function-without-argument-list.tig \
+  syntax/perso_less-than-non-assoc-with-uminus.tig \
+  syntax/perso_less-than-non-assoc.tig \
+  syntax/perso_multi-functions.tig \
+  syntax/perso_multi-types.tig \
+  syntax/perso_multi-vars.tig \
+  syntax/perso_nil-keyword.tig \
+  syntax/perso_record-exp-1.tig \
+  syntax/perso_record-exp-2.tig \
+  syntax/perso_seqexp-1.tig \
+  syntax/perso_seqexp-2.tig \
+  syntax/perso_seqexp-3.tig \
+  syntax/perso_seqexp-4.tig \
+  syntax/perso_several-exps.tig \
+  syntax/perso_syntax-vs-type-1.tig \
+  syntax/perso_type-nil.tig \
   syntax/typeid.tig \
   bind/break-outside-loop.tig \
   bind/invalid-function-redefinition-1.tig \
@@ -589,6 +617,13 @@ TESTS = \
   good/perso_array.tig \
   good/perso_nested_let.tig \
   good/perso_over.tig \
+  good/perso_string-int-not-keywords.tig \
+  good/perso_four-hex-backslash.tig \
+  good/perso_big-lvalue.tig \
+  good/perso_redefine-int.tig \
+  good/perso_for-scope.tig \
+  good/perso_if-void-body.tig \
+  good/perso_axel.ribon-while-precedence.tig \
   good/queens.tig \
   good/record.tig \
   good/recursive-types.tig \
@@ -611,6 +646,24 @@ TESTS = \
   syntax/perso_lexic_commentary.tig \
   syntax/perso_lexic_dollar.tig \
   syntax/perso_lexic_unclosed.tig \
+  syntax/perso_call-separator-1.tig \
+  syntax/perso_call-separator-2.tig \
+  syntax/perso_function-without-argument-list.tig \
+  syntax/perso_less-than-non-assoc-with-uminus.tig \
+  syntax/perso_less-than-non-assoc.tig \
+  syntax/perso_multi-functions.tig \
+  syntax/perso_multi-types.tig \
+  syntax/perso_multi-vars.tig \
+  syntax/perso_nil-keyword.tig \
+  syntax/perso_record-exp-1.tig \
+  syntax/perso_record-exp-2.tig \
+  syntax/perso_seqexp-1.tig \
+  syntax/perso_seqexp-2.tig \
+  syntax/perso_seqexp-3.tig \
+  syntax/perso_seqexp-4.tig \
+  syntax/perso_several-exps.tig \
+  syntax/perso_syntax-vs-type-1.tig \
+  syntax/perso_type-nil.tig \
   syntax/typeid.tig \
   bind/break-outside-loop.tig \
   bind/invalid-function-redefinition-1.tig \
@@ -948,6 +1001,55 @@ good/perso_over.tig.log: good/perso_over.tig
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+good/perso_string-int-not-keywords.tig.log: good/perso_string-int-not-keywords.tig
+	@p='good/perso_string-int-not-keywords.tig'; \
+	b='good/perso_string-int-not-keywords.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+good/perso_four-hex-backslash.tig.log: good/perso_four-hex-backslash.tig
+	@p='good/perso_four-hex-backslash.tig'; \
+	b='good/perso_four-hex-backslash.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+good/perso_big-lvalue.tig.log: good/perso_big-lvalue.tig
+	@p='good/perso_big-lvalue.tig'; \
+	b='good/perso_big-lvalue.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+good/perso_redefine-int.tig.log: good/perso_redefine-int.tig
+	@p='good/perso_redefine-int.tig'; \
+	b='good/perso_redefine-int.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+good/perso_for-scope.tig.log: good/perso_for-scope.tig
+	@p='good/perso_for-scope.tig'; \
+	b='good/perso_for-scope.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+good/perso_if-void-body.tig.log: good/perso_if-void-body.tig
+	@p='good/perso_if-void-body.tig'; \
+	b='good/perso_if-void-body.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+good/perso_axel.ribon-while-precedence.tig.log: good/perso_axel.ribon-while-precedence.tig
+	@p='good/perso_axel.ribon-while-precedence.tig'; \
+	b='good/perso_axel.ribon-while-precedence.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 good/queens.tig.log: good/queens.tig
 	@p='good/queens.tig'; \
 	b='good/queens.tig'; \
@@ -1098,6 +1200,132 @@ syntax/perso_lexic_dollar.tig.log: syntax/perso_lexic_dollar.tig
 syntax/perso_lexic_unclosed.tig.log: syntax/perso_lexic_unclosed.tig
 	@p='syntax/perso_lexic_unclosed.tig'; \
 	b='syntax/perso_lexic_unclosed.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_call-separator-1.tig.log: syntax/perso_call-separator-1.tig
+	@p='syntax/perso_call-separator-1.tig'; \
+	b='syntax/perso_call-separator-1.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_call-separator-2.tig.log: syntax/perso_call-separator-2.tig
+	@p='syntax/perso_call-separator-2.tig'; \
+	b='syntax/perso_call-separator-2.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_function-without-argument-list.tig.log: syntax/perso_function-without-argument-list.tig
+	@p='syntax/perso_function-without-argument-list.tig'; \
+	b='syntax/perso_function-without-argument-list.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_less-than-non-assoc-with-uminus.tig.log: syntax/perso_less-than-non-assoc-with-uminus.tig
+	@p='syntax/perso_less-than-non-assoc-with-uminus.tig'; \
+	b='syntax/perso_less-than-non-assoc-with-uminus.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_less-than-non-assoc.tig.log: syntax/perso_less-than-non-assoc.tig
+	@p='syntax/perso_less-than-non-assoc.tig'; \
+	b='syntax/perso_less-than-non-assoc.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_multi-functions.tig.log: syntax/perso_multi-functions.tig
+	@p='syntax/perso_multi-functions.tig'; \
+	b='syntax/perso_multi-functions.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_multi-types.tig.log: syntax/perso_multi-types.tig
+	@p='syntax/perso_multi-types.tig'; \
+	b='syntax/perso_multi-types.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_multi-vars.tig.log: syntax/perso_multi-vars.tig
+	@p='syntax/perso_multi-vars.tig'; \
+	b='syntax/perso_multi-vars.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_nil-keyword.tig.log: syntax/perso_nil-keyword.tig
+	@p='syntax/perso_nil-keyword.tig'; \
+	b='syntax/perso_nil-keyword.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_record-exp-1.tig.log: syntax/perso_record-exp-1.tig
+	@p='syntax/perso_record-exp-1.tig'; \
+	b='syntax/perso_record-exp-1.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_record-exp-2.tig.log: syntax/perso_record-exp-2.tig
+	@p='syntax/perso_record-exp-2.tig'; \
+	b='syntax/perso_record-exp-2.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_seqexp-1.tig.log: syntax/perso_seqexp-1.tig
+	@p='syntax/perso_seqexp-1.tig'; \
+	b='syntax/perso_seqexp-1.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_seqexp-2.tig.log: syntax/perso_seqexp-2.tig
+	@p='syntax/perso_seqexp-2.tig'; \
+	b='syntax/perso_seqexp-2.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_seqexp-3.tig.log: syntax/perso_seqexp-3.tig
+	@p='syntax/perso_seqexp-3.tig'; \
+	b='syntax/perso_seqexp-3.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_seqexp-4.tig.log: syntax/perso_seqexp-4.tig
+	@p='syntax/perso_seqexp-4.tig'; \
+	b='syntax/perso_seqexp-4.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_several-exps.tig.log: syntax/perso_several-exps.tig
+	@p='syntax/perso_several-exps.tig'; \
+	b='syntax/perso_several-exps.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_syntax-vs-type-1.tig.log: syntax/perso_syntax-vs-type-1.tig
+	@p='syntax/perso_syntax-vs-type-1.tig'; \
+	b='syntax/perso_syntax-vs-type-1.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+syntax/perso_type-nil.tig.log: syntax/perso_type-nil.tig
+	@p='syntax/perso_type-nil.tig'; \
+	b='syntax/perso_type-nil.tig'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

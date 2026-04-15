@@ -100,7 +100,10 @@ check_PROGRAMS = lib/misc/test-deref$(EXEEXT) \
 	lib/misc/test-unique$(EXEEXT) lib/misc/test-variant$(EXEEXT) \
 	lib/misc/test-xalloc$(EXEEXT) src/ast/test-ast$(EXEEXT) \
 	src/parse/test-parse$(EXEEXT) src/parse/test-tweast$(EXEEXT) \
-	src/object/test-parse$(EXEEXT) src/bind/test-bind$(EXEEXT)
+	src/object/test-parse$(EXEEXT) src/bind/test-bind$(EXEEXT) \
+	src/type/test-type$(EXEEXT) src/object/test-parse$(EXEEXT) \
+	src/desugar/test-string-cmp-desugar$(EXEEXT) \
+	src/desugar/test-for-loops-desugar$(EXEEXT)
 @ENABLE_TCSH_TRUE@am__append_1 = tcsh
 bin_PROGRAMS = src/tc$(EXEEXT)
 subdir = .
@@ -203,11 +206,24 @@ am_src_libtc_la_OBJECTS = src/common.lo src/task/task.lo \
 	src/task/task-register.lo src/task/simple-task.lo \
 	src/task/argument-task.lo $(am__objects_1) \
 	src/ast/dumper-dot.lo src/ast/pretty-printer.lo \
-	src/ast/libast.lo $(am__objects_3) $(am__objects_4) \
-	src/parse/libparse.lo src/parse/tiger-driver.lo \
-	src/parse/tweast.lo src/object/libobject.lo src/bind/binder.lo \
-	src/bind/libbind.lo src/bind/renamer.lo
-nodist_src_libtc_la_OBJECTS = src/version.lo src/parse/prelude.lo
+	src/ast/libast.lo src/ast/typable.lo src/ast/escapable.lo \
+	$(am__objects_3) $(am__objects_4) src/parse/libparse.lo \
+	src/parse/tiger-driver.lo src/parse/tweast.lo \
+	src/object/libobject.lo src/bind/binder.lo src/bind/libbind.lo \
+	src/bind/renamer.lo src/escapes/libescapes.lo \
+	src/escapes/escapes-visitor.lo src/type/array.lo \
+	src/type/builtin-types.lo src/type/field.lo src/type/named.lo \
+	src/type/pretty-printer.lo src/type/record.lo src/type/type.lo \
+	src/type/type-checker.lo src/type/libtype.lo \
+	src/type/function.lo src/type/attribute.lo src/type/class.lo \
+	src/type/method.lo src/object/libobject.lo \
+	src/desugar/desugar-visitor.lo \
+	src/llvmtranslate/escapes-collector.lo \
+	src/llvmtranslate/translator.lo \
+	src/llvmtranslate/libllvmtranslate.lo \
+	src/llvmtranslate/llvm-type-visitor.lo
+nodist_src_libtc_la_OBJECTS = src/version.lo src/parse/prelude.lo \
+	src/llvmtranslate/runtime.lo
 src_libtc_la_OBJECTS = $(am_src_libtc_la_OBJECTS) \
 	$(nodist_src_libtc_la_OBJECTS)
 src_libtc_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
@@ -272,6 +288,14 @@ src_ast_test_ast_DEPENDENCIES = src/libtc.la
 src_bind_test_bind_SOURCES = src/bind/test-bind.cc
 src_bind_test_bind_OBJECTS = src/bind/test-bind.$(OBJEXT)
 src_bind_test_bind_DEPENDENCIES = src/libtc.la
+src_desugar_test_for_loops_desugar_SOURCES =  \
+	src/desugar/test-for-loops-desugar.cc
+src_desugar_test_for_loops_desugar_OBJECTS = src/desugar/test_for_loops_desugar-test-for-loops-desugar.$(OBJEXT)
+src_desugar_test_for_loops_desugar_DEPENDENCIES = src/libtc.la
+src_desugar_test_string_cmp_desugar_SOURCES =  \
+	src/desugar/test-string-cmp-desugar.cc
+src_desugar_test_string_cmp_desugar_OBJECTS = src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.$(OBJEXT)
+src_desugar_test_string_cmp_desugar_DEPENDENCIES = src/libtc.la
 src_object_test_parse_SOURCES = src/object/test-parse.cc
 src_object_test_parse_OBJECTS = src/object/test-parse.$(OBJEXT)
 src_object_test_parse_DEPENDENCIES = src/libtc.la
@@ -284,10 +308,15 @@ src_parse_test_tweast_OBJECTS = src/parse/test-tweast.$(OBJEXT)
 src_parse_test_tweast_DEPENDENCIES = src/libtc.la
 am__objects_5 = src/task/tasks.$(OBJEXT) src/ast/tasks.$(OBJEXT) \
 	src/parse/tasks.$(OBJEXT) src/object/tasks.$(OBJEXT) \
-	src/bind/tasks.$(OBJEXT)
+	src/bind/tasks.$(OBJEXT) src/escapes/tasks.$(OBJEXT) \
+	src/type/tasks.$(OBJEXT) src/object/tasks.$(OBJEXT) \
+	src/desugar/tasks.$(OBJEXT) src/llvmtranslate/tasks.$(OBJEXT)
 dist_src_tc_OBJECTS = $(am__objects_5) src/tc.$(OBJEXT)
 src_tc_OBJECTS = $(dist_src_tc_OBJECTS)
 src_tc_DEPENDENCIES = src/libtc.la
+src_type_test_type_SOURCES = src/type/test-type.cc
+src_type_test_type_OBJECTS = src/type/test-type.$(OBJEXT)
+src_type_test_type_DEPENDENCIES = src/libtc.la
 SCRIPTS = $(dist_noinst_SCRIPTS) $(nodist_noinst_SCRIPTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -329,7 +358,8 @@ am__depfiles_remade = lib/misc/$(DEPDIR)/contract.Plo \
 	src/ast/$(DEPDIR)/cast-exp.Plo \
 	src/ast/$(DEPDIR)/chunk-list.Plo \
 	src/ast/$(DEPDIR)/class-ty.Plo src/ast/$(DEPDIR)/dec.Plo \
-	src/ast/$(DEPDIR)/dumper-dot.Plo src/ast/$(DEPDIR)/exp.Plo \
+	src/ast/$(DEPDIR)/dumper-dot.Plo \
+	src/ast/$(DEPDIR)/escapable.Plo src/ast/$(DEPDIR)/exp.Plo \
 	src/ast/$(DEPDIR)/field-init.Plo \
 	src/ast/$(DEPDIR)/field-var.Plo src/ast/$(DEPDIR)/field.Plo \
 	src/ast/$(DEPDIR)/for-exp.Plo \
@@ -347,11 +377,24 @@ am__depfiles_remade = lib/misc/$(DEPDIR)/contract.Plo \
 	src/ast/$(DEPDIR)/string-exp.Plo \
 	src/ast/$(DEPDIR)/subscript-var.Plo src/ast/$(DEPDIR)/tasks.Po \
 	src/ast/$(DEPDIR)/test-ast.Po src/ast/$(DEPDIR)/ty.Plo \
-	src/ast/$(DEPDIR)/type-dec.Plo src/ast/$(DEPDIR)/var-dec.Plo \
-	src/ast/$(DEPDIR)/var.Plo src/ast/$(DEPDIR)/while-exp.Plo \
-	src/bind/$(DEPDIR)/binder.Plo src/bind/$(DEPDIR)/libbind.Plo \
-	src/bind/$(DEPDIR)/renamer.Plo src/bind/$(DEPDIR)/tasks.Po \
-	src/bind/$(DEPDIR)/test-bind.Po \
+	src/ast/$(DEPDIR)/typable.Plo src/ast/$(DEPDIR)/type-dec.Plo \
+	src/ast/$(DEPDIR)/var-dec.Plo src/ast/$(DEPDIR)/var.Plo \
+	src/ast/$(DEPDIR)/while-exp.Plo src/bind/$(DEPDIR)/binder.Plo \
+	src/bind/$(DEPDIR)/libbind.Plo src/bind/$(DEPDIR)/renamer.Plo \
+	src/bind/$(DEPDIR)/tasks.Po src/bind/$(DEPDIR)/test-bind.Po \
+	src/desugar/$(DEPDIR)/desugar-visitor.Plo \
+	src/desugar/$(DEPDIR)/tasks.Po \
+	src/desugar/$(DEPDIR)/test_for_loops_desugar-test-for-loops-desugar.Po \
+	src/desugar/$(DEPDIR)/test_string_cmp_desugar-test-string-cmp-desugar.Po \
+	src/escapes/$(DEPDIR)/escapes-visitor.Plo \
+	src/escapes/$(DEPDIR)/libescapes.Plo \
+	src/escapes/$(DEPDIR)/tasks.Po \
+	src/llvmtranslate/$(DEPDIR)/escapes-collector.Plo \
+	src/llvmtranslate/$(DEPDIR)/libllvmtranslate.Plo \
+	src/llvmtranslate/$(DEPDIR)/llvm-type-visitor.Plo \
+	src/llvmtranslate/$(DEPDIR)/runtime.Plo \
+	src/llvmtranslate/$(DEPDIR)/tasks.Po \
+	src/llvmtranslate/$(DEPDIR)/translator.Plo \
 	src/object/$(DEPDIR)/libobject.Plo \
 	src/object/$(DEPDIR)/tasks.Po \
 	src/object/$(DEPDIR)/test-parse.Po \
@@ -373,7 +416,17 @@ am__depfiles_remade = lib/misc/$(DEPDIR)/contract.Plo \
 	src/task/$(DEPDIR)/simple-task.Plo \
 	src/task/$(DEPDIR)/string-task.Plo \
 	src/task/$(DEPDIR)/task-register.Plo \
-	src/task/$(DEPDIR)/task.Plo src/task/$(DEPDIR)/tasks.Po
+	src/task/$(DEPDIR)/task.Plo src/task/$(DEPDIR)/tasks.Po \
+	src/type/$(DEPDIR)/array.Plo src/type/$(DEPDIR)/attribute.Plo \
+	src/type/$(DEPDIR)/builtin-types.Plo \
+	src/type/$(DEPDIR)/class.Plo src/type/$(DEPDIR)/field.Plo \
+	src/type/$(DEPDIR)/function.Plo src/type/$(DEPDIR)/libtype.Plo \
+	src/type/$(DEPDIR)/method.Plo src/type/$(DEPDIR)/named.Plo \
+	src/type/$(DEPDIR)/pretty-printer.Plo \
+	src/type/$(DEPDIR)/record.Plo src/type/$(DEPDIR)/tasks.Po \
+	src/type/$(DEPDIR)/test-type.Po \
+	src/type/$(DEPDIR)/type-checker.Plo \
+	src/type/$(DEPDIR)/type.Plo
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -419,9 +472,11 @@ SOURCES = $(lib_misc_libmisc_la_SOURCES) $(src_libtc_la_SOURCES) \
 	lib/misc/test-symbol.cc lib/misc/test-timer.cc \
 	lib/misc/test-unique.cc lib/misc/test-variant.cc \
 	lib/misc/test-xalloc.cc src/ast/test-ast.cc \
-	src/bind/test-bind.cc src/object/test-parse.cc \
-	src/parse/test-parse.cc src/parse/test-tweast.cc \
-	$(dist_src_tc_SOURCES)
+	src/bind/test-bind.cc src/desugar/test-for-loops-desugar.cc \
+	src/desugar/test-string-cmp-desugar.cc \
+	src/object/test-parse.cc src/parse/test-parse.cc \
+	src/parse/test-tweast.cc $(dist_src_tc_SOURCES) \
+	src/type/test-type.cc
 DIST_SOURCES = $(lib_misc_libmisc_la_SOURCES) $(src_libtc_la_SOURCES) \
 	lib/misc/test-deref.cc lib/misc/test-error.cc \
 	lib/misc/test-escape.cc lib/misc/test-graph.cc \
@@ -430,8 +485,11 @@ DIST_SOURCES = $(lib_misc_libmisc_la_SOURCES) $(src_libtc_la_SOURCES) \
 	lib/misc/test-timer.cc lib/misc/test-unique.cc \
 	lib/misc/test-variant.cc lib/misc/test-xalloc.cc \
 	src/ast/test-ast.cc src/bind/test-bind.cc \
+	src/desugar/test-for-loops-desugar.cc \
+	src/desugar/test-string-cmp-desugar.cc \
 	src/object/test-parse.cc src/parse/test-parse.cc \
-	src/parse/test-tweast.cc $(dist_src_tc_SOURCES)
+	src/parse/test-tweast.cc $(dist_src_tc_SOURCES) \
+	src/type/test-type.cc
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
 	install-data-recursive install-dvi-recursive \
@@ -657,8 +715,10 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/build-aux/local.am \
 	$(srcdir)/doc/local.am $(srcdir)/lib/local.am \
 	$(srcdir)/lib/misc/local.am $(srcdir)/src/ast/ast-nodes.mk \
 	$(srcdir)/src/ast/local.am $(srcdir)/src/bind/local.am \
-	$(srcdir)/src/local.am $(srcdir)/src/object/local.am \
-	$(srcdir)/src/parse/local.am $(srcdir)/src/task/local.am \
+	$(srcdir)/src/desugar/local.am $(srcdir)/src/escapes/local.am \
+	$(srcdir)/src/llvmtranslate/local.am $(srcdir)/src/local.am \
+	$(srcdir)/src/object/local.am $(srcdir)/src/parse/local.am \
+	$(srcdir)/src/task/local.am $(srcdir)/src/type/local.am \
 	$(top_srcdir)/build-aux/ar-lib \
 	$(top_srcdir)/build-aux/bin/bison++.in \
 	$(top_srcdir)/build-aux/compile \
@@ -740,6 +800,7 @@ BOOST_SYSTEM_LIBS = @BOOST_SYSTEM_LIBS@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
+CLANG = @CLANG@
 CLANG_FORMAT = @CLANG_FORMAT@
 CPPFLAGS = @CPPFLAGS@
 CSCOPE = @CSCOPE@
@@ -777,6 +838,8 @@ LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
+LLVM_CONFIG = @LLVM_CONFIG@
+LLVM_LINK = @LLVM_LINK@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 LT_SYS_LIBRARY_PATH = @LT_SYS_LIBRARY_PATH@
@@ -890,18 +953,22 @@ CLEANFILES = $(EXTRA_PROGRAMS) src/version.stamp \
 	src/parse/parsetiger.output src/parse/parsetiger.xml \
 	src/parse/parsetiger.cc src/parse/scantiger.hh \
 	src/parse/parsetiger.html src/parse/scantiger.cc \
-	src/parse/parsetiger.stamp doc/Doxyfile authors.h tc.log.bz2
+	src/parse/parsetiger.stamp src/llvmtranslate/runtime.ll \
+	src/llvmtranslate/runtime.cc doc/Doxyfile authors.h tc.log.bz2
 
 # Compile the parser and save cycles.
 # This code comes from "Handling Tools that Produce Many Outputs",
 # from the Automake documentation.
+
+# Compile the LLVM Tiger runtime
 EXTRA_DIST = $(dist_TESTS) build-aux/tiger-syntax.vim \
 	build-aux/tiger-ftdetect.vim src/version.cc.in \
 	src/parse/scantiger.ll src/parse/parsetiger.stamp \
 	src/parse/parsetiger.yy $(PARSE_PRELUDE_GENERATION) \
-	doc/Doxyfile.in bootstrap AUTHORS.txt NEWS.txt THANKS.txt \
-	.clang-format flake.nix flake.lock AUTHORS.txt \
-	$(AUTHORS_H_GEN)
+	src/type/README.txt src/llvmtranslate/tiger-runtime.c \
+	$(LLVM_RUNTIME_GENERATION) doc/Doxyfile.in bootstrap \
+	AUTHORS.txt NEWS.txt THANKS.txt .clang-format flake.nix \
+	flake.lock AUTHORS.txt $(AUTHORS_H_GEN)
 MAINTAINERCLEANFILES = src/parse/scantiger.cc $(REFLEX_HEADER)
 dist_TESTS = 
 dist_noinst_DATA = data/prelude.tih src/ast/README.txt
@@ -923,7 +990,8 @@ SUBDIRS = . tests $(am__append_1)
 AM_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_srcdir)/src \
 	-I$(top_builddir)/src $(BOOST_CPPFLAGS) \
 	-DPKGDATADIR="\"$(pkgdatadir)\"" -I$(top_builddir) -I$(srcdir)
-AM_CXXFLAGS = $(WARNING_CXXFLAGS)
+AM_CXXFLAGS = $(WARNING_CXXFLAGS) `$(LLVM_CONFIG) \
+	$(EXTRA_LLVM_CONFIG_FLAGS) --cppflags`
 noinst_LTLIBRARIES = lib/misc/libmisc.la
 lib_misc_libmisc_la_SOURCES = lib/misc/fwd.hh lib/misc/libmisc.hh \
 	lib/misc/concepts.hh lib/misc/algorithm.hh \
@@ -973,7 +1041,9 @@ src_libtc_la_SOURCES = src/version.hh src/common.cc src/task/fwd.hh \
 	src/ast/non-object-visitor.hxx src/ast/object-visitor.hh \
 	src/ast/object-visitor.hxx src/ast/pretty-printer.hh \
 	src/ast/pretty-printer.cc src/ast/visitor.hxx \
-	src/ast/libast.hh src/ast/libast.cc $(SOURCES_REFLEX) \
+	src/ast/libast.hh src/ast/libast.cc src/ast/typable.hh \
+	src/ast/typable.hxx src/ast/typable.cc src/ast/escapable.hh \
+	src/ast/escapable.hxx src/ast/escapable.cc $(SOURCES_REFLEX) \
 	$(SOURCES_PARSETIGER_YY) src/parse/fwd.hh \
 	src/parse/libparse.hh src/parse/libparse.cc \
 	src/parse/metavar-map.hh src/parse/metavar-map.hxx \
@@ -984,9 +1054,47 @@ src_libtc_la_SOURCES = src/version.hh src/common.cc src/task/fwd.hh \
 	src/object/libobject.hxx src/object/fwd.hh src/bind/binder.hh \
 	src/bind/binder.hxx src/bind/binder.cc src/bind/libbind.hh \
 	src/bind/libbind.cc src/bind/renamer.hh src/bind/renamer.hxx \
-	src/bind/renamer.cc
-nodist_src_libtc_la_SOURCES = src/version.cc src/parse/prelude.cc
-src_libtc_la_LDFLAGS = $(BOOST_PROGRAM_OPTIONS_LDFLAGS) -lreflex
+	src/bind/renamer.cc src/escapes/libescapes.hh \
+	src/escapes/libescapes.cc src/escapes/escapes-visitor.hh \
+	src/escapes/escapes-visitor.cc src/type/fwd.hh \
+	src/type/types.hh src/type/array.hh src/type/array.cc \
+	src/type/array.hxx src/type/builtin-types.hh \
+	src/type/builtin-types.cc src/type/default-visitor.hh \
+	src/type/default-visitor.hxx src/type/field.hh \
+	src/type/field.cc src/type/field.hxx src/type/named.hh \
+	src/type/named.cc src/type/named.hxx \
+	src/type/pretty-printer.hh src/type/pretty-printer.cc \
+	src/type/record.hh src/type/record.cc src/type/record.hxx \
+	src/type/type.hh src/type/type.hxx src/type/type.cc \
+	src/type/type-checker.hh src/type/type-checker.hxx \
+	src/type/type-checker.cc src/type/libtype.hh \
+	src/type/libtype.cc src/type/visitor.hh src/type/visitor.hxx \
+	src/type/function.hh src/type/function.cc \
+	src/type/function.hxx src/type/attribute.hh \
+	src/type/attribute.cc src/type/attribute.hxx src/type/class.hh \
+	src/type/class.cc src/type/class.hxx src/type/method.hh \
+	src/type/method.cc src/type/method.hxx src/object/libobject.hh \
+	src/object/libobject.cc src/object/libobject.hxx \
+	src/object/fwd.hh src/desugar/desugar-visitor.hh \
+	src/desugar/desugar-visitor.cc src/desugar/libdesugar.hh \
+	src/desugar/libdesugar.hxx \
+	src/llvmtranslate/escapes-collector.cc \
+	src/llvmtranslate/escapes-collector.hh \
+	src/llvmtranslate/translator.hh \
+	src/llvmtranslate/translator.hxx \
+	src/llvmtranslate/translator.cc \
+	src/llvmtranslate/libllvmtranslate.cc \
+	src/llvmtranslate/libllvmtranslate.hh \
+	src/llvmtranslate/llvm-type-visitor.cc \
+	src/llvmtranslate/llvm-type-visitor.hh \
+	src/llvmtranslate/fwd.hh
+nodist_src_libtc_la_SOURCES = src/version.cc src/parse/prelude.cc \
+	src/llvmtranslate/runtime.cc
+src_libtc_la_LDFLAGS = $(BOOST_PROGRAM_OPTIONS_LDFLAGS) -lreflex \
+	`$(LLVM_CONFIG) $(EXTRA_LLVM_CONFIG_FLAGS) --ldflags` \
+	`$(LLVM_CONFIG) $(EXTRA_LLVM_CONFIG_FLAGS) --libs core linker \
+	asmparser irprinter` `$(LLVM_CONFIG) \
+	$(EXTRA_LLVM_CONFIG_FLAGS) --system-libs`
 src_libtc_la_LIBADD = \
   $(top_builddir)/lib/misc/libmisc.la                                          \
   $(BOOST_PROGRAM_OPTIONS_LIBS)
@@ -1001,7 +1109,10 @@ src_tc_LDADD = src/libtc.la
 TASKS = src/task/tasks.hh src/task/tasks.cc src/ast/tasks.hh \
 	src/ast/tasks.cc src/parse/tasks.hh src/parse/tasks.cc \
 	src/object/tasks.hh src/object/tasks.cc src/bind/tasks.hh \
-	src/bind/tasks.cc
+	src/bind/tasks.cc src/escapes/tasks.hh src/escapes/tasks.cc \
+	src/type/tasks.hh src/type/tasks.cc src/object/tasks.hh \
+	src/object/tasks.cc src/desugar/tasks.hh src/desugar/tasks.cc \
+	src/llvmtranslate/tasks.hh src/llvmtranslate/tasks.cc
 ast_basedir = src/ast/
 ast_srcdir = $(srcdir)/src/ast
 AST_NODES = \
@@ -1074,6 +1185,14 @@ src_parse_test_parse_LDADD = src/libtc.la
 src_parse_test_tweast_LDADD = src/libtc.la
 src_object_test_parse_LDADD = src/libtc.la
 src_bind_test_bind_LDADD = src/libtc.la
+src_type_test_type_LDADD = src/libtc.la
+src_desugar_test_string_cmp_desugar_LDADD = src/libtc.la
+src_desugar_test_string_cmp_desugar_CPPFLAGS = $(AM_CPPFLAGS) -DPKGDATADIR=\"$(pkgdatadir)\"
+src_desugar_test_for_loops_desugar_LDADD = src/libtc.la
+src_desugar_test_for_loops_desugar_CPPFLAGS = $(AM_CPPFLAGS) -DPKGDATADIR=\"$(pkgdatadir)\"
+LLVM_RUNTIME_GENERATION = src/llvmtranslate/generate-runtime.sh
+@STATIC_LLVM_FALSE@EXTRA_LLVM_CONFIG_FLAGS = 
+@STATIC_LLVM_TRUE@EXTRA_LLVM_CONFIG_FLAGS = --link-static
 DOXYGEN = doxygen
 edit = sed -e "s|@ID@|$$Id|"                                                   \
            -e 's,@PACKAGE_NAME\@,$(PACKAGE_NAME),g'                            \
@@ -1090,7 +1209,7 @@ all: $(BUILT_SOURCES) config.h
 .SUFFIXES: .cc .lo .log .o .obj .test .test$(EXEEXT) .trs
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(srcdir)/build-aux/local.am $(srcdir)/data/local.am $(srcdir)/lib/local.am $(srcdir)/lib/misc/local.am $(srcdir)/src/local.am $(srcdir)/src/task/local.am $(srcdir)/src/ast/local.am $(srcdir)/src/ast/ast-nodes.mk $(srcdir)/src/parse/local.am $(srcdir)/src/object/local.am $(srcdir)/src/bind/local.am $(srcdir)/doc/local.am $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(srcdir)/build-aux/local.am $(srcdir)/data/local.am $(srcdir)/lib/local.am $(srcdir)/lib/misc/local.am $(srcdir)/src/local.am $(srcdir)/src/task/local.am $(srcdir)/src/ast/local.am $(srcdir)/src/ast/ast-nodes.mk $(srcdir)/src/parse/local.am $(srcdir)/src/object/local.am $(srcdir)/src/bind/local.am $(srcdir)/src/escapes/local.am $(srcdir)/src/type/local.am $(srcdir)/src/object/local.am $(srcdir)/src/desugar/local.am $(srcdir)/src/llvmtranslate/local.am $(srcdir)/doc/local.am $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -1112,7 +1231,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles);; \
 	esac;
-$(srcdir)/build-aux/local.am $(srcdir)/data/local.am $(srcdir)/lib/local.am $(srcdir)/lib/misc/local.am $(srcdir)/src/local.am $(srcdir)/src/task/local.am $(srcdir)/src/ast/local.am $(srcdir)/src/ast/ast-nodes.mk $(srcdir)/src/parse/local.am $(srcdir)/src/object/local.am $(srcdir)/src/bind/local.am $(srcdir)/doc/local.am $(am__empty):
+$(srcdir)/build-aux/local.am $(srcdir)/data/local.am $(srcdir)/lib/local.am $(srcdir)/lib/misc/local.am $(srcdir)/src/local.am $(srcdir)/src/task/local.am $(srcdir)/src/ast/local.am $(srcdir)/src/ast/ast-nodes.mk $(srcdir)/src/parse/local.am $(srcdir)/src/object/local.am $(srcdir)/src/bind/local.am $(srcdir)/src/escapes/local.am $(srcdir)/src/type/local.am $(srcdir)/src/object/local.am $(srcdir)/src/desugar/local.am $(srcdir)/src/llvmtranslate/local.am $(srcdir)/doc/local.am $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
@@ -1385,6 +1504,10 @@ src/ast/pretty-printer.lo: src/ast/$(am__dirstamp) \
 	src/ast/$(DEPDIR)/$(am__dirstamp)
 src/ast/libast.lo: src/ast/$(am__dirstamp) \
 	src/ast/$(DEPDIR)/$(am__dirstamp)
+src/ast/typable.lo: src/ast/$(am__dirstamp) \
+	src/ast/$(DEPDIR)/$(am__dirstamp)
+src/ast/escapable.lo: src/ast/$(am__dirstamp) \
+	src/ast/$(DEPDIR)/$(am__dirstamp)
 src/parse/$(am__dirstamp):
 	@$(MKDIR_P) src/parse
 	@: > src/parse/$(am__dirstamp)
@@ -1421,9 +1544,78 @@ src/bind/libbind.lo: src/bind/$(am__dirstamp) \
 	src/bind/$(DEPDIR)/$(am__dirstamp)
 src/bind/renamer.lo: src/bind/$(am__dirstamp) \
 	src/bind/$(DEPDIR)/$(am__dirstamp)
+src/escapes/$(am__dirstamp):
+	@$(MKDIR_P) src/escapes
+	@: > src/escapes/$(am__dirstamp)
+src/escapes/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/escapes/$(DEPDIR)
+	@: > src/escapes/$(DEPDIR)/$(am__dirstamp)
+src/escapes/libescapes.lo: src/escapes/$(am__dirstamp) \
+	src/escapes/$(DEPDIR)/$(am__dirstamp)
+src/escapes/escapes-visitor.lo: src/escapes/$(am__dirstamp) \
+	src/escapes/$(DEPDIR)/$(am__dirstamp)
+src/type/$(am__dirstamp):
+	@$(MKDIR_P) src/type
+	@: > src/type/$(am__dirstamp)
+src/type/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/type/$(DEPDIR)
+	@: > src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/array.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/builtin-types.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/field.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/named.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/pretty-printer.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/record.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/type.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/type-checker.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/libtype.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/function.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/attribute.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/class.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/type/method.lo: src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/desugar/$(am__dirstamp):
+	@$(MKDIR_P) src/desugar
+	@: > src/desugar/$(am__dirstamp)
+src/desugar/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/desugar/$(DEPDIR)
+	@: > src/desugar/$(DEPDIR)/$(am__dirstamp)
+src/desugar/desugar-visitor.lo: src/desugar/$(am__dirstamp) \
+	src/desugar/$(DEPDIR)/$(am__dirstamp)
+src/llvmtranslate/$(am__dirstamp):
+	@$(MKDIR_P) src/llvmtranslate
+	@: > src/llvmtranslate/$(am__dirstamp)
+src/llvmtranslate/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) src/llvmtranslate/$(DEPDIR)
+	@: > src/llvmtranslate/$(DEPDIR)/$(am__dirstamp)
+src/llvmtranslate/escapes-collector.lo:  \
+	src/llvmtranslate/$(am__dirstamp) \
+	src/llvmtranslate/$(DEPDIR)/$(am__dirstamp)
+src/llvmtranslate/translator.lo: src/llvmtranslate/$(am__dirstamp) \
+	src/llvmtranslate/$(DEPDIR)/$(am__dirstamp)
+src/llvmtranslate/libllvmtranslate.lo:  \
+	src/llvmtranslate/$(am__dirstamp) \
+	src/llvmtranslate/$(DEPDIR)/$(am__dirstamp)
+src/llvmtranslate/llvm-type-visitor.lo:  \
+	src/llvmtranslate/$(am__dirstamp) \
+	src/llvmtranslate/$(DEPDIR)/$(am__dirstamp)
 src/version.lo: src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
 src/parse/prelude.lo: src/parse/$(am__dirstamp) \
 	src/parse/$(DEPDIR)/$(am__dirstamp)
+src/llvmtranslate/runtime.lo: src/llvmtranslate/$(am__dirstamp) \
+	src/llvmtranslate/$(DEPDIR)/$(am__dirstamp)
 
 src/libtc.la: $(src_libtc_la_OBJECTS) $(src_libtc_la_DEPENDENCIES) $(EXTRA_src_libtc_la_DEPENDENCIES) src/$(am__dirstamp)
 	$(AM_V_CXXLD)$(src_libtc_la_LINK) -rpath $(libdir) $(src_libtc_la_OBJECTS) $(src_libtc_la_LIBADD) $(LIBS)
@@ -1511,6 +1703,20 @@ src/bind/test-bind.$(OBJEXT): src/bind/$(am__dirstamp) \
 src/bind/test-bind$(EXEEXT): $(src_bind_test_bind_OBJECTS) $(src_bind_test_bind_DEPENDENCIES) $(EXTRA_src_bind_test_bind_DEPENDENCIES) src/bind/$(am__dirstamp)
 	@rm -f src/bind/test-bind$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(src_bind_test_bind_OBJECTS) $(src_bind_test_bind_LDADD) $(LIBS)
+src/desugar/test_for_loops_desugar-test-for-loops-desugar.$(OBJEXT):  \
+	src/desugar/$(am__dirstamp) \
+	src/desugar/$(DEPDIR)/$(am__dirstamp)
+
+src/desugar/test-for-loops-desugar$(EXEEXT): $(src_desugar_test_for_loops_desugar_OBJECTS) $(src_desugar_test_for_loops_desugar_DEPENDENCIES) $(EXTRA_src_desugar_test_for_loops_desugar_DEPENDENCIES) src/desugar/$(am__dirstamp)
+	@rm -f src/desugar/test-for-loops-desugar$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(src_desugar_test_for_loops_desugar_OBJECTS) $(src_desugar_test_for_loops_desugar_LDADD) $(LIBS)
+src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.$(OBJEXT):  \
+	src/desugar/$(am__dirstamp) \
+	src/desugar/$(DEPDIR)/$(am__dirstamp)
+
+src/desugar/test-string-cmp-desugar$(EXEEXT): $(src_desugar_test_string_cmp_desugar_OBJECTS) $(src_desugar_test_string_cmp_desugar_DEPENDENCIES) $(EXTRA_src_desugar_test_string_cmp_desugar_DEPENDENCIES) src/desugar/$(am__dirstamp)
+	@rm -f src/desugar/test-string-cmp-desugar$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(src_desugar_test_string_cmp_desugar_OBJECTS) $(src_desugar_test_string_cmp_desugar_LDADD) $(LIBS)
 src/object/test-parse.$(OBJEXT): src/object/$(am__dirstamp) \
 	src/object/$(DEPDIR)/$(am__dirstamp)
 
@@ -1539,11 +1745,25 @@ src/object/tasks.$(OBJEXT): src/object/$(am__dirstamp) \
 	src/object/$(DEPDIR)/$(am__dirstamp)
 src/bind/tasks.$(OBJEXT): src/bind/$(am__dirstamp) \
 	src/bind/$(DEPDIR)/$(am__dirstamp)
+src/escapes/tasks.$(OBJEXT): src/escapes/$(am__dirstamp) \
+	src/escapes/$(DEPDIR)/$(am__dirstamp)
+src/type/tasks.$(OBJEXT): src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+src/desugar/tasks.$(OBJEXT): src/desugar/$(am__dirstamp) \
+	src/desugar/$(DEPDIR)/$(am__dirstamp)
+src/llvmtranslate/tasks.$(OBJEXT): src/llvmtranslate/$(am__dirstamp) \
+	src/llvmtranslate/$(DEPDIR)/$(am__dirstamp)
 src/tc.$(OBJEXT): src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
 
 src/tc$(EXEEXT): $(src_tc_OBJECTS) $(src_tc_DEPENDENCIES) $(EXTRA_src_tc_DEPENDENCIES) src/$(am__dirstamp)
 	@rm -f src/tc$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(src_tc_OBJECTS) $(src_tc_LDADD) $(LIBS)
+src/type/test-type.$(OBJEXT): src/type/$(am__dirstamp) \
+	src/type/$(DEPDIR)/$(am__dirstamp)
+
+src/type/test-type$(EXEEXT): $(src_type_test_type_OBJECTS) $(src_type_test_type_DEPENDENCIES) $(EXTRA_src_type_test_type_DEPENDENCIES) src/type/$(am__dirstamp)
+	@rm -f src/type/test-type$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(src_type_test_type_OBJECTS) $(src_type_test_type_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -1555,12 +1775,20 @@ mostlyclean-compile:
 	-rm -f src/ast/*.lo
 	-rm -f src/bind/*.$(OBJEXT)
 	-rm -f src/bind/*.lo
+	-rm -f src/desugar/*.$(OBJEXT)
+	-rm -f src/desugar/*.lo
+	-rm -f src/escapes/*.$(OBJEXT)
+	-rm -f src/escapes/*.lo
+	-rm -f src/llvmtranslate/*.$(OBJEXT)
+	-rm -f src/llvmtranslate/*.lo
 	-rm -f src/object/*.$(OBJEXT)
 	-rm -f src/object/*.lo
 	-rm -f src/parse/*.$(OBJEXT)
 	-rm -f src/parse/*.lo
 	-rm -f src/task/*.$(OBJEXT)
 	-rm -f src/task/*.lo
+	-rm -f src/type/*.$(OBJEXT)
+	-rm -f src/type/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -1599,6 +1827,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/class-ty.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/dec.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/dumper-dot.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/escapable.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/exp.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/field-init.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/field-var.Plo@am__quote@ # am--include-marker
@@ -1625,6 +1854,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/tasks.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/test-ast.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/ty.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/typable.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/type-dec.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/var-dec.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/ast/$(DEPDIR)/var.Plo@am__quote@ # am--include-marker
@@ -1634,6 +1864,19 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/bind/$(DEPDIR)/renamer.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/bind/$(DEPDIR)/tasks.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/bind/$(DEPDIR)/test-bind.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/desugar/$(DEPDIR)/desugar-visitor.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/desugar/$(DEPDIR)/tasks.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/desugar/$(DEPDIR)/test_for_loops_desugar-test-for-loops-desugar.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/desugar/$(DEPDIR)/test_string_cmp_desugar-test-string-cmp-desugar.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/escapes/$(DEPDIR)/escapes-visitor.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/escapes/$(DEPDIR)/libescapes.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/escapes/$(DEPDIR)/tasks.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/llvmtranslate/$(DEPDIR)/escapes-collector.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/llvmtranslate/$(DEPDIR)/libllvmtranslate.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/llvmtranslate/$(DEPDIR)/llvm-type-visitor.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/llvmtranslate/$(DEPDIR)/runtime.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/llvmtranslate/$(DEPDIR)/tasks.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/llvmtranslate/$(DEPDIR)/translator.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/object/$(DEPDIR)/libobject.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/object/$(DEPDIR)/tasks.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/object/$(DEPDIR)/test-parse.Po@am__quote@ # am--include-marker
@@ -1657,6 +1900,21 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/task/$(DEPDIR)/task-register.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/task/$(DEPDIR)/task.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@src/task/$(DEPDIR)/tasks.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/array.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/attribute.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/builtin-types.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/class.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/field.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/function.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/libtype.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/method.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/named.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/pretty-printer.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/record.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/tasks.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/test-type.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/type-checker.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@src/type/$(DEPDIR)/type.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -1702,6 +1960,34 @@ lib/misc/test_variant-test-variant.obj: lib/misc/test-variant.cc
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(lib_misc_test_variant_CXXFLAGS) $(CXXFLAGS) -c -o lib/misc/test_variant-test-variant.obj `if test -f 'lib/misc/test-variant.cc'; then $(CYGPATH_W) 'lib/misc/test-variant.cc'; else $(CYGPATH_W) '$(srcdir)/lib/misc/test-variant.cc'; fi`
 
+src/desugar/test_for_loops_desugar-test-for-loops-desugar.o: src/desugar/test-for-loops-desugar.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_desugar_test_for_loops_desugar_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/desugar/test_for_loops_desugar-test-for-loops-desugar.o -MD -MP -MF src/desugar/$(DEPDIR)/test_for_loops_desugar-test-for-loops-desugar.Tpo -c -o src/desugar/test_for_loops_desugar-test-for-loops-desugar.o `test -f 'src/desugar/test-for-loops-desugar.cc' || echo '$(srcdir)/'`src/desugar/test-for-loops-desugar.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/desugar/$(DEPDIR)/test_for_loops_desugar-test-for-loops-desugar.Tpo src/desugar/$(DEPDIR)/test_for_loops_desugar-test-for-loops-desugar.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/desugar/test-for-loops-desugar.cc' object='src/desugar/test_for_loops_desugar-test-for-loops-desugar.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_desugar_test_for_loops_desugar_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/desugar/test_for_loops_desugar-test-for-loops-desugar.o `test -f 'src/desugar/test-for-loops-desugar.cc' || echo '$(srcdir)/'`src/desugar/test-for-loops-desugar.cc
+
+src/desugar/test_for_loops_desugar-test-for-loops-desugar.obj: src/desugar/test-for-loops-desugar.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_desugar_test_for_loops_desugar_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/desugar/test_for_loops_desugar-test-for-loops-desugar.obj -MD -MP -MF src/desugar/$(DEPDIR)/test_for_loops_desugar-test-for-loops-desugar.Tpo -c -o src/desugar/test_for_loops_desugar-test-for-loops-desugar.obj `if test -f 'src/desugar/test-for-loops-desugar.cc'; then $(CYGPATH_W) 'src/desugar/test-for-loops-desugar.cc'; else $(CYGPATH_W) '$(srcdir)/src/desugar/test-for-loops-desugar.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/desugar/$(DEPDIR)/test_for_loops_desugar-test-for-loops-desugar.Tpo src/desugar/$(DEPDIR)/test_for_loops_desugar-test-for-loops-desugar.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/desugar/test-for-loops-desugar.cc' object='src/desugar/test_for_loops_desugar-test-for-loops-desugar.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_desugar_test_for_loops_desugar_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/desugar/test_for_loops_desugar-test-for-loops-desugar.obj `if test -f 'src/desugar/test-for-loops-desugar.cc'; then $(CYGPATH_W) 'src/desugar/test-for-loops-desugar.cc'; else $(CYGPATH_W) '$(srcdir)/src/desugar/test-for-loops-desugar.cc'; fi`
+
+src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.o: src/desugar/test-string-cmp-desugar.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_desugar_test_string_cmp_desugar_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.o -MD -MP -MF src/desugar/$(DEPDIR)/test_string_cmp_desugar-test-string-cmp-desugar.Tpo -c -o src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.o `test -f 'src/desugar/test-string-cmp-desugar.cc' || echo '$(srcdir)/'`src/desugar/test-string-cmp-desugar.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/desugar/$(DEPDIR)/test_string_cmp_desugar-test-string-cmp-desugar.Tpo src/desugar/$(DEPDIR)/test_string_cmp_desugar-test-string-cmp-desugar.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/desugar/test-string-cmp-desugar.cc' object='src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_desugar_test_string_cmp_desugar_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.o `test -f 'src/desugar/test-string-cmp-desugar.cc' || echo '$(srcdir)/'`src/desugar/test-string-cmp-desugar.cc
+
+src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.obj: src/desugar/test-string-cmp-desugar.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_desugar_test_string_cmp_desugar_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.obj -MD -MP -MF src/desugar/$(DEPDIR)/test_string_cmp_desugar-test-string-cmp-desugar.Tpo -c -o src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.obj `if test -f 'src/desugar/test-string-cmp-desugar.cc'; then $(CYGPATH_W) 'src/desugar/test-string-cmp-desugar.cc'; else $(CYGPATH_W) '$(srcdir)/src/desugar/test-string-cmp-desugar.cc'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/desugar/$(DEPDIR)/test_string_cmp_desugar-test-string-cmp-desugar.Tpo src/desugar/$(DEPDIR)/test_string_cmp_desugar-test-string-cmp-desugar.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='src/desugar/test-string-cmp-desugar.cc' object='src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_desugar_test_string_cmp_desugar_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o src/desugar/test_string_cmp_desugar-test-string-cmp-desugar.obj `if test -f 'src/desugar/test-string-cmp-desugar.cc'; then $(CYGPATH_W) 'src/desugar/test-string-cmp-desugar.cc'; else $(CYGPATH_W) '$(srcdir)/src/desugar/test-string-cmp-desugar.cc'; fi`
+
 src/parse/src_parse_test_parse-test-parse.o: src/parse/test-parse.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(src_parse_test_parse_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT src/parse/src_parse_test_parse-test-parse.o -MD -MP -MF src/parse/$(DEPDIR)/src_parse_test_parse-test-parse.Tpo -c -o src/parse/src_parse_test_parse-test-parse.o `test -f 'src/parse/test-parse.cc' || echo '$(srcdir)/'`src/parse/test-parse.cc
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) src/parse/$(DEPDIR)/src_parse_test_parse-test-parse.Tpo src/parse/$(DEPDIR)/src_parse_test_parse-test-parse.Po
@@ -1725,9 +2011,13 @@ clean-libtool:
 	-rm -rf src/.libs src/_libs
 	-rm -rf src/ast/.libs src/ast/_libs
 	-rm -rf src/bind/.libs src/bind/_libs
+	-rm -rf src/desugar/.libs src/desugar/_libs
+	-rm -rf src/escapes/.libs src/escapes/_libs
+	-rm -rf src/llvmtranslate/.libs src/llvmtranslate/_libs
 	-rm -rf src/object/.libs src/object/_libs
 	-rm -rf src/parse/.libs src/parse/_libs
 	-rm -rf src/task/.libs src/task/_libs
+	-rm -rf src/type/.libs src/type/_libs
 
 distclean-libtool:
 	-rm -f libtool config.lt
@@ -2119,6 +2409,27 @@ src/bind/test-bind.log: src/bind/test-bind$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+src/type/test-type.log: src/type/test-type$(EXEEXT)
+	@p='src/type/test-type$(EXEEXT)'; \
+	b='src/type/test-type'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+src/desugar/test-string-cmp-desugar.log: src/desugar/test-string-cmp-desugar$(EXEEXT)
+	@p='src/desugar/test-string-cmp-desugar$(EXEEXT)'; \
+	b='src/desugar/test-string-cmp-desugar'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+src/desugar/test-for-loops-desugar.log: src/desugar/test-for-loops-desugar$(EXEEXT)
+	@p='src/desugar/test-for-loops-desugar$(EXEEXT)'; \
+	b='src/desugar/test-for-loops-desugar'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 .test.log:
 	@p='$<'; \
 	$(am__set_b); \
@@ -2388,12 +2699,20 @@ distclean-generic:
 	-rm -f src/ast/$(am__dirstamp)
 	-rm -f src/bind/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/bind/$(am__dirstamp)
+	-rm -f src/desugar/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/desugar/$(am__dirstamp)
+	-rm -f src/escapes/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/escapes/$(am__dirstamp)
+	-rm -f src/llvmtranslate/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/llvmtranslate/$(am__dirstamp)
 	-rm -f src/object/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/object/$(am__dirstamp)
 	-rm -f src/parse/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/parse/$(am__dirstamp)
 	-rm -f src/task/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/task/$(am__dirstamp)
+	-rm -f src/type/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/type/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -2442,6 +2761,7 @@ distclean: distclean-recursive
 	-rm -f src/ast/$(DEPDIR)/class-ty.Plo
 	-rm -f src/ast/$(DEPDIR)/dec.Plo
 	-rm -f src/ast/$(DEPDIR)/dumper-dot.Plo
+	-rm -f src/ast/$(DEPDIR)/escapable.Plo
 	-rm -f src/ast/$(DEPDIR)/exp.Plo
 	-rm -f src/ast/$(DEPDIR)/field-init.Plo
 	-rm -f src/ast/$(DEPDIR)/field-var.Plo
@@ -2468,6 +2788,7 @@ distclean: distclean-recursive
 	-rm -f src/ast/$(DEPDIR)/tasks.Po
 	-rm -f src/ast/$(DEPDIR)/test-ast.Po
 	-rm -f src/ast/$(DEPDIR)/ty.Plo
+	-rm -f src/ast/$(DEPDIR)/typable.Plo
 	-rm -f src/ast/$(DEPDIR)/type-dec.Plo
 	-rm -f src/ast/$(DEPDIR)/var-dec.Plo
 	-rm -f src/ast/$(DEPDIR)/var.Plo
@@ -2477,6 +2798,19 @@ distclean: distclean-recursive
 	-rm -f src/bind/$(DEPDIR)/renamer.Plo
 	-rm -f src/bind/$(DEPDIR)/tasks.Po
 	-rm -f src/bind/$(DEPDIR)/test-bind.Po
+	-rm -f src/desugar/$(DEPDIR)/desugar-visitor.Plo
+	-rm -f src/desugar/$(DEPDIR)/tasks.Po
+	-rm -f src/desugar/$(DEPDIR)/test_for_loops_desugar-test-for-loops-desugar.Po
+	-rm -f src/desugar/$(DEPDIR)/test_string_cmp_desugar-test-string-cmp-desugar.Po
+	-rm -f src/escapes/$(DEPDIR)/escapes-visitor.Plo
+	-rm -f src/escapes/$(DEPDIR)/libescapes.Plo
+	-rm -f src/escapes/$(DEPDIR)/tasks.Po
+	-rm -f src/llvmtranslate/$(DEPDIR)/escapes-collector.Plo
+	-rm -f src/llvmtranslate/$(DEPDIR)/libllvmtranslate.Plo
+	-rm -f src/llvmtranslate/$(DEPDIR)/llvm-type-visitor.Plo
+	-rm -f src/llvmtranslate/$(DEPDIR)/runtime.Plo
+	-rm -f src/llvmtranslate/$(DEPDIR)/tasks.Po
+	-rm -f src/llvmtranslate/$(DEPDIR)/translator.Plo
 	-rm -f src/object/$(DEPDIR)/libobject.Plo
 	-rm -f src/object/$(DEPDIR)/tasks.Po
 	-rm -f src/object/$(DEPDIR)/test-parse.Po
@@ -2500,6 +2834,21 @@ distclean: distclean-recursive
 	-rm -f src/task/$(DEPDIR)/task-register.Plo
 	-rm -f src/task/$(DEPDIR)/task.Plo
 	-rm -f src/task/$(DEPDIR)/tasks.Po
+	-rm -f src/type/$(DEPDIR)/array.Plo
+	-rm -f src/type/$(DEPDIR)/attribute.Plo
+	-rm -f src/type/$(DEPDIR)/builtin-types.Plo
+	-rm -f src/type/$(DEPDIR)/class.Plo
+	-rm -f src/type/$(DEPDIR)/field.Plo
+	-rm -f src/type/$(DEPDIR)/function.Plo
+	-rm -f src/type/$(DEPDIR)/libtype.Plo
+	-rm -f src/type/$(DEPDIR)/method.Plo
+	-rm -f src/type/$(DEPDIR)/named.Plo
+	-rm -f src/type/$(DEPDIR)/pretty-printer.Plo
+	-rm -f src/type/$(DEPDIR)/record.Plo
+	-rm -f src/type/$(DEPDIR)/tasks.Po
+	-rm -f src/type/$(DEPDIR)/test-type.Po
+	-rm -f src/type/$(DEPDIR)/type-checker.Plo
+	-rm -f src/type/$(DEPDIR)/type.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-libtool distclean-tags
@@ -2581,6 +2930,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f src/ast/$(DEPDIR)/class-ty.Plo
 	-rm -f src/ast/$(DEPDIR)/dec.Plo
 	-rm -f src/ast/$(DEPDIR)/dumper-dot.Plo
+	-rm -f src/ast/$(DEPDIR)/escapable.Plo
 	-rm -f src/ast/$(DEPDIR)/exp.Plo
 	-rm -f src/ast/$(DEPDIR)/field-init.Plo
 	-rm -f src/ast/$(DEPDIR)/field-var.Plo
@@ -2607,6 +2957,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f src/ast/$(DEPDIR)/tasks.Po
 	-rm -f src/ast/$(DEPDIR)/test-ast.Po
 	-rm -f src/ast/$(DEPDIR)/ty.Plo
+	-rm -f src/ast/$(DEPDIR)/typable.Plo
 	-rm -f src/ast/$(DEPDIR)/type-dec.Plo
 	-rm -f src/ast/$(DEPDIR)/var-dec.Plo
 	-rm -f src/ast/$(DEPDIR)/var.Plo
@@ -2616,6 +2967,19 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f src/bind/$(DEPDIR)/renamer.Plo
 	-rm -f src/bind/$(DEPDIR)/tasks.Po
 	-rm -f src/bind/$(DEPDIR)/test-bind.Po
+	-rm -f src/desugar/$(DEPDIR)/desugar-visitor.Plo
+	-rm -f src/desugar/$(DEPDIR)/tasks.Po
+	-rm -f src/desugar/$(DEPDIR)/test_for_loops_desugar-test-for-loops-desugar.Po
+	-rm -f src/desugar/$(DEPDIR)/test_string_cmp_desugar-test-string-cmp-desugar.Po
+	-rm -f src/escapes/$(DEPDIR)/escapes-visitor.Plo
+	-rm -f src/escapes/$(DEPDIR)/libescapes.Plo
+	-rm -f src/escapes/$(DEPDIR)/tasks.Po
+	-rm -f src/llvmtranslate/$(DEPDIR)/escapes-collector.Plo
+	-rm -f src/llvmtranslate/$(DEPDIR)/libllvmtranslate.Plo
+	-rm -f src/llvmtranslate/$(DEPDIR)/llvm-type-visitor.Plo
+	-rm -f src/llvmtranslate/$(DEPDIR)/runtime.Plo
+	-rm -f src/llvmtranslate/$(DEPDIR)/tasks.Po
+	-rm -f src/llvmtranslate/$(DEPDIR)/translator.Plo
 	-rm -f src/object/$(DEPDIR)/libobject.Plo
 	-rm -f src/object/$(DEPDIR)/tasks.Po
 	-rm -f src/object/$(DEPDIR)/test-parse.Po
@@ -2639,6 +3003,21 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f src/task/$(DEPDIR)/task-register.Plo
 	-rm -f src/task/$(DEPDIR)/task.Plo
 	-rm -f src/task/$(DEPDIR)/tasks.Po
+	-rm -f src/type/$(DEPDIR)/array.Plo
+	-rm -f src/type/$(DEPDIR)/attribute.Plo
+	-rm -f src/type/$(DEPDIR)/builtin-types.Plo
+	-rm -f src/type/$(DEPDIR)/class.Plo
+	-rm -f src/type/$(DEPDIR)/field.Plo
+	-rm -f src/type/$(DEPDIR)/function.Plo
+	-rm -f src/type/$(DEPDIR)/libtype.Plo
+	-rm -f src/type/$(DEPDIR)/method.Plo
+	-rm -f src/type/$(DEPDIR)/named.Plo
+	-rm -f src/type/$(DEPDIR)/pretty-printer.Plo
+	-rm -f src/type/$(DEPDIR)/record.Plo
+	-rm -f src/type/$(DEPDIR)/tasks.Po
+	-rm -f src/type/$(DEPDIR)/test-type.Po
+	-rm -f src/type/$(DEPDIR)/type-checker.Plo
+	-rm -f src/type/$(DEPDIR)/type.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -2755,6 +3134,10 @@ $(addprefix $(srcdir)/, $(SOURCES_PARSETIGER_YY)): src/parse/parsetiger.stamp
 generate-parser: $(SOURCES_PARSETIGER_YY)
 src/parse/prelude.cc: $(top_srcdir)/data/prelude.tih
 	$(AM_V_GEN)$(srcdir)/$(PARSE_PRELUDE_GENERATION) $< $@
+src/llvmtranslate/runtime.ll: src/llvmtranslate/tiger-runtime.c
+	$(AM_V_CC)$(CLANG) -c -m64 -std=c99 -emit-llvm -S -o $@ $^
+src/llvmtranslate/runtime.cc: src/llvmtranslate/runtime.ll
+	$(AM_V_GEN)$(srcdir)/$(LLVM_RUNTIME_GENERATION) $< $@
 
 .PHONY: doc html
 
