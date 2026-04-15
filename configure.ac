@@ -3,8 +3,8 @@ m4_pattern_forbid([^(AM|AX|LT|TC)_])
 
 m4_define([TC_CLANG_PREREQ],    [18.0])
 m4_define([TC_GCC_PREREQ],      [10.2])
-m4_define([TC_OVM_PREREQ],      [0.1])
-m4_define([TC_NOLIMIPS_PREREQ], [0.11])
+# m4_define([TC_OVM_PREREQ],      [0.1])
+# m4_define([TC_NOLIMIPS_PREREQ], [0.11])
 
 AC_PREREQ([2.64])
 
@@ -12,7 +12,7 @@ AC_PREREQ([2.64])
 ## Package set up.  ##
 ## ---------------- ##
 
-AC_INIT([LRE Tiger Compiler], [1.95.a], [tiger@lrde.epita.fr], [tc],
+AC_INIT([LRE Tiger Compiler], [1.95.d], [tiger@lrde.epita.fr], [tc],
         [http://tiger.lrde.epita.fr])
 
 # Auxiliary files.
@@ -223,6 +223,18 @@ AM_CONDITIONAL([SUPPORTED_IA32],
                [echo "$host" | grep -q '^\(i.86\|x86_64\).*linux\|^\(i.86\|amd64\).*freebsd'])
 
 
+# Debian does not provide a llvm-config binary
+TC_PROG([llvm-config-18 llvm-config], [>=TC_CLANG_PREREQ], [LLVM_CONFIG], [Print LLVM compilation options])
+TC_PROG([clang clang-18],             [>=TC_CLANG_PREREQ], [CLANG],       [C language family frontend for LLVM])
+TC_PROG([llvm-link llvm-link-18],     [>=TC_CLANG_PREREQ], [LLVM_LINK],   [LLVM bitcode linker])
+
+# Add a configure option to link LLVM statically
+AC_ARG_ENABLE([static-llvm],
+              [AS_HELP_STRING([--enable-static-llvm],
+              [enable the linking statically against the LLVM back-end @<:@no@:>@])])
+
+# Set STATIC_LLVM when linking statically
+AM_CONDITIONAL([STATIC_LLVM], [test x"$enable_static_llvm" = x"yes"])
 
 
 

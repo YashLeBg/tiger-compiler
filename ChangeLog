@@ -1,3 +1,381 @@
+2026-03-25  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	ast: nil-exp is not a type constructor
+
+	* src/ast/README-student.txt,
+	* src/ast/README.txt,
+	* src/ast/ast.gv,
+	* src/ast/ast.yml,
+	* src/ast/nil-exp.hh: Here.
+
+2026-03-24  Mael Cravero  <mael.cravero@epita.fr>
+
+	Version 1.95.c for 2028-tc-4.0
+
+	* NEWS.txt, configure.ac, .last-cl-gen, ChangeLog: here.
+
+2026-03-24  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	type(nil): make nil type a singleton
+
+	* src/ast/nil-exp.cc,
+	* src/ast/nil-exp.hh,
+	* src/llvmtranslate/translator.cc,
+	* src/type/builtin-types.cc,
+	* src/type/builtin-types.hh,
+	* src/type/local.am,
+	* src/type/nil.cc,
+	* src/type/nil.hh,
+	* src/type/pretty-printer.cc,
+	* src/type/record.cc,
+	* src/type/type-checker.cc,
+	* src/type/type-checker.hxx,
+	* src/type/types.hh: Here.
+
+2026-03-24  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm: translate ast::NilExp to an opaque null pointer
+
+	* src/llvmtranslate/llvm-type-visitor.cc,
+	* src/llvmtranslate/translator.cc: Here.
+
+2026-03-18  Mael Cravero  <mael.cravero@epita.fr>
+
+	Version 1.95.b for 2028-tc-3.0
+
+	* NEWS.txt, configure.ac, .last-cl-gen, ChangeLog: here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): better explanation of user_object vs gc_object
+
+	* src/llvmgc/runtime/tiger-gc.h: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvmgc(studentize): do not provide user_object and gc_roots
+
+	* dev/stagize_conf.yml,
+	* src/llvmgc/runtime/fwd.h,
+	* src/llvmgc/runtime/tiger-gc.h: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(runtime): do not provied gc_runtime_entry usage in studentize
+
+	* src/llvmtranslate/tiger-runtime.c: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): better explanation of user_object / gc_object
+
+	* src/llvmgc/runtime/fwd.h,
+	* src/llvmgc/runtime/tiger-gc.h: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc-alloc): add tc_malloc to gc-alloc functions
+
+	* src/llvmgc/runtime/gc-alloc.c,
+	* src/llvmgc/runtime/gc-alloc.h: Here
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): add warning comments above optional files
+
+	* src/llvmgc/gc-rewrite-pass.cc,
+	* src/llvmgc/translator.cc: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(runtime): enter the Tiger runtime not C runtime
+
+	* src/llvmtranslate/tiger-runtime.c: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): less given code in rewrite gc-rewrite-pass
+
+	* src/llvmgc/gc-rewrite-pass.cc,
+	* src/llvmgc/gc-rewrite-pass.hh,
+	* src/llvmgc/libllvmgc.cc,
+	* src/llvmgc/libllvmgc.hh: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): reword llvmgc tasks descriptions
+
+	* src/llvmgc/tasks.hh: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): move collection function declarations in the proper header
+
+	* src/llvmgc/runtime/gc-ms.h,
+	* src/llvmgc/runtime/tiger-gc.h: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): better comments
+
+	* src/llvmgc/runtime/gc-alloc.c,
+	* src/llvmgc/runtime/gc-alloc.h,
+	* src/llvmgc/runtime/gc-cc.h,
+	* src/llvmgc/runtime/gc-memory.c,
+	* src/llvmgc/runtime/gc-memory.h,
+	* src/llvmgc/runtime/gc-ms.c,
+	* src/llvmgc/runtime/tiger-gc.c,
+	* src/llvmgc/runtime/tiger-gc.h,
+	* src/llvmgc/translator.cc,
+	* src/llvmgc/translator.hh: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): explicitly include fwd in C files
+
+	* src/llvmgc/runtime/gc-stats.c,
+	* src/llvmgc/runtime/tiger-gc.c: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): better separation between debug and verbose modes
+
+	* src/llvmgc/runtime/fwd.h,
+	* src/llvmgc/runtime/gc-cc.c,
+	* src/llvmgc/runtime/gc-utils.h,
+	* src/llvmgc/runtime/tiger-gc.c: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): try to make space in the heap before resizing
+
+	* src/llvmgc/runtime/gc-alloc.c: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): do not give gc primitives before TC-EXTS
+
+	* data/prelude.tih,
+	* dev/stagize_conf.yml: Here.
+
+2026-03-18  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): better studentize
+
+	* src/llvmgc/runtime/gc-alloc.c,
+	* src/llvmgc/runtime/gc-cc.c,
+	* src/llvmgc/runtime/gc-ms.c,
+	* src/llvmgc/runtime/gc-roots.c,
+	* src/llvmgc/runtime/gc-utils.c,
+	* src/llvmgc/runtime/gc-utils.h,
+	* src/llvmgc/runtime/tiger-gc.c,
+	* src/llvmgc/runtime/tiger-gc.h,
+	* src/llvmtranslate/tiger-runtime.c: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): move macro definition to fwd.h
+
+	* src/llvmgc/runtime/fwd.h,
+	* src/llvmgc/runtime/gc-alloc.c,
+	* src/llvmgc/runtime/gc-cc.c,
+	* src/llvmgc/runtime/gc-memory.c,
+	* src/llvmgc/runtime/gc-memory.h,
+	* src/llvmgc/runtime/gc-ms.c,
+	* src/llvmgc/runtime/gc-roots.c,
+	* src/llvmgc/runtime/gc-utils.c,
+	* src/llvmgc/runtime/gc-utils.h,
+	* src/llvmgc/runtime/local.am,
+	* src/llvmgc/runtime/stackmap.c,
+	* src/llvmgc/runtime/tiger-gc.c,
+	* src/llvmgc/runtime/tiger-gc.h: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): better documentation and clang-tidy fixes
+
+	* src/llvmgc/gc-rewrite-pass.cc,
+	* src/llvmgc/libllvmgc.cc,
+	* src/llvmgc/runtime/gc-alloc.c,
+	* src/llvmgc/runtime/gc-cc.c,
+	* src/llvmgc/runtime/gc-ms.c,
+	* src/llvmgc/runtime/gc-roots.c,
+	* src/llvmgc/runtime/gc-utils.h,
+	* src/llvmgc/runtime/llvm-stackmap.h,
+	* src/llvmgc/runtime/tiger-gc.h,
+	* src/llvmgc/translator.cc: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): better error handling in frame table generation
+
+	* src/llvmgc/gc.cc: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvmgc(roots): assert stack growth direction before scanning
+
+	* src/llvmgc/runtime/gc-roots.c: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): set default gc strategy to copy collection
+
+	* src/llvmgc/runtime/fwd.h: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvmgc: improve documentation
+
+	* src/llvmgc/gc-rewrite-pass.cc,
+	* src/llvmgc/gc-rewrite-pass.hh,
+	* src/llvmgc/gc.cc,
+	* src/llvmgc/libllvmgc.cc,
+	* src/llvmgc/runtime/gc-alloc.c,
+	* src/llvmgc/runtime/gc-cc.c,
+	* src/llvmgc/runtime/gc-ctrl.c,
+	* src/llvmgc/runtime/gc-ctrl.h,
+	* src/llvmgc/runtime/gc-ms.c,
+	* src/llvmgc/runtime/gc-ms.h,
+	* src/llvmgc/runtime/gc-roots.c,
+	* src/llvmgc/runtime/tiger-gc.c,
+	* src/llvmgc/translator.cc,
+	* src/llvmgc/translator.hh: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(runtime): better runtime entry and root tracing in tiger-runtime
+
+	* src/llvmtranslate/tiger-runtime.c: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): studentize llvm-gc
+
+	* dev/stagize_conf.yml,
+	* src/llvmgc/gc.cc,
+	* src/llvmgc/libllvmgc.cc,
+	* src/llvmgc/runtime/fwd.h,
+	* src/llvmgc/runtime/gc-alloc.c,
+	* src/llvmgc/runtime/gc-alloc.h,
+	* src/llvmgc/runtime/gc-cc.c,
+	* src/llvmgc/runtime/gc-roots.c,
+	* src/llvmgc/runtime/local.am,
+	* src/llvmgc/runtime/stackmap.c,
+	* src/llvmgc/runtime/tiger-gc.c,
+	* src/llvmgc/runtime/tiger-gc.h,
+	* src/llvmgc/translator.cc: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvmgc(tests): add tests for llvm garbage collection
+
+	* tests/configurations/testsuite.yaml.in: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): add benchmarking for llvm garbage collection
+
+	* src/llvmgc/runtime/gc-alloc.c,
+	* src/llvmgc/runtime/gc-cc.c,
+	* src/llvmgc/runtime/gc-memory.c,
+	* src/llvmgc/runtime/gc-stats.c,
+	* src/llvmgc/runtime/gc-stats.h,
+	* src/llvmgc/runtime/local.am,
+	* src/llvmgc/runtime/tiger-gc.c,
+	* src/llvmgc/runtime/tiger-gc.h: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): add debug mode for llvm garbage collection
+
+	* .gitignore,
+	* src/llvmgc/libllvmgc.cc,
+	* src/llvmgc/libllvmgc.hh,
+	* src/llvmgc/local.am,
+	* src/llvmgc/runtime/gc-alloc.c,
+	* src/llvmgc/runtime/gc-cc.c,
+	* src/llvmgc/runtime/gc-utils.h,
+	* src/llvmgc/runtime/local.am,
+	* src/llvmgc/runtime/stackmap.c,
+	* src/llvmgc/runtime/tiger-gc.c,
+	* src/llvmgc/tasks.cc,
+	* src/llvmgc/tasks.hh: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): add conservative mark sweep garbage collection
+
+	* llvmgc/runtime/fwd.h,
+	* llvmgc/runtime/gc-alloc.c,
+	* llvmgc/runtime/gc-ms.c,
+	* llvmgc/runtime/gc-ms.h,
+	* llvmgc/runtime/gc-utils.h,
+	* llvmgc/runtime/local.am,
+	* llvmgc/runtime/tiger-gc.c,
+	* llvmgc/runtime/tiger-gc.h: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm(gc): implement llvm garbage collection
+
+	* .gitignore,
+	* configure.ac,
+	* data/prelude.tih,
+	* dev/stagize_conf.yml,
+	* dev/studentize_tc.conf,
+	* src/llvmgc/gc-rewrite-pass.cc,
+	* src/llvmgc/gc-rewrite-pass.hh,
+	* src/llvmgc/gc.cc,
+	* src/llvmgc/gc.hh,
+	* src/llvmgc/generate-gc.sh,
+	* src/llvmgc/libllvmgc.cc,
+	* src/llvmgc/libllvmgc.hh,
+	* src/llvmgc/local.am,
+	* src/llvmgc/runtime/fwd.h,
+	* src/llvmgc/runtime/gc-alloc.c,
+	* src/llvmgc/runtime/gc-alloc.h,
+	* src/llvmgc/runtime/gc-cc.c,
+	* src/llvmgc/runtime/gc-cc.h,
+	* src/llvmgc/runtime/gc-ctrl.c,
+	* src/llvmgc/runtime/gc-ctrl.h,
+	* src/llvmgc/runtime/gc-memory.c,
+	* src/llvmgc/runtime/gc-memory.h,
+	* src/llvmgc/runtime/gc-roots.c,
+	* src/llvmgc/runtime/gc-roots.h,
+	* src/llvmgc/runtime/gc-utils.c,
+	* src/llvmgc/runtime/gc-utils.h,
+	* src/llvmgc/runtime/llvm-stackmap.h,
+	* src/llvmgc/runtime/local.am,
+	* src/llvmgc/runtime/stackmap.c,
+	* src/llvmgc/runtime/stackmap.h,
+	* src/llvmgc/runtime/tiger-gc.c,
+	* src/llvmgc/runtime/tiger-gc.h,
+	* src/llvmgc/tasks.cc,
+	* src/llvmgc/tasks.hh,
+	* src/llvmgc/translator.cc,
+	* src/llvmgc/translator.hh,
+	* src/llvmtranslate/tasks.hh,
+	* src/llvmtranslate/tiger-runtime.c,
+	* src/llvmtranslate/translator.cc,
+	* src/llvmtranslate/translator.hh,
+	* src/local.am: Here.
+
+2026-03-09  Simon Bousquet  <simon.bousquet@epita.fr>
+
+	llvm: use different address space for heap pointers
+
+	* src/llvmtranslate/llvm-type-visitor.cc,
+	* src/llvmtranslate/tiger-runtime.c,
+	* src/llvmtranslate/translator.cc,
+	* src/llvmtranslate/translator.hh: Here.
+
+2026-03-09  Mael Cravero  <mael.cravero@epita.fr>
+
+	Version 1.95.a for 2028-tc-12.0
+
+	* NEWS.txt, configure.ac, .last-cl-gen, ChangeLog, Makefile.am: here.
+
 2026-03-09  lenny.chiadmi-delage  <lenny.chiadmi-delage@epita.fr>
 
 	bump(flake): bump flake version so it works on PIE.
@@ -28107,7 +28485,7 @@
 
 2010-01-08  Roland Levillain  <roland@lrde.epita.fr>
 
-	Handle $Id: aeba766b2c91ee317c8b5726e874c75a1383fb18 $ using gitattributes.
+	Handle $Id: b3f3004cdb5d7ddb7a2f54189dce6c75ff6a4850 $ using gitattributes.
 
 2010-01-08  Roland Levillain  <roland@lrde.epita.fr>
 
@@ -53179,7 +53557,7 @@
 	* src/Makefile.am: Adjust.
 	* Makefile.am (version.h): Replace with...
 	(authors.h): these.
-	* tests/tc-check.in ($revision): Use $Id: aeba766b2c91ee317c8b5726e874c75a1383fb18 $.
+	* tests/tc-check.in ($revision): Use $Id: b3f3004cdb5d7ddb7a2f54189dce6c75ff6a4850 $.
 
 
 	git-svn-id: https://svn.lrde.epita.fr/svn/tc/trunk@1507 1f7e7f5b-0dda-0310-9018-85e83a419b00

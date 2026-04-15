@@ -101,7 +101,7 @@ namespace ast
     /// Checks whether the container is empty.
 #ifdef SWIG
     constexpr bool empty() const noexcept;
-#else  /* SWIG */
+#else /* SWIG */
     [[nodiscard]] constexpr bool empty() const noexcept;
 #endif /* SWIG */
     /** \name Modifiers.

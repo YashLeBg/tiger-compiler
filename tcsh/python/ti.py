@@ -193,15 +193,98 @@ class TiExecutor:
             return self.throw_error(e)
         return self.data.ast
 
+    @wrap_step(["bind"], "parse")
+    def bind(self) -> Optional[tc.ast.ChunkList]:
+        try:
+            if self.object_enabled and tc.has("object"):
+                tc.object.bind(self.data.ast).exit_on_error()
+            else:
+                tc.bind.bind(self.data.ast).exit_on_error()
+        except Exception as e:
+            return self.throw_error(e)
+        return self.data.ast
+
+    @wrap_step([], "bind")
+    def rename(self) -> Optional[tc.ast.ChunkList]:
+        if (
+            self.rename_enabled
+            and tc.has("bind")
+            and not self.object_enabled
+            and not tc.has("object")
+        ):
+            tc.bind.rename(self.data.ast)
+        return self.data.ast
+
+    @wrap_step(["type"], "rename")
+    def type(self) -> Optional[tc.ast.ChunkList]:
+        try:
+            if self.object_enabled and tc.has("object"):
+                tc.object.types_check(self.data.ast).exit_on_error()
+            else:
+                tc.type.types_check(self.data.ast).exit_on_error()
+        except Exception as e:
+            return self.throw_error(e)
+        return self.data.ast
+
+    @wrap_step([], "type")
+    def object_desugar(self) -> Optional[tc.ast.ChunkList]:
+        if self.object_enabled and tc.has("object"):
+            class_names = tc.object.rename(self.data.ast)
+            self.data.ast = tc.object.desugar(self.data.ast, class_names)
+        return self.data.ast
+
+    @wrap_step([], "object_desugar")
+    def desugar(self) -> Optional[tc.ast.ChunkList]:
+        if self.desugar_enabled and tc.has("desugar"):
+            self.data.ast = tc.desugar.desugar(self.data.ast, True, True)
+        return self.data.ast
+
+    @wrap_step(["llvmtranslate"], "desugar")
+    def llvm_file(self) -> str:
+        self.data.llvm = tc.llvmtranslate.translate(self.data.ast)
+
+        self._rm_llvm()
+        self.llvm_temp_dir = tempfile.mkdtemp()
+        # Dump assembly code output into a temporary file.
+        self.llvm_output = os.path.join(self.llvm_temp_dir, "llvm.ll")
+        with open(self.llvm_output, "w") as f:
+            f.write(str(self.data.llvm))
+        return self.llvm_output
+
+    def _rm_llvm(self) -> None:
+        self._rm_attribute_file("llvm_output")
+        self._rm_attribute_file("llvm_binary")
+        self._rm_attribute_dir("llvm_temp_dir")
+
+    @wrap_step([], "llvm_file")
+    def llvm_bin(self) -> str:
+        self._rm_attribute_file("llvm_binary")
+        self.llvm_binary = os.path.join(self.llvm_temp_dir, "bin")
+        os.system(f"clang -m64 {self.llvm_output} -o {self.llvm_binary}")
+        return self.llvm_binary
+
+    @wrap_step([], "llvm_bin", tc.BackendType.llvm)
+    def llvm(self) -> Optional[str]:
+        self._run_cmd(self.llvm_binary)
+        self._rm_llvm()
+        return self.data.result
+
     def frontend_run(self) -> None:
         """Run parse, bind and type depending of TC step"""
         self.parse()
 
+        self.bind()
+        self.rename()
+        self.type()
+        self.object_desugar()
+        self.desugar()
         return None
 
     def backend_exec(self) -> Optional[str]:
         """execute backends: llvm, hir, lir, mips and ia32"""
         self.frontend_run()
+        if self.backend == tc.BackendType.llvm:
+            return self.llvm()
         return None
 
     def backend_run(self) -> None:
@@ -233,6 +316,7 @@ if __name__ == "__main__":
         dest="backend",
         default=tc.BackendType.mips,
         help="use BACKEND as back-end.  Can be either "
+        f"`{tc.BackendType.llvm.value}' (LLVM), "
         f"`{tc.BackendType.mips.value}' (MIPS assembly language) "
         "[default: %default]",
     )

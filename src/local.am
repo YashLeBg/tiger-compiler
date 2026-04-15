@@ -64,3 +64,6 @@ include src/object/local.am
 include src/bind/local.am
 include src/escapes/local.am
 include src/type/local.am
+include src/object/local.am
+include src/desugar/local.am
+include src/llvmtranslate/local.am

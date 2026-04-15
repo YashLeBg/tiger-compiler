@@ -11,89 +11,26 @@ SWIG_GENERATED_DEPS =
 
 nodist_python_PYTHON =
 
-## Module: type.
-pyexec_LTLIBRARIES += _tiger_type.la
-nodist__tiger_type_la_SOURCES = tiger_type-wrap.cc
-_tiger_type_la_LIBADD = $(AM_LIBADD)
-CLEANFILES += tiger_type-wrap.cc tiger_type.py tiger_type.pyc
-tiger_type-wrap.cc: $(tcdir)/tcsh/src/tiger_type.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_type-wrap.Tcc" -o tiger_type-wrap.cc $(tcdir)/tcsh/src/tiger_type.i; \
+## Module: common.
+pyexec_LTLIBRARIES += _tiger_common.la
+nodist__tiger_common_la_SOURCES = tiger_common-wrap.cc
+_tiger_common_la_LIBADD = $(AM_LIBADD)
+CLEANFILES += tiger_common-wrap.cc tiger_common.py tiger_common.pyc
+tiger_common-wrap.cc: $(tcdir)/tcsh/src/tiger_common.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_common-wrap.Tcc" -o tiger_common-wrap.cc $(tcdir)/tcsh/src/tiger_common.i; \
 	then \
-	  mv -f "$(DEPDIR)/tiger_type-wrap.Tcc" "$(DEPDIR)/tiger_type-wrap.Pcc"; \
+	  mv -f "$(DEPDIR)/tiger_common-wrap.Tcc" "$(DEPDIR)/tiger_common-wrap.Pcc"; \
 	else \
-	  rm -f "$(DEPDIR)/tiger_type-wrap.Tcc"; exit 1; \
+	  rm -f "$(DEPDIR)/tiger_common-wrap.Tcc"; exit 1; \
 	fi
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_type-wrap.Pcc@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_common-wrap.Pcc@am__quote@
 
-@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_type-wrap.Pcc
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_common-wrap.Pcc
 
-nodist_python_PYTHON += tiger_type.py
-tiger_type.py: $(tcdir)/tcsh/src/tiger_type.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_type-wrap.cc
-
-## Module: ast.
-pyexec_LTLIBRARIES += _tiger_ast.la
-nodist__tiger_ast_la_SOURCES = tiger_ast-wrap.cc
-_tiger_ast_la_LIBADD = $(AM_LIBADD)
-CLEANFILES += tiger_ast-wrap.cc tiger_ast.py tiger_ast.pyc
-tiger_ast-wrap.cc: $(tcdir)/tcsh/src/tiger_ast.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_ast-wrap.Tcc" -o tiger_ast-wrap.cc $(tcdir)/tcsh/src/tiger_ast.i; \
-	then \
-	  mv -f "$(DEPDIR)/tiger_ast-wrap.Tcc" "$(DEPDIR)/tiger_ast-wrap.Pcc"; \
-	else \
-	  rm -f "$(DEPDIR)/tiger_ast-wrap.Tcc"; exit 1; \
-	fi
-
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_ast-wrap.Pcc@am__quote@
-
-@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_ast-wrap.Pcc
-
-nodist_python_PYTHON += tiger_ast.py
-tiger_ast.py: $(tcdir)/tcsh/src/tiger_ast.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_ast-wrap.cc
-
-## Module: astclone.
-pyexec_LTLIBRARIES += _tiger_astclone.la
-nodist__tiger_astclone_la_SOURCES = tiger_astclone-wrap.cc
-_tiger_astclone_la_LIBADD = $(AM_LIBADD)
-CLEANFILES += tiger_astclone-wrap.cc tiger_astclone.py tiger_astclone.pyc
-tiger_astclone-wrap.cc: $(tcdir)/tcsh/src/tiger_astclone.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_astclone-wrap.Tcc" -o tiger_astclone-wrap.cc $(tcdir)/tcsh/src/tiger_astclone.i; \
-	then \
-	  mv -f "$(DEPDIR)/tiger_astclone-wrap.Tcc" "$(DEPDIR)/tiger_astclone-wrap.Pcc"; \
-	else \
-	  rm -f "$(DEPDIR)/tiger_astclone-wrap.Tcc"; exit 1; \
-	fi
-
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_astclone-wrap.Pcc@am__quote@
-
-@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_astclone-wrap.Pcc
-
-nodist_python_PYTHON += tiger_astclone.py
-tiger_astclone.py: $(tcdir)/tcsh/src/tiger_astclone.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_astclone-wrap.cc
-
-## Module: object.
-pyexec_LTLIBRARIES += _tiger_object.la
-nodist__tiger_object_la_SOURCES = tiger_object-wrap.cc
-_tiger_object_la_LIBADD = $(AM_LIBADD)
-CLEANFILES += tiger_object-wrap.cc tiger_object.py tiger_object.pyc
-tiger_object-wrap.cc: $(tcdir)/tcsh/src/tiger_object.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_object-wrap.Tcc" -o tiger_object-wrap.cc $(tcdir)/tcsh/src/tiger_object.i; \
-	then \
-	  mv -f "$(DEPDIR)/tiger_object-wrap.Tcc" "$(DEPDIR)/tiger_object-wrap.Pcc"; \
-	else \
-	  rm -f "$(DEPDIR)/tiger_object-wrap.Tcc"; exit 1; \
-	fi
-
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_object-wrap.Pcc@am__quote@
-
-@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_object-wrap.Pcc
-
-nodist_python_PYTHON += tiger_object.py
-tiger_object.py: $(tcdir)/tcsh/src/tiger_object.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_object-wrap.cc
+nodist_python_PYTHON += tiger_common.py
+tiger_common.py: $(tcdir)/tcsh/src/tiger_common.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_common-wrap.cc
 
 ## Module: parse.
 pyexec_LTLIBRARIES += _tiger_parse.la
@@ -116,47 +53,26 @@ nodist_python_PYTHON += tiger_parse.py
 tiger_parse.py: $(tcdir)/tcsh/src/tiger_parse.i
 	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_parse-wrap.cc
 
-## Module: bind.
-pyexec_LTLIBRARIES += _tiger_bind.la
-nodist__tiger_bind_la_SOURCES = tiger_bind-wrap.cc
-_tiger_bind_la_LIBADD = $(AM_LIBADD)
-CLEANFILES += tiger_bind-wrap.cc tiger_bind.py tiger_bind.pyc
-tiger_bind-wrap.cc: $(tcdir)/tcsh/src/tiger_bind.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_bind-wrap.Tcc" -o tiger_bind-wrap.cc $(tcdir)/tcsh/src/tiger_bind.i; \
+## Module: misc.
+pyexec_LTLIBRARIES += _tiger_misc.la
+nodist__tiger_misc_la_SOURCES = tiger_misc-wrap.cc
+_tiger_misc_la_LIBADD = $(AM_LIBADD)
+CLEANFILES += tiger_misc-wrap.cc tiger_misc.py tiger_misc.pyc
+tiger_misc-wrap.cc: $(tcdir)/tcsh/src/tiger_misc.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_misc-wrap.Tcc" -o tiger_misc-wrap.cc $(tcdir)/tcsh/src/tiger_misc.i; \
 	then \
-	  mv -f "$(DEPDIR)/tiger_bind-wrap.Tcc" "$(DEPDIR)/tiger_bind-wrap.Pcc"; \
+	  mv -f "$(DEPDIR)/tiger_misc-wrap.Tcc" "$(DEPDIR)/tiger_misc-wrap.Pcc"; \
 	else \
-	  rm -f "$(DEPDIR)/tiger_bind-wrap.Tcc"; exit 1; \
+	  rm -f "$(DEPDIR)/tiger_misc-wrap.Tcc"; exit 1; \
 	fi
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_bind-wrap.Pcc@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_misc-wrap.Pcc@am__quote@
 
-@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_bind-wrap.Pcc
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_misc-wrap.Pcc
 
-nodist_python_PYTHON += tiger_bind.py
-tiger_bind.py: $(tcdir)/tcsh/src/tiger_bind.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_bind-wrap.cc
-
-## Module: desugar.
-pyexec_LTLIBRARIES += _tiger_desugar.la
-nodist__tiger_desugar_la_SOURCES = tiger_desugar-wrap.cc
-_tiger_desugar_la_LIBADD = $(AM_LIBADD)
-CLEANFILES += tiger_desugar-wrap.cc tiger_desugar.py tiger_desugar.pyc
-tiger_desugar-wrap.cc: $(tcdir)/tcsh/src/tiger_desugar.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_desugar-wrap.Tcc" -o tiger_desugar-wrap.cc $(tcdir)/tcsh/src/tiger_desugar.i; \
-	then \
-	  mv -f "$(DEPDIR)/tiger_desugar-wrap.Tcc" "$(DEPDIR)/tiger_desugar-wrap.Pcc"; \
-	else \
-	  rm -f "$(DEPDIR)/tiger_desugar-wrap.Tcc"; exit 1; \
-	fi
-
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_desugar-wrap.Pcc@am__quote@
-
-@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_desugar-wrap.Pcc
-
-nodist_python_PYTHON += tiger_desugar.py
-tiger_desugar.py: $(tcdir)/tcsh/src/tiger_desugar.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_desugar-wrap.cc
+nodist_python_PYTHON += tiger_misc.py
+tiger_misc.py: $(tcdir)/tcsh/src/tiger_misc.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_misc-wrap.cc
 
 ## Module: escapes.
 pyexec_LTLIBRARIES += _tiger_escapes.la
@@ -179,47 +95,68 @@ nodist_python_PYTHON += tiger_escapes.py
 tiger_escapes.py: $(tcdir)/tcsh/src/tiger_escapes.i
 	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_escapes-wrap.cc
 
-## Module: misc.
-pyexec_LTLIBRARIES += _tiger_misc.la
-nodist__tiger_misc_la_SOURCES = tiger_misc-wrap.cc
-_tiger_misc_la_LIBADD = $(AM_LIBADD)
-CLEANFILES += tiger_misc-wrap.cc tiger_misc.py tiger_misc.pyc
-tiger_misc-wrap.cc: $(tcdir)/tcsh/src/tiger_misc.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_misc-wrap.Tcc" -o tiger_misc-wrap.cc $(tcdir)/tcsh/src/tiger_misc.i; \
+## Module: bind.
+pyexec_LTLIBRARIES += _tiger_bind.la
+nodist__tiger_bind_la_SOURCES = tiger_bind-wrap.cc
+_tiger_bind_la_LIBADD = $(AM_LIBADD)
+CLEANFILES += tiger_bind-wrap.cc tiger_bind.py tiger_bind.pyc
+tiger_bind-wrap.cc: $(tcdir)/tcsh/src/tiger_bind.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_bind-wrap.Tcc" -o tiger_bind-wrap.cc $(tcdir)/tcsh/src/tiger_bind.i; \
 	then \
-	  mv -f "$(DEPDIR)/tiger_misc-wrap.Tcc" "$(DEPDIR)/tiger_misc-wrap.Pcc"; \
+	  mv -f "$(DEPDIR)/tiger_bind-wrap.Tcc" "$(DEPDIR)/tiger_bind-wrap.Pcc"; \
 	else \
-	  rm -f "$(DEPDIR)/tiger_misc-wrap.Tcc"; exit 1; \
+	  rm -f "$(DEPDIR)/tiger_bind-wrap.Tcc"; exit 1; \
 	fi
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_misc-wrap.Pcc@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_bind-wrap.Pcc@am__quote@
 
-@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_misc-wrap.Pcc
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_bind-wrap.Pcc
 
-nodist_python_PYTHON += tiger_misc.py
-tiger_misc.py: $(tcdir)/tcsh/src/tiger_misc.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_misc-wrap.cc
+nodist_python_PYTHON += tiger_bind.py
+tiger_bind.py: $(tcdir)/tcsh/src/tiger_bind.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_bind-wrap.cc
 
-## Module: common.
-pyexec_LTLIBRARIES += _tiger_common.la
-nodist__tiger_common_la_SOURCES = tiger_common-wrap.cc
-_tiger_common_la_LIBADD = $(AM_LIBADD)
-CLEANFILES += tiger_common-wrap.cc tiger_common.py tiger_common.pyc
-tiger_common-wrap.cc: $(tcdir)/tcsh/src/tiger_common.i
-	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_common-wrap.Tcc" -o tiger_common-wrap.cc $(tcdir)/tcsh/src/tiger_common.i; \
+## Module: ast.
+pyexec_LTLIBRARIES += _tiger_ast.la
+nodist__tiger_ast_la_SOURCES = tiger_ast-wrap.cc
+_tiger_ast_la_LIBADD = $(AM_LIBADD)
+CLEANFILES += tiger_ast-wrap.cc tiger_ast.py tiger_ast.pyc
+tiger_ast-wrap.cc: $(tcdir)/tcsh/src/tiger_ast.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_ast-wrap.Tcc" -o tiger_ast-wrap.cc $(tcdir)/tcsh/src/tiger_ast.i; \
 	then \
-	  mv -f "$(DEPDIR)/tiger_common-wrap.Tcc" "$(DEPDIR)/tiger_common-wrap.Pcc"; \
+	  mv -f "$(DEPDIR)/tiger_ast-wrap.Tcc" "$(DEPDIR)/tiger_ast-wrap.Pcc"; \
 	else \
-	  rm -f "$(DEPDIR)/tiger_common-wrap.Tcc"; exit 1; \
+	  rm -f "$(DEPDIR)/tiger_ast-wrap.Tcc"; exit 1; \
 	fi
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_common-wrap.Pcc@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_ast-wrap.Pcc@am__quote@
 
-@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_common-wrap.Pcc
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_ast-wrap.Pcc
 
-nodist_python_PYTHON += tiger_common.py
-tiger_common.py: $(tcdir)/tcsh/src/tiger_common.i
-	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_common-wrap.cc
+nodist_python_PYTHON += tiger_ast.py
+tiger_ast.py: $(tcdir)/tcsh/src/tiger_ast.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_ast-wrap.cc
+
+## Module: object.
+pyexec_LTLIBRARIES += _tiger_object.la
+nodist__tiger_object_la_SOURCES = tiger_object-wrap.cc
+_tiger_object_la_LIBADD = $(AM_LIBADD)
+CLEANFILES += tiger_object-wrap.cc tiger_object.py tiger_object.pyc
+tiger_object-wrap.cc: $(tcdir)/tcsh/src/tiger_object.i
+	$(AM_V_GEN)if $(SWIG) $(AM_SWIGFLAGS) $(SWIGFLAGS) -MD -MF "$(DEPDIR)/tiger_object-wrap.Tcc" -o tiger_object-wrap.cc $(tcdir)/tcsh/src/tiger_object.i; \
+	then \
+	  mv -f "$(DEPDIR)/tiger_object-wrap.Tcc" "$(DEPDIR)/tiger_object-wrap.Pcc"; \
+	else \
+	  rm -f "$(DEPDIR)/tiger_object-wrap.Tcc"; exit 1; \
+	fi
+
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tiger_object-wrap.Pcc@am__quote@
+
+@AMDEP_TRUE@ SWIG_GENERATED_DEPS += ./$(DEPDIR)/tiger_object-wrap.Pcc
+
+nodist_python_PYTHON += tiger_object.py
+tiger_object.py: $(tcdir)/tcsh/src/tiger_object.i
+	$(AM_V_GEN)$(MAKE) $(AM_MAKEFLAGS) tiger_object-wrap.cc
 
 
 # Target `deps-reset' re-initializes the dependencies generated as a
