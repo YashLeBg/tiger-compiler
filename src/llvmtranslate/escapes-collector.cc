@@ -50,6 +50,12 @@ namespace llvmtranslate
     {
       // Keep track of the current function
       // FIXME: Some code was deleted here.
+      auto* func = curr_function;
+      curr_function = &e;
+      if (e.body_get()) {
+        e.body_get()->accept(*this);
+      }
+      curr_function = func;
     }
 
     void operator()(const ast::CallExp& e) override
@@ -57,10 +63,22 @@ namespace llvmtranslate
       super_type::operator()(e);
 
       // FIXME: Some code was deleted here.
+      const ast::FunctionDec* f = e.def_get();
 
       // Check whether there are any newly collected escaped variables.
       // If there are, mark the iteration as modified.
       // FIXME: Some code was deleted here.
+      if (f) {
+        for (const ast::VarDec* v : escaped_[f]) {
+          if (v->def_site_get() != curr_function) {
+            auto& var = escaped_[curr_function];
+            if (var.find(v) == var.end()) {
+              var.insert(v);
+              did_modify_ = true;
+            }
+          }
+        }
+      }
     }
 
     void operator()(const ast::SimpleVar& e) override
@@ -68,6 +86,17 @@ namespace llvmtranslate
       // Associate escaped variables declared in parent frames with their
       // functions
       // FIXME: Some code was deleted here.
+      const ast::VarDec* v = e.def_get();
+      if (v && v->def_site_get() != curr_function)
+      {
+
+        auto& var = escaped_[curr_function];
+        if (var.find(v) == var.end())
+        {
+          var.insert(v);
+          did_modify_ = true;
+        }
+      }
     }
 
   private:
@@ -79,6 +108,7 @@ namespace llvmtranslate
 
     /// Current visiting function.
     // FIXME: Some code was deleted here.
+    const ast::FunctionDec* curr_function = nullptr;
   };
 
   escaped_map_type collect_escapes(const ast::Ast& ast)
