@@ -10,6 +10,7 @@
 #include <misc/symbol.hh>
 #include <parse/libparse.hh>
 #include <parse/tweast.hh>
+#include <type/builtin-types.hh>
 
 namespace desugar
 {
@@ -24,7 +25,30 @@ namespace desugar
   `-----------------------------*/
   void DesugarVisitor::operator()(const ast::OpExp& e)
   {
-    // FIXME: Some code was deleted here.
+    if (desugar_string_cmp_p_ && e.left_get().type_get()
+        && dynamic_cast<const type::String*>(
+             &e.left_get().type_get()->actual()))
+      {
+        ast::Exp* lhs = recurse(e.left_get());
+        ast::Exp* rhs = recurse(e.right_get());
+        parse::Tweast in;
+        switch (e.oper_get())
+          {
+          case ast::OpExp::Oper::eq:
+            in << "streq(" << lhs << ", " << rhs << ")";
+            break;
+          case ast::OpExp::Oper::ne:
+            in << "streq(" << lhs << ", " << rhs << ") = 0";
+            break;
+          default:
+            in << "strcmp(" << lhs << ", " << rhs << ") "
+               << str(e.oper_get()) << " 0";
+            break;
+          }
+        result_ = std::get<ast::Exp*>(parse::parse(in));
+        return;
+      }
+    super_type::operator()(e);
   }
 
   /*----------------------.
@@ -69,7 +93,23 @@ namespace desugar
 
   void DesugarVisitor::operator()(const ast::ForExp& e)
   {
-    // FIXME: Some code was deleted here.
+    if (!desugar_for_p_)
+      {
+        super_type::operator()(e);
+        return;
+      }
+    ast::Exp* lo = recurse(*e.vardec_get().init_get());
+    ast::Exp* hi = recurse(e.hi_get());
+    ast::Exp* body = recurse(e.body_get());
+    misc::symbol iname = e.vardec_get().name_get();
+    parse::Tweast in;
+    in << "let var _lo := " << lo
+       << " var _hi := " << hi
+       << " var " << iname << " := _lo"
+       << " in if " << iname << " <= _hi then"
+       << " while 1 do (" << body << "; if " << iname << " = _hi then break;"
+       << " " << iname << " := " << iname << " + 1) end";
+    result_ = std::get<ast::Exp*>(parse::parse(in));
   }
 
 } // namespace desugar

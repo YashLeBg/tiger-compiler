@@ -14,4 +14,6 @@ namespace object::tasks
 {
   void object_parse() {}
 
+  void object_types_compute() {}
+
 } // namespace object::tasks

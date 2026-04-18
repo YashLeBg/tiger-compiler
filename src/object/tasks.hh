@@ -23,4 +23,9 @@ namespace object::tasks
                object_parse,
                "object parse");
 
+  TASK_DECLARE("object-types-compute",
+               "type-check object extensions",
+               object_types_compute,
+               "");
+
 } // namespace object::tasks

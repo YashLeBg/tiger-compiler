@@ -2,25 +2,16 @@
 #include <ast/default-visitor.hh>
 #include <ast/non-object-visitor.hh>
 #include <llvmtranslate/escapes-collector.hh>
+#include <type/function.hh>
 
 namespace llvmtranslate
 {
-  /// LLVM IR doesn't support static link and nested functions.
-  /// In order to translate those functions to LLVM IR, we use a technique
-  /// called Lambda Lifting, which consists in passing a pointer to
-  /// the escaped variables to the nested function using that variable.
-  ///
-  /// In order to do that, we need a visitor to collect these kind of
-  /// variables and associate them to each function.
-
   class EscapesCollector
     : public ast::DefaultConstVisitor
     , public ast::NonObjectConstVisitor
   {
   public:
-    /// Super class.
     using super_type = ast::DefaultConstVisitor;
-    /// Import overloaded operator() methods.
     using super_type::operator();
 
     EscapesCollector()
@@ -34,8 +25,6 @@ namespace llvmtranslate
     {
       bool saved_did_modify = did_modify_;
 
-      // Iterate on the chunk in order to iteratively collect all the callee
-      // functions' escaped variables.
       did_modify_ = !e.empty();
       while (did_modify_)
         {
@@ -48,74 +37,63 @@ namespace llvmtranslate
 
     void operator()(const ast::FunctionDec& e) override
     {
-      // Keep track of the current function
-      // FIXME: Some code was deleted here.
-      auto* func = curr_function;
-      curr_function = &e;
-      if (e.body_get()) {
+      auto* func = curr_function_;
+      curr_function_ = &e;
+      if (e.body_get())
         e.body_get()->accept(*this);
-      }
-      curr_function = func;
+      curr_function_ = func;
     }
 
     void operator()(const ast::CallExp& e) override
     {
       super_type::operator()(e);
 
-      // FIXME: Some code was deleted here.
       const ast::FunctionDec* f = e.def_get();
-
-      // Check whether there are any newly collected escaped variables.
-      // If there are, mark the iteration as modified.
-      // FIXME: Some code was deleted here.
-      if (f) {
-        for (const ast::VarDec* v : escaped_[f]) {
-          if (v->def_site_get() != curr_function) {
-            auto& var = escaped_[curr_function];
-            if (var.find(v) == var.end()) {
-              var.insert(v);
-              did_modify_ = true;
+      if (f && curr_function_)
+        {
+          auto callee_key = static_cast<const type::Function*>(f->type_get());
+          auto caller_key =
+            static_cast<const type::Function*>(curr_function_->type_get());
+          for (const ast::VarDec* v : escaped_[callee_key])
+            {
+              if (v->def_get() != curr_function_)
+                {
+                  auto& vars = escaped_[caller_key];
+                  if (vars.find(v) == vars.end())
+                    {
+                      vars.insert(v);
+                      did_modify_ = true;
+                    }
+                }
             }
-          }
         }
-      }
     }
 
     void operator()(const ast::SimpleVar& e) override
     {
-      // Associate escaped variables declared in parent frames with their
-      // functions
-      // FIXME: Some code was deleted here.
       const ast::VarDec* v = e.def_get();
-      if (v && v->def_site_get() != curr_function)
-      {
-
-        auto& var = escaped_[curr_function];
-        if (var.find(v) == var.end())
+      if (v && curr_function_ && v->def_get() != curr_function_)
         {
-          var.insert(v);
-          did_modify_ = true;
+          auto key = static_cast<const type::Function*>(curr_function_->type_get());
+          auto& vars = escaped_[key];
+          if (vars.find(v) == vars.end())
+            {
+              vars.insert(v);
+              did_modify_ = true;
+            }
         }
-      }
     }
 
   private:
-    /// Whether any modification was done during the iteration.
     bool did_modify_ = false;
-
-    /// Associate a set of variables with their function.
     escaped_map_type escaped_;
-
-    /// Current visiting function.
-    // FIXME: Some code was deleted here.
-    const ast::FunctionDec* curr_function = nullptr;
+    const ast::FunctionDec* curr_function_ = nullptr;
   };
 
   escaped_map_type collect_escapes(const ast::Ast& ast)
   {
     EscapesCollector collect;
     collect(ast);
-
     return std::move(collect.escaped_get());
   }
 
