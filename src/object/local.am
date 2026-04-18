@@ -4,7 +4,11 @@ src_libtc_la_SOURCES +=                                                        \
   %D%/libobject.hh                                                             \
   %D%/libobject.cc                                                             \
   %D%/libobject.hxx                                                            \
-  %D%/fwd.hh
+  %D%/fwd.hh                                                                   \
+  %D%/binder.hh                                                                \
+  %D%/binder.cc                                                                \
+  %D%/renamer.hh                                                               \
+  %D%/renamer.cc
 
 
 

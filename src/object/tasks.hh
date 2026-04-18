@@ -23,9 +23,19 @@ namespace object::tasks
                object_parse,
                "object parse");
 
+  TASK_DECLARE("object-bindings-compute",
+               "bind the chunklist (object)",
+               object_bindings_compute,
+               "object-parse");
+
   TASK_DECLARE("object-types-compute",
                "type-check object extensions",
                object_types_compute,
                "");
+
+  TASK_DECLARE("object-rename",
+               "rename identifiers (object)",
+               object_rename_compute,
+               "object-parse bindings-compute");
 
 } // namespace object::tasks

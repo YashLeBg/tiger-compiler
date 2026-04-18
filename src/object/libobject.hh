@@ -10,6 +10,9 @@
 #include <object/fwd.hh>
 
 namespace object
-{} // namespace object
+{
+  misc::error bind(ast::ChunkList& e);
+  class_names_type* rename(ast::Ast& e);
+} // namespace object
 
 #include <object/libobject.hxx>

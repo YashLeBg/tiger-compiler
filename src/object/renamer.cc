@@ -34,7 +34,9 @@ namespace object
 
   void Renamer::operator()(ast::MethodChunk& e)
   {
-    // FIXME: Some code was deleted here (Just recurse on children nodes).
+    // FIXED: Some code was deleted here (Just recurse on children nodes).
+    for (auto* method : e)
+      operator()(*method);
   }
 
   void Renamer::operator()(ast::MethodDec& e)
@@ -54,10 +56,14 @@ namespace object
   void Renamer::operator()(ast::TypeDec& e)
   {
     // Rename.
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
+    super_type::operator()(e);
 
     // Collect the name of the classes.
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
+    if (auto* classty = dynamic_cast<ast::ClassTy*>(&e.ty_get()))
+      if (const type::Class* cls = dynamic_cast<const type::Class*>(classty->type_get()))
+        misc::put(*class_names_, cls, e.name_get());
   }
 
   /*-----------------------.
@@ -66,7 +72,11 @@ namespace object
 
   void Renamer::operator()(ast::MethodCallExp& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
+    visit(e, e.def_get());
+    e.object_get().accept(*this);
+    for (auto* arg : e.args_get())
+      arg->accept(*this);
   }
 
   /*--------------------------------------.
@@ -75,17 +85,28 @@ namespace object
 
   void Renamer::operator()(ast::ClassTy& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
+    bool saved = within_class_ty_;
+    within_class_ty_ = true;
+    e.super_get().accept(*this);
+    e.chunks_get().accept(*this);
+    within_class_ty_ = saved;
   }
 
   void Renamer::operator()(ast::ObjectExp& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
+    e.type_name_get().accept(*this);
   }
 
   void Renamer::operator()(ast::LetExp& e)
   {
-    // FIXME: Some code was deleted here.
+    // FIXED: Some code was deleted here.
+    bool saved = within_class_ty_;
+    within_class_ty_ = false;
+    e.chunks_get().accept(*this);
+    e.body_get().accept(*this);
+    within_class_ty_ = saved;
   }
 
   /*--------------.
