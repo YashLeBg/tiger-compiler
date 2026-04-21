@@ -1,0 +1,11 @@
+let
+  function fib(n : int) : int =
+    if n <= 1
+      then n
+      else fib(n - 1) + fib(n - 2)
+in
+  print_int(fib(0)); print("\n");
+  print_int(fib(1)); print("\n");
+  print_int(fib(5)); print("\n");
+  print_int(fib(10)); print("\n")
+end

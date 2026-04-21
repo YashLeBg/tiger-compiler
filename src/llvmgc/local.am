@@ -1,0 +1,27 @@
+# Compile the LLVM Tiger runtime with the garbage collector
+
+include %D%/runtime/local.am
+
+
+LLVM_GC_GENERATION = %D%/generate-gc.sh
+EXTRA_DIST += $(LLVM_GC_GENERATION)
+
+CLEANFILES += %D%/runtime-gc.cc
+%D%/runtime-gc.cc: %D%/runtime/runtime-gc.ll
+	$(AM_V_GEN)$(srcdir)/$(LLVM_GC_GENERATION) $< $@ runtime_gc_string
+
+CLEANFILES += %D%/runtime-gc-debug.cc
+%D%/runtime-gc-debug.cc: %D%/runtime/runtime-gc-debug.ll
+	$(AM_V_GEN)$(srcdir)/$(LLVM_GC_GENERATION) $< $@ runtime_debug_gc_string
+
+## llvmtranslate module.
+src_libtc_la_SOURCES +=                                     \
+  %D%/translator.hh %D%/translator.cc                       \
+  %D%/libllvmgc.cc %D%/libllvmgc.hh                         \
+  %D%/gc-rewrite-pass.cc %D%/gc-rewrite-pass.hh
+
+
+nodist_src_libtc_la_SOURCES += %D%/runtime-gc.cc %D%/runtime-gc-debug.cc
+
+
+TASKS += %D%/tasks.hh %D%/tasks.cc

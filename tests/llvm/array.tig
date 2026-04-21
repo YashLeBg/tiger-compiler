@@ -1,0 +1,12 @@
+let
+  type intArray = array of int
+  var a := intArray[5] of 0
+in
+  a[0] := 10;
+  a[1] := 20;
+  a[2] := 30;
+  a[3] := 40;
+  a[4] := 50;
+  for i := 0 to 4 do
+    (print_int(a[i]); print("\n"))
+end

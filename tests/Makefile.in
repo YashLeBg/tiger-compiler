@@ -598,6 +598,28 @@ EXTRA_DIST = \
   type/too-many-args.tig \
   type/types-endless-recursion.tig \
   type/unconstrained-nil.tig \
+  llvm/array.tig \
+  llvm/array.expected \
+  llvm/break.tig \
+  llvm/break.expected \
+  llvm/fact.tig \
+  llvm/fact.expected \
+  llvm/fibonacci.tig \
+  llvm/fibonacci.expected \
+  llvm/for.tig \
+  llvm/for.expected \
+  llvm/hello.tig \
+  llvm/hello.expected \
+  llvm/mutual-recursion.tig \
+  llvm/mutual-recursion.expected \
+  llvm/nested-funcs.tig \
+  llvm/nested-funcs.expected \
+  llvm/queens.tig \
+  llvm/queens.expected \
+  llvm/string-ops.tig \
+  llvm/string-ops.expected \
+  llvm/while.tig \
+  llvm/while.expected \
   run_test.sh
 
 TESTS = \
@@ -697,7 +719,18 @@ TESTS = \
   type/test43.tig \
   type/too-many-args.tig \
   type/types-endless-recursion.tig \
-  type/unconstrained-nil.tig
+  type/unconstrained-nil.tig \
+  llvm/array.tig \
+  llvm/break.tig \
+  llvm/fact.tig \
+  llvm/fibonacci.tig \
+  llvm/for.tig \
+  llvm/hello.tig \
+  llvm/mutual-recursion.tig \
+  llvm/nested-funcs.tig \
+  llvm/queens.tig \
+  llvm/string-ops.tig \
+  llvm/while.tig
 
 TC = $(top_builddir)/src/tc
 TESTS_ENVIRONMENT = TC="$(TC)"
@@ -1564,6 +1597,83 @@ type/types-endless-recursion.tig.log: type/types-endless-recursion.tig
 type/unconstrained-nil.tig.log: type/unconstrained-nil.tig
 	@p='type/unconstrained-nil.tig'; \
 	b='type/unconstrained-nil.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/array.tig.log: llvm/array.tig
+	@p='llvm/array.tig'; \
+	b='llvm/array.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/break.tig.log: llvm/break.tig
+	@p='llvm/break.tig'; \
+	b='llvm/break.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/fact.tig.log: llvm/fact.tig
+	@p='llvm/fact.tig'; \
+	b='llvm/fact.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/fibonacci.tig.log: llvm/fibonacci.tig
+	@p='llvm/fibonacci.tig'; \
+	b='llvm/fibonacci.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/for.tig.log: llvm/for.tig
+	@p='llvm/for.tig'; \
+	b='llvm/for.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/hello.tig.log: llvm/hello.tig
+	@p='llvm/hello.tig'; \
+	b='llvm/hello.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/mutual-recursion.tig.log: llvm/mutual-recursion.tig
+	@p='llvm/mutual-recursion.tig'; \
+	b='llvm/mutual-recursion.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/nested-funcs.tig.log: llvm/nested-funcs.tig
+	@p='llvm/nested-funcs.tig'; \
+	b='llvm/nested-funcs.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/queens.tig.log: llvm/queens.tig
+	@p='llvm/queens.tig'; \
+	b='llvm/queens.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/string-ops.tig.log: llvm/string-ops.tig
+	@p='llvm/string-ops.tig'; \
+	b='llvm/string-ops.tig'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+llvm/while.tig.log: llvm/while.tig
+	@p='llvm/while.tig'; \
+	b='llvm/while.tig'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

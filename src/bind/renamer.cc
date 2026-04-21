@@ -23,7 +23,7 @@ namespace bind
   }
   void Renamer::operator()(ast::FunctionDec& dec)
   {
-    if (dec.body_get() == nullptr)
+    if (dec.body_get() == nullptr || dec.name_get() == "_main")
       {
         super_type::operator()(dec);
         return;
@@ -45,7 +45,7 @@ namespace bind
   void Renamer::operator()(ast::FunctionChunk& e)
   {
     for (auto* dec : e)
-      if (dec->body_get() != nullptr)
+      if (dec->body_get() != nullptr && dec->name_get() != "_main")
         {
           misc::symbol new_name = misc::symbol::fresh(dec->name_get());
           new_names_[dec] = new_name;

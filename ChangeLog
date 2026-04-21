@@ -1,3 +1,9 @@
+2026-04-13  Mael Cravero  <mael.cravero@epita.fr>
+
+	Version 1.95.d for 2028-tc-L.0
+
+	* NEWS.txt, configure.ac, .last-cl-gen, ChangeLog: here.
+
 2026-03-25  Simon Bousquet  <simon.bousquet@epita.fr>
 
 	ast: nil-exp is not a type constructor

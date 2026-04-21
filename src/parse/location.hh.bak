@@ -31,7 +31,7 @@
 // version 2.2 of Bison.
 
 /**
- ** \file ../src/parse/location.hh
+ ** \file ./src/parse/location.hh
  ** Define the parse::location class.
  */
 

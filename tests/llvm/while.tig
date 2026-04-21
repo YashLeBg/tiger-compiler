@@ -1,0 +1,6 @@
+let
+  var i := 0
+in
+  while i < 5 do
+    (print_int(i); print("\n"); i := i + 1)
+end

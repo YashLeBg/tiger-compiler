@@ -1,0 +1,28 @@
+# Compile the LLVM Tiger garbage collector runtime
+SRC= %D%/tiger-gc.c %D%/tiger-gc.h \
+%D%/gc-alloc.c %D%/gc-alloc.h \
+%D%/fwd.h
+
+IR=$(filter %.ll,$(SRC:.c=.ll))
+DEBUG_IR=$(IR:.ll=.dbg.ll)
+
+EXTRA_DIST += $(SRC)
+
+# FIXME: There should not be C files that are never linked with tc in the libtc sources
+src_libtc_la_SOURCES += $(SRC)
+
+%D%/%.ll: %D%/%.c
+	$(AM_V_CC)$(CLANG) -I%D% -c -m64 -std=c99 -emit-llvm  -S $< -o $@
+
+%D%/%.dbg.ll: %D%/%.c
+	$(AM_V_CC)$(CLANG) -I%D% -c -m64 -std=c99 -emit-llvm -DGCDEBUG=1  -S -pedantic -Wextra -Wall -Wno-frame-address  -Wno-gnu-pointer-arith  -Wno-zero-length-array $< -o $@
+
+%D%/runtime-gc.ll: $(IR)
+	$(AM_V_CC)$(LLVM_LINK)  -S -o $@ $^
+
+%D%/runtime-gc-debug.ll: $(DEBUG_IR)
+	$(AM_V_CC)$(LLVM_LINK)  -S -o $@ $^
+
+.PHONY: all
+
+CLEANFILES += %D%/*.ll

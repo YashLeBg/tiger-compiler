@@ -97,6 +97,28 @@ EXTRA_DIST = \
   type/too-many-args.tig \
   type/types-endless-recursion.tig \
   type/unconstrained-nil.tig \
+  llvm/array.tig \
+  llvm/array.expected \
+  llvm/break.tig \
+  llvm/break.expected \
+  llvm/fact.tig \
+  llvm/fact.expected \
+  llvm/fibonacci.tig \
+  llvm/fibonacci.expected \
+  llvm/for.tig \
+  llvm/for.expected \
+  llvm/hello.tig \
+  llvm/hello.expected \
+  llvm/mutual-recursion.tig \
+  llvm/mutual-recursion.expected \
+  llvm/nested-funcs.tig \
+  llvm/nested-funcs.expected \
+  llvm/queens.tig \
+  llvm/queens.expected \
+  llvm/string-ops.tig \
+  llvm/string-ops.expected \
+  llvm/while.tig \
+  llvm/while.expected \
   run_test.sh
 
 TESTS = \
@@ -196,7 +218,18 @@ TESTS = \
   type/test43.tig \
   type/too-many-args.tig \
   type/types-endless-recursion.tig \
-  type/unconstrained-nil.tig
+  type/unconstrained-nil.tig \
+  llvm/array.tig \
+  llvm/break.tig \
+  llvm/fact.tig \
+  llvm/fibonacci.tig \
+  llvm/for.tig \
+  llvm/hello.tig \
+  llvm/mutual-recursion.tig \
+  llvm/nested-funcs.tig \
+  llvm/queens.tig \
+  llvm/string-ops.tig \
+  llvm/while.tig
 
 TC = $(top_builddir)/src/tc
 

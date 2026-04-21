@@ -1,0 +1,8 @@
+let
+  var found := 0
+in
+  for i := 0 to 100 do
+    if i * i > 50 then
+      (found := i; break);
+  print_int(found); print("\n")
+end

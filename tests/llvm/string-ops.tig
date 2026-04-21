@@ -1,0 +1,8 @@
+let
+  var s1 := "Hello"
+  var s2 := ", World!"
+  var s3 := concat(s1, s2)
+in
+  print(s3); print("\n");
+  print_int(size(s3)); print("\n")
+end

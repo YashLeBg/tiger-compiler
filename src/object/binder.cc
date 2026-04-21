@@ -19,7 +19,7 @@ namespace object
      * AND `self` is not overridden.
      If those conditions are met, `self' is an implicitly defined instance of
      the class.
-￼
+
      Variable `self' will have a meaningful definition after the object
      constructs have been desugared. */
 
@@ -107,8 +107,6 @@ namespace object
 
   template <class D> void Binder::chunk_visit(ast::Chunk<D>& e)
   {
-    // Shorthand.
-    using chunk_type = ast::Chunk<D>;
     // FIXED: Some code was deleted here (Two passes: once on headers, then on bodies).
     for (auto* dec : e)
       visit_dec_header(*dec);
