@@ -4,6 +4,7 @@
  */
 
 #include <ast/tasks.hh>
+#include <astclone/libastclone.hh>
 #include <common.hh>
 #include <object/libobject.hh>
 #define DEFINE_TASKS 1
@@ -25,6 +26,18 @@ namespace object::tasks
   void object_rename_compute()
   {
     object::rename(*ast::tasks::the_program);
+  }
+
+  void object_desugar()
+  {
+    astclone::apply(::object::desugar, ast::tasks::the_program,
+                    *class_names.get());
+  }
+
+  void raw_object_desugar()
+  {
+    astclone::apply(::object::raw_desugar, ast::tasks::the_program,
+                    *class_names.get());
   }
 
 } // namespace object::tasks

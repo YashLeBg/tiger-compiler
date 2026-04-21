@@ -1,6 +1,10 @@
 
 Number of suppressed lines, suppressed chunks, average chunks size:
+<<<<<<< HEAD
 .                             : 2906 271  10
+=======
+.                             : 3779 353  10
+>>>>>>> 2028-tc-EXTS.0
     lib                       :  249  15  16
         misc                  :  249  15  16
             scoped-map.hh     :   65   2  32
@@ -10,7 +14,11 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             test-symbol.cc    :    1   1   1
             unique.hxx        :    8   5   1
             variant.hxx       :    1   1   1
+<<<<<<< HEAD
     src                       : 2657 256  10
+=======
+    src                       : 3530 338  10
+>>>>>>> 2028-tc-EXTS.0
         ast                   :  464  42  11
             break-exp.hh      :    4   2   2
             break-exp.hxx     :    2   2   1
@@ -34,7 +42,7 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             type-constructor.hxx:    9   1   9
         astclone              :   53  17   3
             cloner.cc         :   53  17   3
-        bind                  :  523  17  30
+        bind                  :  524  17  30
             binder.cc         :  194   1 194
             binder.hh         :   63   3  21
             binder.hxx        :   76   1  76
@@ -44,20 +52,53 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             renamer.hh        :   32   4   8
             renamer.hxx       :   37   2  18
             tasks.cc          :   25   1  25
-            tasks.hh          :   42   1  42
+            tasks.hh          :   43   1  43
             test-bind.cc      :    1   1   1
-        desugar               :   74   3  24
+        callgraph             :    6   1   6
+            call-graph-visitor.cc:    6   1   6
+        combine               :  114   8  14
+            binder.cc         :   29   1  29
+            binder.hh         :   30   1  30
+            libcombine.cc     :   11   3   3
+            tasks.cc          :    4   1   4
+            type-checker.cc   :   14   1  14
+            type-checker.hh   :   26   1  26
+        desugar               :  212   5  42
+            bounds-checking-visitor.cc:  131   1 131
+            bounds-checking-visitor.hh:    7   1   7
             desugar-visitor.cc:   73   2  36
             libdesugar.hxx    :    1   1   1
         escapes               :   43   2  21
             escapes-visitor.cc:   33   1  33
             escapes-visitor.hh:   10   1  10
+<<<<<<< HEAD
+=======
+        inlining              :  176   4  44
+            inliner.cc        :   79   1  79
+            inliner.hh        :    1   1   1
+            pruner.cc         :   87   1  87
+            pruner.hh         :    9   1   9
+        llvmgc                :  138  21   6
+            gc-rewrite-pass.cc:   12   1  12
+            libllvmgc.cc      :    7   1   7
+            runtime           :   79  14   5
+                gc-alloc.c    :   42   6   7
+                gc-alloc.h    :    2   1   2
+                tiger-gc.c    :   26   5   5
+                tiger-gc.h    :    9   2   4
+            translator.cc     :   40   5   8
+>>>>>>> 2028-tc-EXTS.0
         llvmtranslate         :  267  40   6
             escapes-collector.cc:   35   5   7
             llvm-type-visitor.cc:    6   5   1
             translator.cc     :  226  30   7
+<<<<<<< HEAD
         object                :  248  37   6
+=======
+        object                :  398  76   5
+>>>>>>> 2028-tc-EXTS.0
             binder.cc         :   40   9   4
+            desugar-visitor.cc:  150  39   3
             libobject.cc      :    7   2   3
             libobject.hh      :    4   1   4
             renamer.cc        :   35   7   5
@@ -65,6 +106,11 @@ Number of suppressed lines, suppressed chunks, average chunks size:
             tasks.hh          :    6   1   6
             test-bind.cc      :    1   1   1
             type-checker.cc   :  150  15  10
+        overload              :  150   7  21
+            binder.cc         :   26   4   6
+            binder.hh         :    5   1   5
+            type-checker.cc   :  108   1 108
+            type-checker.hh   :   11   1  11
         parse                 :  257  29   8
             parsetiger.yy     :  211   8  26
             scantiger.ll      :   26   3   8

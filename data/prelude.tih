@@ -12,3 +12,5 @@ primitive substring(string : string, start : int, length : int) : string
 primitive concat(fst : string, snd : string) : string
 primitive not(boolean : int) : int
 primitive exit(status : int)
+primitive gc_enable(enable : int)
+primitive gc_run()

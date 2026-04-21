@@ -2,16 +2,36 @@
 #include <ast/default-visitor.hh>
 #include <ast/non-object-visitor.hh>
 #include <llvmtranslate/escapes-collector.hh>
+<<<<<<< HEAD
 #include <type/function.hh>
 
 namespace llvmtranslate
 {
+=======
+
+namespace llvmtranslate
+{
+  /// LLVM IR doesn't support static link and nested functions.
+  /// In order to translate those functions to LLVM IR, we use a technique
+  /// called Lambda Lifting, which consists in passing a pointer to
+  /// the escaped variables to the nested function using that variable.
+  ///
+  /// In order to do that, we need a visitor to collect these kind of
+  /// variables and associate them to each function.
+
+>>>>>>> 2028-tc-EXTS.0
   class EscapesCollector
     : public ast::DefaultConstVisitor
     , public ast::NonObjectConstVisitor
   {
   public:
+<<<<<<< HEAD
     using super_type = ast::DefaultConstVisitor;
+=======
+    /// Super class.
+    using super_type = ast::DefaultConstVisitor;
+    /// Import overloaded operator() methods.
+>>>>>>> 2028-tc-EXTS.0
     using super_type::operator();
 
     EscapesCollector()
@@ -25,6 +45,11 @@ namespace llvmtranslate
     {
       bool saved_did_modify = did_modify_;
 
+<<<<<<< HEAD
+=======
+      // Iterate on the chunk in order to iteratively collect all the callee
+      // functions' escaped variables.
+>>>>>>> 2028-tc-EXTS.0
       did_modify_ = !e.empty();
       while (did_modify_)
         {
@@ -37,17 +62,23 @@ namespace llvmtranslate
 
     void operator()(const ast::FunctionDec& e) override
     {
+<<<<<<< HEAD
       auto* func = curr_function_;
       curr_function_ = &e;
       if (e.body_get())
         e.body_get()->accept(*this);
       curr_function_ = func;
+=======
+      // Keep track of the current function
+      // FIXME: Some code was deleted here.
+>>>>>>> 2028-tc-EXTS.0
     }
 
     void operator()(const ast::CallExp& e) override
     {
       super_type::operator()(e);
 
+<<<<<<< HEAD
       const ast::FunctionDec* f = e.def_get();
       if (f && curr_function_)
         {
@@ -67,10 +98,18 @@ namespace llvmtranslate
                 }
             }
         }
+=======
+      // FIXME: Some code was deleted here.
+
+      // Check whether there are any newly collected escaped variables.
+      // If there are, mark the iteration as modified.
+      // FIXME: Some code was deleted here.
+>>>>>>> 2028-tc-EXTS.0
     }
 
     void operator()(const ast::SimpleVar& e) override
     {
+<<<<<<< HEAD
       const ast::VarDec* v = e.def_get();
       if (v && curr_function_ && v->def_get() != curr_function_)
         {
@@ -88,12 +127,32 @@ namespace llvmtranslate
     bool did_modify_ = false;
     escaped_map_type escaped_;
     const ast::FunctionDec* curr_function_ = nullptr;
+=======
+      // Associate escaped variables declared in parent frames with their
+      // functions
+      // FIXME: Some code was deleted here.
+    }
+
+  private:
+    /// Whether any modification was done during the iteration.
+    bool did_modify_ = false;
+
+    /// Associate a set of variables with their function.
+    escaped_map_type escaped_;
+
+    /// Current visiting function.
+    // FIXME: Some code was deleted here.
+>>>>>>> 2028-tc-EXTS.0
   };
 
   escaped_map_type collect_escapes(const ast::Ast& ast)
   {
     EscapesCollector collect;
     collect(ast);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2028-tc-EXTS.0
     return std::move(collect.escaped_get());
   }
 

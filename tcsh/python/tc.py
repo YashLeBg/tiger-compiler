@@ -39,6 +39,10 @@ try_import(
         "combine",
         "astclone",
         "desugar",
+<<<<<<< HEAD
+=======
+        "overload",
+>>>>>>> 2028-tc-EXTS.0
         "llvmtranslate",
     ],
 )

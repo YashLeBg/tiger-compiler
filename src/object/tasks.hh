@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <overload/binder.hh>
 #include <task/libtask.hh>
 
 namespace object::tasks
@@ -37,5 +38,19 @@ namespace object::tasks
                "rename identifiers (object)",
                object_rename_compute,
                "object-parse bindings-compute");
+
+  /// Remove syntactic sugar from the Ast.
+  TASK_DECLARE("object-desugar",
+               "remove object constructs from the program",
+               object_desugar,
+               "object-rename");
+
+  /// Remove syntactic sugar from the Ast without recomputing
+  /// bindings nor types.
+  TASK_DECLARE("raw-object-desugar",
+               "remove object constructs from the program "
+               "without recomputing bindings nor types",
+               raw_object_desugar,
+               "object-rename");
 
 } // namespace object::tasks

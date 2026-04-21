@@ -30,7 +30,11 @@ else
 EXTRA_LLVM_CONFIG_FLAGS =
 endif
 
+<<<<<<< HEAD
+AM_CXXFLAGS += $(subst -I,-isystem ,$(shell $(LLVM_CONFIG) $(EXTRA_LLVM_CONFIG_FLAGS) --cppflags))
+=======
 AM_CXXFLAGS += `$(LLVM_CONFIG) $(EXTRA_LLVM_CONFIG_FLAGS) --cppflags`
+>>>>>>> 2028-tc-EXTS.0
 src_libtc_la_LDFLAGS +=                                                        \
   `$(LLVM_CONFIG) $(EXTRA_LLVM_CONFIG_FLAGS) --ldflags`                        \
   `$(LLVM_CONFIG) $(EXTRA_LLVM_CONFIG_FLAGS) --libs core linker asmparser irprinter` \

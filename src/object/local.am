@@ -12,6 +12,7 @@ src_libtc_la_SOURCES +=                                                        \
 
 
 
+src_libtc_la_SOURCES += %D%/desugar-visitor.hh %D%/desugar-visitor.cc
 
 
 # Tests.
@@ -20,6 +21,8 @@ check_PROGRAMS += %D%/test-parse
 
 
 
+check_PROGRAMS += %D%/test-desugar
+%C%_test_desugar_LDADD = src/libtc.la
 
 
 TASKS += %D%/tasks.hh %D%/tasks.cc
