@@ -13,9 +13,13 @@
 extern void tc_main(int);
 /// The function that defines the consts array
 extern void init_consts(void);
-
+/// This is called for initialization
 struct gc_ctx gc_ctx_ = {
   // FIXME: Some code was deleted here.
+    /// At the beging there is no object
+    .head = NULL,
+    /// At the beging we didnot allocated anything
+    .allocated_bytes=0,
   .gc_enabled = true,
   .tos = NULL,
 };
