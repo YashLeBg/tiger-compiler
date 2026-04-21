@@ -51,6 +51,9 @@ namespace bind
     void operator()(ast::NameTy& dec) override;
     /// \}
 
+    void operator()(ast::FunctionChunk& e) override;
+    void operator()(ast::TypeChunk& e) override;
+
   private:
     // FIXME: Some code was deleted here.
     //associate a pointer to a new name unique

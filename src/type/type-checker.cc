@@ -316,6 +316,11 @@ namespace type
     type_set(e, &f->result_get());
   }
 
+  void TypeChecker::operator()(ast::BreakExp& e)
+  {
+    type_set(e, &Void::instance());
+  }
+
   void TypeChecker::operator()(ast::ForExp& e)
   {
     check_type(*e.vardec_get().init_get(), "lower bound", Int::instance());

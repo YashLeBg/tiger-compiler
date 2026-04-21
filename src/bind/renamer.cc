@@ -21,21 +21,50 @@ namespace bind
     dec.name_set(new_name);
     super_type::operator()(dec);
   }
-  //That function take a functiondec node as param and rename a funciont and visite body/param
   void Renamer::operator()(ast::FunctionDec& dec)
   {
+    if (dec.body_get() == nullptr)
+      {
+        super_type::operator()(dec);
+        return;
+      }
     misc::symbol new_name = misc::symbol::fresh(dec.name_get());
     new_names_[&dec] = new_name;
     dec.name_set(new_name);
     super_type::operator()(dec);
   }
-  //That function is the same as above but for typedec nodes
+
   void Renamer::operator()(ast::TypeDec& dec)
   {
     misc::symbol new_name = misc::symbol::fresh(dec.name_get());
     new_names_[&dec] = new_name;
     dec.name_set(new_name);
     super_type::operator()(dec);
+  }
+
+  void Renamer::operator()(ast::FunctionChunk& e)
+  {
+    for (auto* dec : e)
+      if (dec->body_get() != nullptr)
+        {
+          misc::symbol new_name = misc::symbol::fresh(dec->name_get());
+          new_names_[dec] = new_name;
+          dec->name_set(new_name);
+        }
+    for (auto* dec : e)
+      super_type::operator()(*dec);
+  }
+
+  void Renamer::operator()(ast::TypeChunk& e)
+  {
+    for (auto* dec : e)
+      {
+        misc::symbol new_name = misc::symbol::fresh(dec->name_get());
+        new_names_[dec] = new_name;
+        dec->name_set(new_name);
+      }
+    for (auto* dec : e)
+      super_type::operator()(*dec);
   }
   //That function apply new name to variable
   void Renamer::operator()(ast::SimpleVar& e)

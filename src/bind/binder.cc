@@ -80,15 +80,12 @@ namespace bind
 
   void Binder::operator()(ast::NameTy& e)
   {
-    if (e.name_get() == "int" || e.name_get() == "string")
-    {
-        return;
-    }
     auto* def = types_.get(e.name_get());
-    if (def == nullptr)
-      error_ << misc::error::error_type::bind << e.location_get() << ": undeclared type: " << e.name_get() << std::endl;
-    else
+    if (def != nullptr)
       e.def_set(def);
+    else if (e.name_get() != "int" && e.name_get() != "string")
+      error_ << misc::error::error_type::bind << e.location_get()
+             << ": undeclared type: " << e.name_get() << std::endl;
   }
 
   void Binder::operator()(ast::VarChunk& e)
