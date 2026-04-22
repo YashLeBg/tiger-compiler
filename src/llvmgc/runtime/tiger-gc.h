@@ -8,6 +8,7 @@
 
 #include <stdbool.h>
 #include "fwd.h"
+#include <stdio.h>
 
 /// The global state of the garbage collector
 struct gc_ctx
@@ -18,7 +19,7 @@ struct gc_ctx
     /// The current amount of bytes allocated in the heap
     size_t allocated_bytes;
     ///The maximum amount of bytes allowed before arrasing all
-    size_t threshlod
+    size_t threshold;
   /// The frame address of main: the top of the stack
   void* tos;
   /// Is the gc enabled ?

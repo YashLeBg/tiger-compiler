@@ -15,11 +15,12 @@ extern void tc_main(int);
 extern void init_consts(void);
 /// This is called for initialization
 struct gc_ctx gc_ctx_ = {
-  // FIXME: Some code was deleted here.
+  // FIXED: Some code was deleted here.
     /// At the beging there is no object
     .head = NULL,
     /// At the beging we didnot allocated anything
     .allocated_bytes=0,
+    .threshold=1024*1024, ///We start using that limit but we will be able to change it
   .gc_enabled = true,
   .tos = NULL,
 };
