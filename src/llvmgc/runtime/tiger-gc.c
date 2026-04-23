@@ -25,12 +25,51 @@ struct gc_ctx gc_ctx_ = {
   .tos = NULL,
 };
 
+//check if obj is the adress of an object in the heap
+// return a pointer of this object if it is and NULL if its not
+static struct gc_object* in_heap(void* obj) {
+  struct gc_object* gc = gc_ctx_.head;
+  while (gc != NULL) {
+    if (obj == (void*)&gc->f[0]) {
+      return gc;
+    }
+    gc = gc->md.next;
+  }
+  return NULL;
+}
+
+// mark an objectt to avoid his destruction
+static void mark(struct gc_object* obj) {
+  if (!obj->md.marked) {
+    obj->md.marked = true;
+  }
+}
+
+// analyse of the stack
+// mark object that are in the heap to avoid destruction
+void stack_scan() {
+  void** bottom = (void**)__builtin_frame_address(0);
+  void** top = (void**)gc_ctx_.tos;
+  while (bottom < top) {
+    void* val = *bottom;
+    if (val != NULL) {
+      struct gc_object* obj = in_heap(val);
+      if (obj != NULL) {
+        mark(obj);
+      }
+    }
+    bottom++;
+  }
+}
+
 void gc_collect()
 {
   if (!gc_ctx_.gc_enabled)
     return;
 
   // FIXME: Some code was deleted here (Run the collector).
+  //start the scann
+  stack_scan();
 }
 
 void gc_enter_runtime()
