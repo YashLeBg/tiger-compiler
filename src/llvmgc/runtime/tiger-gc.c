@@ -67,9 +67,30 @@ void gc_collect()
   if (!gc_ctx_.gc_enabled)
     return;
 
-  // FIXME: Some code was deleted here (Run the collector).
-  //start the scann
+  // FIXED: Some code was deleted here (Run the collector).
+  // start the scann
   stack_scan();
+
+  // free all objects not marked
+  struct gc_object* current = gc_ctx_.head;
+  while (current != NULL) {
+    struct gc_object* next = current->md.next;
+    if (!current->md.marked) {
+      if (current->md.prev)
+        current->md.prev->md.next = current->md.next;
+      else
+        gc_ctx_.head = current->md.next;
+      if (current->md.next)
+        current->md.next->md.prev = current->md.prev;
+      gc_ctx_.allocated_bytes -= current->md.size;
+      free(current);
+    }
+    else
+    {
+      current->md.marked = false;
+    }
+    current = next;
+  }
 }
 
 void gc_enter_runtime()
