@@ -1,0 +1,9 @@
+let
+    var a := 10
+    var b := 3
+in
+    print_int(a+b);print("\n");
+    print_int(a-b);print("\n");
+    print_int(a*b);print("\n");
+    print_int(a/b);print("\n")
+end

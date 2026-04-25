@@ -1,0 +1,8 @@
+let
+    type point = {x : int, y : int}
+    var p := point {x = 12, y = 42}
+in
+    print_int(p.x); print("\n");
+    p.y := 100;
+    print_int(p.y); print("\n")
+end

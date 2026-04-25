@@ -1,0 +1,6 @@
+let
+    var a := 0
+in
+    a := (print("Hello\n"); 42);
+    print_int(a); print("\n")
+end
