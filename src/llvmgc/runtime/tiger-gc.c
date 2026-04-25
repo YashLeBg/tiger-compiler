@@ -38,15 +38,21 @@ static struct gc_object* in_heap(void* obj) {
   return NULL;
 }
 
-// mark an objectt to avoid his destruction
-static void mark(struct gc_object* obj) {
-  if (!obj->md.marked) {
-    obj->md.marked = true;
+static void mark_object(struct gc_object* obj) {
+  if (obj == NULL || obj->md.marked)
+    return;
+  obj->md.marked = true;
+  size_t num_words = obj->md.size / sizeof(tc_word_t);
+  for (size_t i = 0; i < num_words; i++) {
+    void* ptr = (void*)obj->f[i];
+    if (ptr != NULL) {
+      struct gc_object* child = in_heap(ptr);
+      if (child != NULL)
+        mark_object(child);
+    }
   }
 }
 
-// analyse of the stack
-// mark object that are in the heap to avoid destruction
 void stack_scan() {
   void** bottom = (void**)__builtin_frame_address(0);
   void** top = (void**)gc_ctx_.tos;
@@ -54,11 +60,30 @@ void stack_scan() {
     void* val = *bottom;
     if (val != NULL) {
       struct gc_object* obj = in_heap(val);
-      if (obj != NULL) {
-        mark(obj);
-      }
+      if (obj != NULL)
+        mark_object(obj);
     }
     bottom++;
+  }
+}
+
+static void sweep() {
+  struct gc_object* current = gc_ctx_.head;
+  while (current != NULL) {
+    struct gc_object* next_obj = current->md.next;
+    if (!current->md.marked) {
+      if (current->md.prev != NULL)
+        current->md.prev->md.next = current->md.next;
+      else
+        gc_ctx_.head = current->md.next;
+      if (current->md.next != NULL)
+        current->md.next->md.prev = current->md.prev;
+      gc_ctx_.allocated_bytes -= current->md.size;
+      free(current);
+    } else {
+      current->md.marked = false;
+    }
+    current = next_obj;
   }
 }
 
@@ -66,41 +91,18 @@ void gc_collect()
 {
   if (!gc_ctx_.gc_enabled)
     return;
-
-  // FIXED: Some code was deleted here (Run the collector).
-  // start the scann
   stack_scan();
-
-  // free all objects not marked
-  struct gc_object* current = gc_ctx_.head;
-  while (current != NULL) {
-    struct gc_object* next = current->md.next;
-    if (!current->md.marked) {
-      if (current->md.prev)
-        current->md.prev->md.next = current->md.next;
-      else
-        gc_ctx_.head = current->md.next;
-      if (current->md.next)
-        current->md.next->md.prev = current->md.prev;
-      gc_ctx_.allocated_bytes -= current->md.size;
-      free(current);
-    }
-    else
-    {
-      current->md.marked = false;
-    }
-    current = next;
-  }
+  sweep();
 }
 
 void gc_enter_runtime()
 {
-  // FIXME: Some code was deleted here (Initialize any context required by the runtime).
+  gc_ctx_.gc_enabled = false;
 }
 
 void gc_exit_runtime()
 {
-  // FIXME: Some code was deleted here (Any logic required when exiting the runtime and going back to the tiger function).
+  gc_ctx_.gc_enabled = true;
 }
 
 int main(void)
@@ -114,7 +116,6 @@ int main(void)
   /// Initialize the top of the stack with main's frame address.
   gc_ctx_.tos = __builtin_frame_address(0);
 
-  // FIXME: Some code was deleted here (Initialize any additional context required by the allocator and garbage collctor).
   tc_main(0);
 
   return 0;
