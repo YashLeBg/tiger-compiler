@@ -1,0 +1,8 @@
+let
+    var a := 5
+    var b := 10
+in
+    print_int(if a < b then 1 else 0); print("\n");
+    print_int(if a >= b then 1 else 0); print("\n");
+    print_int(if a = 5 then 99 else 0); print("\n")
+end
