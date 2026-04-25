@@ -1,0 +1,12 @@
+let
+  function f(): int =
+    let
+        var a := 212
+        function deux() : int = a + 2
+    in
+      deux()
+    end
+in
+  print_int(f());
+  print("\n")
+end
