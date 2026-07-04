@@ -82,6 +82,6 @@ make check
 Projet réalisé dans le cadre du cursus ING1 à EPITA (promotion 2028).
 
 - [Anli-Yach Mohamed](https://github.com/YashLeBg)
-- [Louis-Maximilien Chappuit](https://github.com/louis3117)
+- [Louis-Maximilien Chappuit](https://github.com/louischap31)
 - [Colin Gomez](https://github.com/Aznred)
 - [Jessim Ziani](https://github.com/jessim-ziani)
